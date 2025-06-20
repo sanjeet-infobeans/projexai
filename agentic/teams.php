@@ -1,6 +1,6 @@
 <?php include 'common/header.php'; ?>
         <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+          <div class="layout-content-container flex flex-col max-w-[1040px] flex-1">
             <div class="flex flex-wrap justify-between gap-3 p-4"><p class="text-[#111518] tracking-light text-[32px] font-bold leading-tight min-w-72">Team Performance</p></div>
             <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Sales Team</h2>
             <div class="px-4 py-3 @container">

@@ -3,57 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gemini AI App Idea Generator</title>
+  <title>Agentic Pages Index</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
-    select, button { width: 100%; padding: 10px; margin: 10px 0; }
-    #result { margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 6px; min-height: 40px; }
+    body { font-family: Arial, sans-serif; background: #f8fafc; color: #222; }
+    .container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 32px; }
+    h1 { font-size: 2em; margin-bottom: 1em; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 0.5em 0; }
+    a { color: #2563eb; text-decoration: none; font-size: 1.1em; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Get an App Idea with Gemini AI</h2>
-    <label for="tech">Select Technology:</label>
-    <select id="tech">
-      <option value="Python">Python</option>
-      <option value="JavaScript">JavaScript</option>
-      <option value="Java">Java</option>
-      <option value="PHP">PHP</option>
-      <option value="SQL">SQL</option>
-      <option value="UI/UX Design">UI/UX Design</option>
-      <option value="DevOps">DevOps</option>
-      <option value="Data Analysis">Data Analysis</option>
-      <option value="Cloud Computing">Cloud Computing</option>
-      <option value="Mobile Development">Mobile Development</option>
-    </select>
-    <button id="getIdea">Get App Idea</button>
-    <div id="result"></div>
+    <h1>Agentic Pages Index</h1>
+    <ul>
+      <li><a href="add-client.php">add-client.php</a></li>
+      <li><a href="login.php">login.php</a></li>
+      <li><a href="teams.php">teams.php</a></li>
+      <li><a href="clients.php">clients.php</a></li>
+      <li><a href="projects.php">projects.php</a></li>
+      <li><a href="sample.php">sample.php</a></li>
+      <li><a href="dashboard.php">dashboard.php</a></li>
+      <li><a href="generate.php">generate.php</a></li>
+      <li><a href="proposal.php">proposal.php</a></li>
+      <li><a href="solution.php">solution.php</a></li>
+      <li><a href="analysis.php">analysis.php</a></li>
+      <li><a href="analysis.html">analysis.html</a></li>
+      <li><a href="proposal.html">proposal.html</a></li>
+      <li><a href="solution.html">solution.html</a></li>
+      <li><a href="generate.html">generate.html</a></li>
+      <li><a href="dashboard.html">dashboard.html</a></li>
+      <li><a href="idea.html">idea.html</a></li>
+    </ul>
   </div>
-  <script>
-    document.getElementById('getIdea').onclick = function() {
-      const tech = document.getElementById('tech').value;
-      const resultDiv = document.getElementById('result');
-      resultDiv.textContent = 'Thinking...';
-      fetch('gemini_idea.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ technology: tech })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.idea) {
-          resultDiv.textContent = data.idea;
-        } else if (data.error) {
-          resultDiv.textContent = 'Error: ' + data.error;
-        } else {
-          resultDiv.textContent = 'No idea generated.';
-        }
-      })
-      .catch(err => {
-        resultDiv.textContent = 'Request failed.';
-      });
-    };
-  </script>
 </body>
 </html>
