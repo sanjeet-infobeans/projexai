@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini AI App Idea Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+    select, button { width: 100%; padding: 10px; margin: 10px 0; }
+    #result { margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 6px; min-height: 40px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Get an App Idea with Gemini AI</h2>
+    <label for="tech">Select Technology:</label>
+    <select id="tech">
+      <option value="Python">Python</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="Java">Java</option>
+      <option value="PHP">PHP</option>
+      <option value="SQL">SQL</option>
+      <option value="UI/UX Design">UI/UX Design</option>
+      <option value="DevOps">DevOps</option>
+      <option value="Data Analysis">Data Analysis</option>
+      <option value="Cloud Computing">Cloud Computing</option>
+      <option value="Mobile Development">Mobile Development</option>
+    </select>
+    <button id="getIdea">Get App Idea</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    document.getElementById('getIdea').onclick = function() {
+      const tech = document.getElementById('tech').value;
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = 'Thinking...';
+      fetch('gemini_idea.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ technology: tech })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.idea) {
+          resultDiv.textContent = data.idea;
+        } else if (data.error) {
+          resultDiv.textContent = 'Error: ' + data.error;
+        } else {
+          resultDiv.textContent = 'No idea generated.';
+        }
+      })
+      .catch(err => {
+        resultDiv.textContent = 'Request failed.';
+      });
+    };
+  </script>
+</body>
+</html>

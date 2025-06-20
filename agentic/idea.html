@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Solution Finder - InfoBeans</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; }
+        .container { max-width: 500px; margin: auto; padding: 24px; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+        h2 { text-align: center; }
+        textarea { width: 100%; min-height: 80px; padding: 10px; margin: 12px 0; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem; }
+        button { width: 100%; padding: 12px; background: #4f46e5; color: #fff; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 8px; }
+        button:disabled { background: #a5b4fc; cursor: not-allowed; }
+        .result { margin-top: 28px; padding: 18px; background: #f4f6fb; border-radius: 8px; min-height: 60px; }
+        .platform { margin-bottom: 18px; }
+        .platform-title { font-weight: bold; color: #4f46e5; }
+        .employees { margin-top: 6px; margin-left: 12px; }
+        .emp { background: #e0e7ff; display: inline-block; margin: 2px 6px 2px 0; padding: 4px 10px; border-radius: 5px; font-size: 0.97rem; }
+        .no-emp { color: #b91c1c; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Project Solution Finder</h2>
+        <label for="requirement">Describe your project requirement:</label>
+        <textarea id="requirement" placeholder="E.g., I need a cloud-based CRM with automated workflows and analytics..."></textarea>
+        <button id="getSolution">Get Solution</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        document.getElementById('getSolution').onclick = function() {
+            const req = document.getElementById('requirement').value.trim();
+            const resultDiv = document.getElementById('result');
+            if (!req) {
+                resultDiv.textContent = 'Please enter your project requirement.';
+                return;
+            }
+            resultDiv.textContent = 'Thinking...';
+            fetch('project_solution.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ requirement: req })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    resultDiv.textContent = 'Error: ' + data.error;
+                    return;
+                }
+                let html = '';
+                if (data.ai_suggestions && Array.isArray(data.ai_suggestions)) {
+                    data.ai_suggestions.forEach((sug, idx) => {
+                        html += `<div class='platform'><div class='platform-title'>${idx+1}. ${sug.platform} - ${sug.service}</div><div>${sug.reason}</div>`;
+                        // Find employee availability for this platform
+                        let empBlock = '';
+                        if (data.employee_availability && data.employee_availability[idx]) {
+                            const emp = data.employee_availability[idx];
+                            if (emp.available_employees && emp.available_employees.length > 0) {
+                                empBlock += '<div class="employees">Available Employees:';
+                                emp.available_employees.forEach(e => {
+                                    empBlock += `<span class='emp'>${e.name} (${e.designation}, ${e.department})</span>`;
+                                });
+                                empBlock += '</div>';
+                            } else {
+                                empBlock += '<div class="employees no-emp">No available employees with this skill currently.</div>';
+                            }
+                        }
+                        html += empBlock + '</div>';
+                    });
+                } else {
+                    html = 'No suggestions found.';
+                }
+                resultDiv.innerHTML = html;
+            })
+            .catch(err => {
+                resultDiv.textContent = 'Request failed.';
+            });
+        };
+    </script>
+</body>
+</html> 
