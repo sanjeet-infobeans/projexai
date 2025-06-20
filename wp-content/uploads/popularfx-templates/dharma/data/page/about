@@ -1,0 +1,310 @@
+[pl_post_props pagelayer-id="NjSnuIDi9vBJD9K8"  post_title="About" post_name="about" post_status="publish" featured_image="" post_excerpt=""]
+[/pl_post_props]
+[pl_row pagelayer-id="yiqKKmHwqPOs9YNE"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_bg_type="image" ele_bg_img="{{theme_url}}/images/home2-1.jpg" ele_bg_attachment="scroll" ele_bg_posx="center" ele_bg_posy="custom" ele_bg_repeat="no-repeat" ele_bg_size="cover" ele_padding="120px,0px,80px,0px" overlay_type="color" overlay_transperancy="0.5" overlay_color="#000000ff" ele_bg_posy_custom="60%" ele_padding_mobile="100px,0px,40px,0px" ele_padding_tablet="100px,0px,40px,0px"]
+[pl_col pagelayer-id="KnFtIapfis7l08I7"  widget_space="0" overlay_hover_delay="400" col_width="100" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,10px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_heading pagelayer-id="pXT6ceJsrvBlK7Ee"  heading_state="normal" color="#ffffffff" align="center" heading_typo="Poppins,18,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" heading_text_shadow=",,," animation="fadeInDown" animation_delay="600" link="#" heading_typo_mobile=",15,,,,,Solid,,,," heading_typo_tablet=",15,,,,,Solid,,,,"]
+
+
+<p>Home >> About Us</p>[/pl_heading]
+[pl_heading pagelayer-id="lYlDdj0UjRMlZ3oG"  heading_state="normal" color="#ffffffff" align="center" heading_typo="Poppins,80,Normal,600,Normal,None,Solid,1,Uppercase,0,0" heading_text_shadow="5,5,5,#000000ff" animation="fadeInDown" animation_delay="600" animation_speed="slow" heading_typo_mobile=",50,,,,,Solid,,,," heading_typo_tablet=",50,,,,,Solid,,,,"]
+
+
+<p>About Us</p>[/pl_heading]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="wZ4Sz7kWOJH0ofXU"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_bg_type="" ele_bg_color="#000000ff" ele_padding="0px,0px,0px,0px" ele_margin_mobile="40px,0px,20px,0px" ele_padding_mobile="0px,0px,0px,0px" ele_margin_tablet="40px,0px,20px,0px"]
+[pl_col pagelayer-id="znfrJ5qTVyLyLkBJ"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,0px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100" col_width="50"]
+[pl_heading pagelayer-id="KTHqWwlepndZyqjZ"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,20,Normal,600,Normal,None,Solid,1.65,Capitalize,0,0" animation="zoomIn" animation_delay="600" animation_speed="slowest" heading_typo_mobile=",16,,,,,Solid,,,," heading_typo_tablet=",16,,,,,Solid,,,,"]
+
+
+<p>Welcome</p>[/pl_heading]
+[pl_divider pagelayer-id="8pSbeR0cQ7GhCZ2v"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="10" divider_gap="5" divider_alignment="left" divider_widht_mobile="15" divider_gap_mobile="3" divider_widht_tablet="15" divider_gap_tablet="3"]
+[/pl_divider]
+[pl_heading pagelayer-id="WTJJlu1qpSgYJNFA"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,50,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInDown" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",30,,,,,Solid,,,," heading_typo_tablet=",30,,,,,Solid,,,,"]
+
+
+<p>Learn about our Capabilites</p>[/pl_heading]
+[pl_heading pagelayer-id="z9eaLDVKiXifkzCB"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,15,Normal,500,Normal,None,Solid,1.65,,0,0" animation="fadeInLeft" animation_delay="600" animation_speed="slowest"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[/pl_col]
+[pl_col pagelayer-id="A2GvEDIbh1tFJoIy"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,0px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100" col_width="50" content_pos="center"]
+[pl_progress pagelayer-id="jw1VTAmZZw7KmfnR"  progress_type="" progress_color="#000000ff" progress_height="10" title="Meditation" title_color="#000000ff" title_style="Poppins,20,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_padding="10px,0px,0px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,," animation="fadeInLeft" animation_delay="600"]
+
+
+
+
+
+
+[/pl_progress]
+[pl_progress pagelayer-id="0DJvGbHmn3ZS0DP1"  progress_type="" progress_color="#000000ff" progress_height="10" title="Teaching" title_color="#000000ff" title_style="Poppins,20,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_padding="10px,0px,0px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,," animation="fadeInLeft" animation_delay="600" animation_speed="slow"]
+
+
+
+
+
+
+[/pl_progress]
+[pl_progress pagelayer-id="82QKbnEdrsuq0Dw4"  progress_type="" progress_color="#000000ff" progress_height="10" title="Inspiration" title_color="#000000ff" title_style="Poppins,20,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_padding="10px,0px,0px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,," animation="fadeInLeft" animation_delay="600" animation_speed="slowest"]
+
+
+
+
+
+
+[/pl_progress]
+[pl_progress pagelayer-id="4AUo90U2fe4DuaHR"  progress_type="" progress_color="#000000ff" progress_height="10" title="Methodology" title_color="#000000ff" title_style="Poppins,20,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_padding="10px,0px,0px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,," animation="fadeInLeft" animation_delay="900" animation_speed="slowest"]
+
+
+
+
+
+
+[/pl_progress]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="BJsPMMGr4pRJLt9s"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_bg_type="" ele_bg_color="#000000ff" ele_padding="0px,0px,0px,0px" ele_margin_mobile="40px,0px,20px,0px" ele_padding_mobile="0px,0px,0px,0px" ele_margin_tablet="40px,0px,20px,0px"]
+[pl_col pagelayer-id="E21WbbkF41knoJ29"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,0px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100" col="6"]
+[pl_image pagelayer-id="IlJdh694puTWBcge"  id="{{theme_url}}/images/home2-1.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}" animation="zoomIn" animation_delay="600"]
+
+
+
+
+
+
+[/pl_image]
+[/pl_col]
+[pl_col pagelayer-id="1FgO0ywjAfULMC8X"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,0px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100" col="6"]
+[pl_heading pagelayer-id="VawWfUFIwdrQP4qD"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,20,Normal,600,Normal,None,Solid,1.65,Capitalize,0,0" animation="zoomIn" animation_delay="600" animation_speed="slowest" heading_typo_mobile=",16,,,,,Solid,,,," heading_typo_tablet=",16,,,,,Solid,,,,"]
+
+
+<p>Motives</p>[/pl_heading]
+[pl_divider pagelayer-id="fPMspZPioRfa1Mg3"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="10" divider_gap="5" divider_alignment="left" divider_widht_mobile="15" divider_gap_mobile="3" divider_widht_tablet="15" divider_gap_tablet="3"]
+[/pl_divider]
+[pl_heading pagelayer-id="6MBKS2Kp2vf4DyiX"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,50,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInDown" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",30,,,,,Solid,,,," heading_typo_tablet=",30,,,,,Solid,,,,"]
+
+
+<p>Our Vision & Mission</p>[/pl_heading]
+[pl_heading pagelayer-id="0VJl4NbnXv3mHXZf"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,18,Normal,800,Normal,None,Solid,1.65,Capitalize,0,0" animation="fadeInLeft" animation_delay="600" animation_speed="" ele_padding="20px,0px,0px,0px" ele_padding_mobile="10px,0px,0px,0px" ele_padding_tablet="10px,0px,0px,0px"]
+
+
+<p>Vision</p>[/pl_heading]
+[pl_heading pagelayer-id="CFpvrDW1x87UZIrA"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,15,Normal,500,Normal,None,Solid,1.65,,0,0" animation="fadeInLeft" animation_delay="600" animation_speed="slow"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_heading pagelayer-id="jDsDirn1hut6ZViV"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,18,Normal,800,Normal,None,Solid,1.65,Capitalize,0,0" animation="fadeInLeft" animation_delay="600" animation_speed="slowest" ele_padding="20px,0px,0px,0px" ele_padding_mobile="10px,0px,0px,0px" ele_padding_tablet="10px,0px,0px,0px"]
+
+
+<p>Mission</p>[/pl_heading]
+[pl_heading pagelayer-id="ml00EzBVaxzhPG22"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,15,Normal,500,Normal,None,Solid,1.65,,0,0" animation="fadeInLeft" animation_delay="900" animation_speed="slowest"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="bt3o655QMK9L1Uwr"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_bg_type="" ele_bg_color="#000000ff" ele_padding="0px,0px,0px,0px" ele_margin_mobile="40px,0px,20px,0px" ele_padding_mobile="0px,0px,0px,0px" ele_margin_tablet="40px,0px,20px,0px"]
+[pl_col pagelayer-id="VIlrFnOo2H73puJO"  widget_space="0" overlay_hover_delay="400" col_width="100" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,0px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100"]
+[pl_heading pagelayer-id="HcmNWB0PZk6BNy2b"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,20,Normal,600,Normal,None,Solid,1.65,Capitalize,0,0" animation="zoomIn" animation_delay="600" animation_speed="slowest" heading_typo_mobile=",16,,,,,Solid,,,," heading_typo_tablet=",16,,,,,Solid,,,,"]
+
+
+<p>Features</p>[/pl_heading]
+[pl_divider pagelayer-id="WYLLQ7Ulnv0tL8jm"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="10" divider_gap="5" divider_alignment="center" divider_widht_mobile="15" divider_gap_mobile="3" divider_widht_tablet="15" divider_gap_tablet="3"]
+[/pl_divider]
+[pl_heading pagelayer-id="c2ngneIJfQn5khSg"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,50,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInDown" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",30,,,,,Solid,,,," heading_typo_tablet=",30,,,,,Solid,,,,"]
+
+
+<p>Our Main Works</p>[/pl_heading]
+[pl_heading pagelayer-id="FSD6u4AgcKJNoWEB"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,15,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" animation="fadeInDown" animation_delay="600" animation_speed="slow" ele_custom_pos="true" ele_align="50%" ele_height="auto" ele_custom_width="62%" ele_padding="0px,0px,0px,0px" ele_margin="0px,0px,0px,0px" heading_typo_mobile=",14,,,,,Solid,,,," ele_custom_width_mobile="100%" heading_typo_tablet=",14,,,,,Solid,,,," ele_custom_width_tablet="100%"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_inner_row pagelayer-id="30Jaf1KV5Ikn40xP"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_padding="20px,0px,0px,0px" ele_padding_mobile="10px,0px,0px,0px" ele_margin_mobile="0px,0px,0px,0px" ele_padding_tablet="10px,0px,0px,0px"]
+[pl_inner_col pagelayer-id="ylxtA657WMAcKDmn"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width="33" col_width_mobile="100" ele_padding_mobile="15px,0px,15px,0px" col_width_tablet="100" ele_padding_tablet="15px,0px,15px,0px"]
+[pl_image pagelayer-id="XQVW3tUJMmJqK5Mn"  id="{{theme_url}}/images/home2-1.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+
+[/pl_image]
+[pl_heading pagelayer-id="cawyjlwcKNCh1EWA"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,18,Normal,600,Normal,None,Solid,1.65,,0,0" ele_padding="5px,0px,0px,0px"]
+
+
+<p>Building Temple for Peeople</p>[/pl_heading]
+[pl_divider pagelayer-id="p1jRoPJYxZJg5xmd"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="8efRDawwz1Ob4HuS"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="2XwqQ42Wbs1nyjJi"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="sWvUolWiivTCKVan"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width="33" animation_speed="slow" ele_padding_mobile="15px,0px,15px,0px" col_width_mobile="100" ele_padding_tablet="15px,0px,15px,0px" col_width_tablet="100"]
+[pl_image pagelayer-id="ODZrIoGpMwPDsTTV"  id="{{theme_url}}/images/home2-2.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+
+[/pl_image]
+[pl_heading pagelayer-id="ZDl4LzTtx8L2U3Nf"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,18,Normal,600,Normal,None,Solid,1.65,,0,0" ele_padding="5px,0px,0px,0px"]
+
+
+<p>Building Ashram for People</p>[/pl_heading]
+[pl_divider pagelayer-id="ouAxFKZMfIBdOea6"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="DrYQ3GAKuQu89wfv"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="kFouj7OvEkbRMCQQ"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="R3bG6oiKaP3GiyLx"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width="33" animation_speed="slowest" col_width_mobile="100" ele_padding_mobile="15px,0px,15px,0px" ele_padding_tablet="15px,0px,15px,0px"]
+[pl_image pagelayer-id="nCZHmV3VvFTNZu2b"  id="{{theme_url}}/images/home2-3.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+
+[/pl_image]
+[pl_heading pagelayer-id="DJqDvsfbrX2wGgSq"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,18,Normal,600,Normal,None,Solid,1.65,,0,0" ele_padding="5px,0px,0px,0px"]
+
+
+<p>Building Village for Poor</p>[/pl_heading]
+[pl_divider pagelayer-id="NhEyQIXHX4J0JI1H"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="XXeS1FQNjCuNkMqR"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="xlGv6XBnU2SvWUPA"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[/pl_inner_row]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="lr6uQihN3KDwm6XI"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_bg_type="" ele_bg_color="#000000ff" ele_padding="0px,0px,0px,0px" ele_margin_mobile="40px,0px,20px,0px" ele_margin_tablet="40px,0px,20px,0px" ele_padding_tablet="0px,0px,0px,0px"]
+[pl_col pagelayer-id="XLeFLY4OAMTIqPxu"  widget_space="0" overlay_hover_delay="400" col_width="100" ele_padding="0px,15px,0px,15px" col_width_mobile="100" ele_padding_mobile="10px,10px,0px,10px" ele_padding_tablet="10px,10px,0px,10px" col_width_tablet="100"]
+[pl_heading pagelayer-id="CTmUXQLHrYxCLP65"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,20,Normal,600,Normal,None,Solid,1.65,Capitalize,0,0" animation="zoomIn" animation_delay="600" animation_speed="slowest" heading_typo_mobile=",16,,,,,Solid,,,," heading_typo_tablet=",16,,,,,Solid,,,,"]
+
+
+
+
+
+
+<p>Our Testimonials</p>[/pl_heading]
+[pl_divider pagelayer-id="62sSaJU5l7eQVLnX"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="10" divider_gap="5" divider_alignment="center" divider_widht_mobile="15" divider_gap_mobile="3" divider_widht_tablet="15" divider_gap_tablet="3"]
+[/pl_divider]
+[pl_heading pagelayer-id="dR1a3XvC4W3Ch6HI"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,50,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInDown" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",30,,,,,Solid,,,," heading_typo_tablet=",30,,,,,Solid,,,,"]
+
+
+
+
+
+
+<p>Clients Feedback</p>[/pl_heading]
+[pl_heading pagelayer-id="JAVyQs2aQ3buWz68"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,15,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" animation="fadeInDown" animation_delay="600" animation_speed="slow" ele_custom_pos="true" ele_align="50%" ele_height="auto" ele_custom_width="62%" ele_padding="0px,0px,0px,0px" ele_margin="0px,0px,0px,0px" heading_typo_mobile=",14,,,,,Solid,,,," ele_custom_width_mobile="100%" heading_typo_tablet=",14,,,,,Solid,,,," ele_custom_width_tablet="100%"]
+
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_inner_row pagelayer-id="asmDXBGG0iP2bnyD"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_padding="20px,0px,0px,0px" ele_padding_mobile="10px,0px,0px,0px" ele_margin_mobile="0px,0px,0px,0px" ele_padding_tablet="10px,0px,0px,0px"]
+[pl_inner_col pagelayer-id="xIPVS8dayiNxaH81"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width="33" col_width_mobile="100" ele_padding_mobile="10px,0px,10px,0px" ele_padding_tablet="15px,0px,15px,0px" col_width_tablet="100"]
+[pl_testimonial pagelayer-id="vOJjWAyBEl9VqElm"  image_position="aside-position" alignment="center" author-spacing="0" avatar="{{theme_url}}/images/team1-1.jpg" testimonial_image_size="100" img_shape="circle" cite="Mahendra" cite_color="#000000ff" cite_style="Poppins,20,Normal,500,Normal,Underline,Solid,1,Capitalize,0,0" designation="Pandit" designation_color="#000000ff" cite_designation_style="Poppins,13,Normal,800,Normal,None,Solid,1,Uppercase,0,0" cite_spacing="0,0,0,5" ele_padding="0px,0px,0px,0px" ele_css="{{element}} i{font-size: 25px;
+float: left;
+color: #fff;
+background: #000;
+padding: 10px;}"]
+
+
+
+
+
+
+<p><i class="fas fa-quote-left"></i></p><p style="font-size: 14px;"><span style="color: rgb(63, 63, 63); line-height: 1;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</span></p>[/pl_testimonial]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="mmZ7hfJLNhoyCLVE"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width="33" animation_speed="slow" ele_padding_mobile="10px,0px,10px,0px" col_width_mobile="100" col_width_tablet="100" ele_padding_tablet="15px,0px,15px,0px"]
+[pl_testimonial pagelayer-id="qjfnk31cjX4jVTg3"  image_position="aside-position" alignment="center" author-spacing="0" avatar="{{theme_url}}/images/team1-2.jpg" testimonial_image_size="100" img_shape="circle" cite="Jitendra" cite_color="#000000ff" cite_style="Poppins,20,Normal,500,Normal,Underline,Solid,1,Capitalize,0,0" designation="Groom" designation_color="#000000ff" cite_designation_style="Poppins,13,Normal,800,Normal,None,Solid,1,Uppercase,0,0" cite_spacing="0,0,0,5" ele_padding="0px,0px,0px,0px" ele_css="{{element}} i{font-size: 25px;
+float: left;
+color: #fff;
+background: #000;
+padding: 10px;}"]
+
+
+
+
+
+
+<p><i class="fas fa-quote-left"></i></p><p style="font-size: 14px;"><span style="color: rgb(63, 63, 63); line-height: 1;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</span></p>[/pl_testimonial]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="3QcobnlXAVDQnF2u"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width="33" animation_speed="slowest" col_width_mobile="100" ele_padding_mobile="10px,0px,10px,0px" ele_padding_tablet="15px,0px,15px,0px" col_width_tablet="100"]
+[pl_testimonial pagelayer-id="e68wJrJbtMykbH4j"  image_position="aside-position" alignment="center" author-spacing="0" avatar="{{theme_url}}/images/team1-3.jpg" testimonial_image_size="100" img_shape="circle" cite="Shrimati" cite_color="#000000ff" cite_style="Poppins,20,Normal,500,Normal,Underline,Solid,1,Capitalize,0,0" designation="Bhakth" designation_color="#000000ff" cite_designation_style="Poppins,13,Normal,800,Normal,None,Solid,1,Uppercase,0,0" cite_spacing="0,0,0,5" ele_padding="0px,0px,0px,0px" ele_css="{{element}} i{font-size: 25px;
+float: left;
+color: #fff;
+background: #000;
+padding: 10px;}"]
+
+
+
+
+
+
+<p><i class="fas fa-quote-left"></i></p><p style="font-size: 14px;"><span style="color: rgb(63, 63, 63); line-height: 1;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</span></p>[/pl_testimonial]
+[/pl_inner_col]
+[/pl_inner_row]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="qeadfItS715eXeS7"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_padding="10px,0px,10px,0px" ele_bg_type="color" ele_bg_color="#000000ff" ele_margin_mobile="40px,0px,0px,0px" ele_padding_mobile="10px,0px,10px,0px" ele_margin_tablet="30px,0px,20px,0px" ele_padding_tablet="10px,0px,10px,0px"]
+[pl_col pagelayer-id="GJDiaeLmrGFS2A2H"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" content_pos="center" col_width="70" ele_padding_mobile="10px,10px,10px,10px" col_width_mobile="100" col_width_tablet="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_heading pagelayer-id="R2Ixu1ZKF0BsYFbl"  heading_state="normal" color="#ffffffff" align="left" heading_typo="Poppins,30,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInLeft" animation_delay="600" ele_padding="0px,0px,0px,0px" align_mobile="center" heading_typo_mobile=",24,,,,,Solid,,,," align_tablet="center" heading_typo_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+
+<p>Not a Member? Connect With Us...</p>[/pl_heading]
+[/pl_col]
+[pl_col pagelayer-id="n2zejOHQjBCvj0E3"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" col_width="30" content_pos="center" col_width_mobile="100" ele_padding_mobile="10px,10px,10px,10px" col_width_tablet="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_btn pagelayer-id="jVvEEzaPZ7SHoUrj"  text="Connect With Us" align="right" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,16,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#ffffffff" btn_color="#000000ff" btn_custom_size="25" btn_hover="hover" ele_padding="5px,5px,5px,5px" btn_border_type="solid" btn_border_color="#ffffffff" btn_border_width="2,2,2,2" btn_bg_color_hover="#000000ff" btn_color_hover="#ffffffff" animation="fadeInRight" animation_delay="600" animation_speed="slow" align_mobile="center" btn_typo_mobile=",13,,,,,Solid,,,," align_tablet="center" btn_typo_tablet=",13,,,,,Solid,,,," btn_custom_size_tablet="20"]
+[/pl_btn]
+[/pl_col]
+[/pl_row]

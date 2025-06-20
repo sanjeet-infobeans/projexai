@@ -1,0 +1,260 @@
+[pl_post_props pagelayer-id="bNumMLHyAH5SFhiC"  post_title="Events" post_name="events" post_status="publish" featured_image="" post_excerpt=""]
+[/pl_post_props]
+[pl_row pagelayer-id="XVq3UOFTYAonGYpP"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_bg_type="image" ele_bg_img="{{theme_url}}/images/home2-1.jpg" ele_bg_attachment="scroll" ele_bg_posx="center" ele_bg_posy="custom" ele_bg_repeat="no-repeat" ele_bg_size="cover" ele_padding="120px,0px,80px,0px" overlay_type="color" overlay_transperancy="0.5" overlay_color="#000000ff" ele_bg_posy_custom="60%" ele_padding_mobile="100px,0px,40px,0px" ele_padding_tablet="100px,0px,40px,0px"]
+[pl_col pagelayer-id="mYwP4irgfDppp1Ku"  widget_space="0" overlay_hover_delay="400" col_width="100" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,10px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_heading pagelayer-id="maK70uk4gyDaFmxL"  heading_state="normal" color="#ffffffff" align="center" heading_typo="Poppins,18,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" heading_text_shadow=",,," animation="fadeInDown" animation_delay="600" link="#" heading_typo_mobile=",15,,,,,Solid,,,," heading_typo_tablet=",15,,,,,Solid,,,,"]
+
+
+<p>Home >> Events</p>[/pl_heading]
+[pl_heading pagelayer-id="hoIOfynadwt8Q9aT"  heading_state="normal" color="#ffffffff" align="center" heading_typo="Poppins,80,Normal,600,Normal,None,Solid,1,Uppercase,0,0" heading_text_shadow="5,5,5,#000000ff" animation="fadeInDown" animation_delay="600" animation_speed="slow" heading_typo_mobile=",50,,,,,Solid,,,," heading_typo_tablet=",50,,,,,Solid,,,,"]
+
+
+<p>Our Events</p>[/pl_heading]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="3pWL8YDrUZ0BcT1N"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_bg_type="" ele_bg_color="#000000ff" ele_padding="0px,0px,0px,0px" ele_margin_mobile="40px,0px,20px,0px" ele_padding_mobile="0px,0px,0px,0px" ele_margin_tablet="40px,0px,20px,0px"]
+[pl_col pagelayer-id="ioylyo0KWuGuJSYd"  widget_space="0" overlay_hover_delay="400" col_width="100" ele_padding="0px,15px,0px,15px" ele_padding_mobile="10px,10px,0px,10px" col_width_mobile="100" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100"]
+[pl_heading pagelayer-id="ueEXJT7hFEBPFWzG"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,20,Normal,600,Normal,None,Solid,1.65,Capitalize,0,0" animation="zoomIn" animation_delay="600" animation_speed="slowest" heading_typo_mobile=",16,,,,,Solid,,,," heading_typo_tablet=",16,,,,,Solid,,,,"]
+
+<p>Latest Events</p>[/pl_heading]
+[pl_divider pagelayer-id="9gS5z7nZ2ujGZjr9"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="10" divider_gap="5" divider_alignment="center" divider_widht_mobile="15" divider_gap_mobile="3" divider_widht_tablet="15" divider_gap_tablet="3"]
+[/pl_divider]
+[pl_heading pagelayer-id="MKI2VJw4I52F7j0P"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,50,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInDown" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",30,,,,,Solid,,,," heading_typo_tablet=",30,,,,,Solid,,,,"]
+
+<p>Ongoing Donation</p>[/pl_heading]
+[pl_heading pagelayer-id="7NHGWsk3Skqujx10"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,15,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" animation="fadeInDown" animation_delay="600" animation_speed="slow" ele_custom_pos="true" ele_align="50%" ele_height="auto" ele_custom_width="62%" ele_padding="0px,0px,0px,0px" ele_margin="0px,0px,0px,0px" heading_typo_mobile=",14,,,,,Solid,,,," ele_custom_width_mobile="100%" heading_typo_tablet=",14,,,,,Solid,,,," ele_custom_width_tablet="100%"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_inner_row pagelayer-id="DLoOFIipOiDmu8Vw"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_padding="20px,0px,0px,0px" ele_padding_mobile="10px,0px,0px,0px" ele_margin_mobile="0px,0px,0px,0px" ele_padding_tablet="10px,0px,0px,0px"]
+[pl_inner_col pagelayer-id="jdS4scb8Zx5YRyfs"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width_mobile="100" ele_padding_mobile="15px,0px,15px,0px" col_width_tablet="100" ele_padding_tablet="15px,0px,15px,0px" col_width="33"]
+[pl_image pagelayer-id="NLozUMW6sVJuITbD"  id="{{theme_url}}/images/home2-1.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+[/pl_image]
+[pl_progress pagelayer-id="eUfNyB4jAdLhTwz4"  progress_type="" progress_color="#000000ff" progress_height="10" title="The Kono Fund" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,0px,10px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[pl_divider pagelayer-id="hGrTfRs9SLYV4SSO"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="1kFjs8e1SIQRYhTJ"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="iJdFYuypEmfNls29"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="tjnDJXIEaYVUFyHs"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" animation_speed="slow" ele_padding_mobile="15px,0px,15px,0px" col_width_mobile="100" ele_padding_tablet="15px,0px,15px,0px" col_width_tablet="100" col_width="33"]
+[pl_image pagelayer-id="IMZ8ok3zcdEjfetP"  id="{{theme_url}}/images/home2-2.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+[/pl_image]
+[pl_progress pagelayer-id="FqNOEuKqI9dnC1p9"  progress_type="" progress_color="#000000ff" progress_height="10" title="The Kono Fund" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,0px,10px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[pl_divider pagelayer-id="lDvRlKKOFnjvPMaq"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="yJzNmYEFfPilAKHf"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="saXolIAKGYt3gHIW"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="tHW94GWyVRRkEXIm"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" animation_speed="slowest" col_width_mobile="100" ele_padding_mobile="15px,0px,15px,0px" ele_padding_tablet="15px,0px,15px,0px" col_width="33"]
+[pl_image pagelayer-id="ZHuwHG7G9uCk95X4"  id="{{theme_url}}/images/home2-3.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+[/pl_image]
+[pl_progress pagelayer-id="EJY4u50BkliAGYug"  progress_type="" progress_color="#000000ff" progress_height="10" title="The Kono Fund" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,0px,10px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[pl_divider pagelayer-id="IpkCfPrOjKj30Dnp"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="6KU8ncOG8fwEg1Zs"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="iOOKPuMYOTOhX0D8"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="1zuswPljUZi7ZaEb"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" col_width_mobile="100" ele_padding_mobile="15px,0px,15px,0px" col_width_tablet="100" ele_padding_tablet="15px,0px,15px,0px" col_width="33"]
+[pl_image pagelayer-id="tkzsAQTpunxGmlck"  id="{{theme_url}}/images/home2-1.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+[/pl_image]
+[pl_progress pagelayer-id="IRZS83nVlx2qs0yF"  progress_type="" progress_color="#000000ff" progress_height="10" title="The Kono Fund" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,0px,10px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[pl_divider pagelayer-id="5Wnyqkt0txeaOOzs"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="9my2r3LXlFJVsHZG"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="Mw250PHdWKVmiWOx"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="aNu6BLkJljEngrPo"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" animation_speed="slow" ele_padding_mobile="15px,0px,15px,0px" col_width_mobile="100" ele_padding_tablet="15px,0px,15px,0px" col_width_tablet="100" col_width="33"]
+[pl_image pagelayer-id="mITEYfUeEkHw11Hs"  id="{{theme_url}}/images/home2-2.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+[/pl_image]
+[pl_progress pagelayer-id="1mXHPSz0n8jG09M4"  progress_type="" progress_color="#000000ff" progress_height="10" title="The Kono Fund" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,0px,10px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[pl_divider pagelayer-id="diQBfXDt2VVdRZGv"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="rKtO3BlXWybLB9WL"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="ZnBjAXUtFJMxQUO1"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="E1t7OvS60vjl43Jh"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,15px,15px,15px" animation="fadeInUp" animation_delay="600" animation_speed="slowest" col_width_mobile="100" ele_padding_mobile="15px,0px,15px,0px" ele_padding_tablet="15px,0px,15px,0px" col_width="33"]
+[pl_image pagelayer-id="Kl4Tlk0KrfDBf1LV"  id="{{theme_url}}/images/home2-3.jpg" id-size="full" align="center" img_hover="hover" img_hover_delay="600" caption_color="#0986c0" max-width="100" anim_hover="grow" img_filter_hover="0,80,100,0,0,100,100" ele_css="{{element}} {overflow: hidden;}"]
+
+
+
+
+
+[/pl_image]
+[pl_progress pagelayer-id="7Q21DzQQRSJP4iut"  progress_type="" progress_color="#000000ff" progress_height="10" title="The Kono Fund" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,0px,10px,0px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[pl_divider pagelayer-id="dULe99n3vlTqKvQt"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="40" divider_gap="0" divider_alignment="left" border_width="1px,1px,1px,0px" border_color="#000000ff" border_radius="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#aaaaaaff" ele_margin="5px,0px,5px,0px"]
+[/pl_divider]
+[pl_heading pagelayer-id="gCFfFwxt34wCwrWV"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_btn pagelayer-id="qlALn0GwGxffLov0"  text="Read More" align="left" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="20" btn_hover="hover" ele_padding="5px,5px,5px,5px"]
+[/pl_btn]
+[/pl_inner_col]
+[/pl_inner_row]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="HNqxmpRRyTlMWhp2"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_bg_type="" ele_bg_color="#000000ff" ele_padding="0px,0px,0px,0px" ele_margin_mobile="40px,0px,20px,0px" ele_padding_mobile="0px,0px,0px,0px" ele_margin_tablet="40px,0px,20px,0px"]
+[pl_col pagelayer-id="MtGCSFttnmam02xw"  widget_space="0" overlay_hover_delay="400" col_width="100" ele_padding="0px,15px,0px,15px" col_width_mobile="100" ele_padding_mobile="10px,10px,10px,10px" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_heading pagelayer-id="OtN84yv1GsyvVQpd"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,20,Normal,600,Normal,None,Solid,1.65,Capitalize,0,0" animation="zoomIn" animation_delay="600" animation_speed="slowest" heading_typo_mobile=",16,,,,,Solid,,,," heading_typo_tablet=",16,,,,,Solid,,,,"]
+
+<p>Previous Campaign</p>[/pl_heading]
+[pl_divider pagelayer-id="gmBHujGv4JeWmwdc"  divider_style="solid" divider_color="#000000ff" divider_weight="2" divider_widht="10" divider_gap="5" divider_alignment="center" divider_widht_mobile="15" divider_gap_mobile="3" divider_widht_tablet="15" divider_gap_tablet="3"]
+[/pl_divider]
+[pl_heading pagelayer-id="gS97E6W3yHoUhCqN"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,50,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInDown" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",30,,,,,Solid,,,," heading_typo_tablet=",30,,,,,Solid,,,,"]
+
+<p>Old Fundings</p>[/pl_heading]
+[pl_heading pagelayer-id="aoAHdJWvRYtH9ahf"  heading_state="normal" color="#000000ff" align="center" heading_typo="Poppins,15,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" animation="fadeInDown" animation_delay="600" animation_speed="slow" ele_custom_pos="true" ele_align="50%" ele_height="auto" ele_custom_width="62%" ele_padding="0px,0px,0px,0px" ele_margin="0px,0px,0px,0px" heading_typo_mobile=",14,,,,,Solid,,,," ele_custom_width_mobile="100%" heading_typo_tablet=",14,,,,,Solid,,,," ele_custom_width_tablet="100%"]
+
+
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[pl_inner_row pagelayer-id="LHWh7E7NmeWE5cQx"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_padding="20px,0px,0px,0px" ele_padding_mobile="10px,0px,0px,0px" ele_margin_mobile="0px,0px,0px,0px" ele_padding_tablet="10px,0px,0px,0px" ele_margin_tablet="0px,0px,0px,0px"]
+[pl_inner_col pagelayer-id="goTOQcP6jpIbSfM5"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,10px,15px,10px" animation="fadeInUp" animation_delay="600" col_width="33" col_width_mobile="100" ele_padding_mobile="10px,0px,10px,0px" col_width_tablet="100" ele_padding_tablet="10px,0px,10px,0px"]
+[pl_progress pagelayer-id="fZ1ox4mNO67Pww7n"  progress_type="" progress_color="#000000ff" progress_height="10" title="The Kono Fund" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_type="solid" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,10px,20px,10px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="J6AA49nVb9GRoXq9"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,10px,15px,10px" animation="fadeInUp" animation_delay="600" col_width="33" animation_speed="slow" col_width_mobile="100" ele_padding_mobile="10px,0px,10px,0px" ele_padding_tablet="10px,0px,10px,0px" col_width_tablet="100"]
+[pl_progress pagelayer-id="mPF1n1YWNiSsH6F7"  progress_type="" progress_color="#000000ff" progress_height="10" title="Dharma School" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_type="solid" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,10px,20px,10px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="WrOAT9c1HbjuRByT"  widget_space="0" overlay_hover_delay="400" ele_padding="15px,10px,15px,10px" animation="fadeInUp" animation_delay="600" col_width="33" animation_speed="slowest" ele_padding_mobile="10px,0px,10px,0px" col_width_mobile="100" ele_padding_tablet="10px,0px,10px,0px" col_width_tablet="100"]
+[pl_progress pagelayer-id="VCIb49AQRFF6BB0z"  progress_type="" progress_color="#000000ff" progress_height="10" title="Temple Building" title_color="#000000ff" title_style="Poppins,25,Normal,400,Normal,None,Solid,1.2,Capitalize,0,0" progress_text_color="" progress_percentage="75" progress_percent_color="#ffffff" border_type="solid" border_width="2px,2px,2px,2px" border_color="#000000ff" border_radius="5px,5px,5px,5px" ele_padding="20px,10px,20px,10px" progress_bg_color="#aaaaaaff" progress_radius="5,5,5,5" progress_border_type="solid" progress_border_color="#aaaaaaff" progress_border_width="3,3,3,3" title_align="left" prefix="Reached: $1000" suffix="Goal: $5000" prefix_suffix_color="#333333ff" progress_pre_suf="true" hide_percentage="" title_style_mobile=",20,,,,,Solid,,,," title_style_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+[/pl_progress]
+[/pl_inner_col]
+[/pl_inner_row]
+[/pl_col]
+[/pl_row]
+[pl_row pagelayer-id="e7QsjOpnjZTGQK7O"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="60px,0px,0px,0px" ele_padding="10px,0px,10px,0px" ele_bg_type="color" ele_bg_color="#000000ff" ele_margin_mobile="40px,0px,0px,0px" ele_padding_mobile="10px,0px,10px,0px" ele_margin_tablet="30px,0px,20px,0px" ele_padding_tablet="10px,0px,10px,0px"]
+[pl_col pagelayer-id="RZLPRMCAAEiwWyJq"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" content_pos="center" col_width="70" ele_padding_mobile="10px,10px,10px,10px" col_width_mobile="100" col_width_tablet="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_heading pagelayer-id="yJvpdsdcpbE5yppR"  heading_state="normal" color="#ffffffff" align="left" heading_typo="Poppins,30,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="fadeInLeft" animation_delay="600" ele_padding="0px,0px,0px,0px" align_mobile="center" heading_typo_mobile=",24,,,,,Solid,,,," align_tablet="center" heading_typo_tablet=",22,,,,,Solid,,,,"]
+
+
+
+
+
+<p>Not a Member? Connect With Us...</p>[/pl_heading]
+[/pl_col]
+[pl_col pagelayer-id="WgGSzRnmFoYEtcdH"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" col_width="30" content_pos="center" col_width_mobile="100" ele_padding_mobile="10px,10px,10px,10px" col_width_tablet="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_btn pagelayer-id="Sz7bV2GYBIc7URYH"  text="Connect With Us" align="right" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" link="#" btn_typo="Poppins,16,Normal,500,Normal,None,Solid,1,Capitalize,0,0" btn_bg_color="#ffffffff" btn_color="#000000ff" btn_custom_size="25" btn_hover="hover" ele_padding="5px,5px,5px,5px" btn_border_type="solid" btn_border_color="#ffffffff" btn_border_width="2,2,2,2" btn_bg_color_hover="#000000ff" btn_color_hover="#ffffffff" animation="fadeInRight" animation_delay="600" animation_speed="slow" align_mobile="center" btn_typo_mobile=",13,,,,,Solid,,,," align_tablet="center" btn_typo_tablet=",13,,,,,Solid,,,," btn_custom_size_tablet="20"]
+[/pl_btn]
+[/pl_col]
+[/pl_row]

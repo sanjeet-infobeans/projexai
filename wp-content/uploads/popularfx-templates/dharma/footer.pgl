@@ -1,0 +1,63 @@
+[pl_row pagelayer-id="Z8V3ay3qZosNaXPm"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_padding="40px,0px,0px,0px" ele_padding_mobile="20px,0px,0px,0px" ele_margin_mobile="0px,0px,0px,0px" ele_padding_tablet="20px,0px,0px,0px" ele_margin_tablet="0px,0px,0px,0px"]
+[pl_col pagelayer-id="I94zwMeoEPYn2MwN"  widget_space="0" overlay_hover_delay="400" col_width="100" ele_padding="0px,15px,0px,15px" col_width_mobile="100" ele_padding_mobile="0px,0px,0px,0px" ele_margin_mobile="0px,0px,0px,0px" ele_padding_tablet="0px,0px,0px,0px" col_width_tablet="100"]
+[pl_inner_row pagelayer-id="azgRmggDP6ohUDqI"  stretch="auto" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="0px,0px,0px,0px" ele_padding="0px,0px,0px,0px" ele_padding_mobile="0px,0px,0px,0px" ele_margin_mobile="0px,0px,0px,0px"]
+[pl_inner_col pagelayer-id="0wtBu3owB5KPcRKR"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" col_width="25" col_width_mobile="100" ele_padding_mobile="10px,5px,10px,5px" col_width_tablet="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_heading pagelayer-id="y6FsRmPvhYiVKJYs"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,30,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",25,,,,,Solid,,,," ele_padding_mobile="0px,0px,5px,0px" heading_typo_tablet=",25,,,,,Solid,,,," ele_padding_tablet="0px,0px,5px,0px"]
+
+<p>About</p>[/pl_heading]
+[pl_heading pagelayer-id="qWk5DBaH0c6ZOwRN"  heading_state="normal" color="#111111" align="left" heading_typo="Poppins,13,Normal,500,Normal,None,Solid,1.65,,0,0"]
+
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligule eget dolor. Aenaen massa, Cum soolis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</p>[/pl_heading]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="95ZAqxSCk6yz17Uy"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" col_width="20" col_width_mobile="100" ele_padding_mobile="10px,5px,10px,5px" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100"]
+[pl_heading pagelayer-id="M50n5J22qhyWdsrd"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,30,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",25,,,,,Solid,,,," ele_padding_mobile="0px,0px,5px,0px" heading_typo_tablet=",25,,,,,Solid,,,," ele_padding_tablet="0px,0px,5px,0px"]
+
+<p>Links</p>[/pl_heading]
+[pl_wp_menu pagelayer-id="m8lpNqaiyk7ROIJQ"  nav_list="13" align="left" layout="vertical" pointer="" m_animation="none" list_style="none" submenu_ind="caret-down" menu_bg_color_hover="#00000000" menu_bg_color_active="#00000000" horizontal_padding="0" vertical_padding="0" submenu_color="#ffffff" submenu_bg_color="#0986c0" submenu_horizontal_padding="10" submenu_vertical_padding="10" submenu_left_margin="10" menu_toggle_align="center" menu_toggle_bg_color="#0986c050" menu_toggle_size="30" slide_style="pagelayer-wp_menu-right" menu_width="30" menu_items_width="100" menu_posy="8" menu_bg="color" close_size="25" close_padding="8" close_color="#ffffff68" close_bg_color="#00000036" close_hover_delay="600" close_color_hover="#ffffff" close_bg_color_hover="#000000" submenu_position="left" menu_items_bg="#ffffff" menu_color="#444444ff" menu_bg_color="#00000000" menu_typo="Poppins,15,Normal,500,Normal,None,Solid,1.3,Capitalize,0,0" menu_colors="active" menu_color_hover="#000000ff" menu_color_active="#000000ff"]
+[/pl_wp_menu]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="49AgYXfPYMYB7Mj3"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" col_width="25" col_width_mobile="100" ele_padding_mobile="10px,5px,10px,5px" col_width_tablet="100" ele_padding_tablet="10px,10px,10px,10px"]
+[pl_heading pagelayer-id="GIqEECpkgjo7mG9f"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,30,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",25,,,,,Solid,,,," ele_padding_mobile="0px,0px,5px,0px" heading_typo_tablet=",25,,,,,Solid,,,," ele_padding_tablet="0px,0px,5px,0px"]
+<p>Gallery</p>[/pl_heading]
+[pl_grid_gallery pagelayer-id="2m3v0e08Z8CP9yfL"  columns="5" size="full" link_to="lightbox" align="center" images_no="30" ids="{{theme_url}}/images/home1-1.jpg,{{theme_url}}/images/home1-2.jpg,{{theme_url}}/images/home1-3.jpg,{{theme_url}}/images/home1-4.jpg,{{theme_url}}/images/home1-5.jpg,{{theme_url}}/images/home1-6.jpg,{{theme_url}}/images/home1-7.jpg,{{theme_url}}/images/home1-8.jpg,{{theme_url}}/images/home1-9.jpg,{{theme_url}}/images/home1-10.jpg" col_gap="0" row_gap="0" caption="" caption_color="#e6cf03" ele_css="{{element}} img:hover{transform: scale(1.1);
+filter: brightness(70%);
+transition: 600ms;}
+{{element}} {overflow: hidden;}" ele_padding_mobile="0px,0px,0px,0px"]
+[/pl_grid_gallery]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="KmurBfBR4gjDYAf6"  widget_space="0" overlay_hover_delay="400" ele_padding="0px,15px,0px,15px" col_width="25" col_width_mobile="100" ele_padding_mobile="10px,5px,10px,4px" ele_padding_tablet="10px,10px,10px,10px" col_width_tablet="100"]
+[pl_heading pagelayer-id="Vw8ueWT50V0GpwtR"  heading_state="normal" color="#000000ff" align="left" heading_typo="Poppins,30,Normal,300,Normal,None,Solid,1,Capitalize,0,0" animation="" animation_delay="600" ele_padding="0px,0px,10px,0px" heading_typo_mobile=",25,,,,,Solid,,,," ele_padding_mobile="0px,0px,5px,0px" ele_padding_tablet="0px,0px,5px,0px"]
+
+<p>Contact</p>[/pl_heading]
+[pl_contact pagelayer-id="J3aq9F2TzrNbqS0d"  form="contact-form" name="Contact Form" form_position="left" space_label="0,0,0,0" input_state="normal" input_padding="0,14" radio_padding="10,10" field_hover_delay="400" submit="Send" type="pagelayer-btn-custom" size="pagelayer-btn-custom" btn_hover_delay="600" icon_position="pagelayer-btn-icon-left" icon_spacing="0" con_post_id="819" captcha="true" ele_css="{{element}} form{display: flex;}
+{{element}} .pagelayer-contact-holder{
+width: 100%;}" form_label_color="#000000ff" label_typo="Poppins,14,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" form_placeholder_color="#000000ff" placeholder_typo="Poppins,14,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" form_input_color="#000000ff" form_input_bg="#ffffffff" input_typo="Cabin,14,Normal,400,Normal,None,Solid,1.65,Capitalize,0,0" input_height="40" form_box_color="#ffffffff" form_box_bg_color="#000000ff" inline_radio="true" radio_spacing="5,5,5,5" field_border_type="solid" field_border_color="#000000ff" field_border_width="1,1,1,1" field_border_radius="0,0,0,0" field_state="focus" field_shadow_focus="0,0,1,#000000ff,1," btn_typo="Poppins,14,Normal,500,Normal,None,Solid,1,Uppercase,1,0" btn_spacing="0,0,0,0" btn_bg_color="#000000ff" btn_color="#ffffffff" btn_custom_size="12,15" contect_btn_align="left" btn_hover="hover" btn_bg_color_hover="#000000ff" btn_color_hover="#ffffffff" btn_border_type="solid" btn_border_color="#000000ff" btn_border_width="1,1,1,1" btn_border_radius="0,0,0,0"]
+[pl_contact_item pagelayer-id="cEzsjpkFcjd06T7v"  label_name="Email Address:*" field_type="email" values="One
+Two" field_name="email" field_width="100" space_between="0,0,0,0" required="true" label_as_holder="true"]
+[/pl_contact_item]
+[/pl_contact]
+[pl_social_grp pagelayer-id="XR772pDdwC8kS5dV"  align="center" group_layout="pagelayer-btn-grp-horizontal" icon_spacing="10" icon_size="18" color_scheme="pagelayer-scheme-official" icon_color="#333333" social_hover_delay="400" icon_color_hover="#ffffff" bg_shape="pagelayer-social-shape-rounded" bg_size="7" social_hover="hover" anim_hover="float"]
+[pl_social pagelayer-id="J8Nje0cg5nLpdzhW"  icon="fab fa-facebook-f" social_url="https://facebook.com/sitepad"]
+[/pl_social]
+[pl_social pagelayer-id="oP5GzFHOoj8rdWme"  icon="fab fa-twitter" social_url="https://twitter.com/sitepad"]
+[/pl_social]
+[pl_social pagelayer-id="V2ZOdwDukYrIlsj0"  icon="fab fa-pinterest-p" social_url="https://instagram.com/sitepad"]
+[/pl_social]
+[pl_social pagelayer-id="ZCII4HbXj7xcbtxe"  icon="fab fa-instagram" social_url="https://instagram.com/sitepad"]
+[/pl_social]
+[/pl_social_grp]
+[/pl_inner_col]
+[/pl_inner_row]
+[pl_inner_row pagelayer-id="iDdBK7YbPK2QM9TJ"  stretch="full" col_gap="0" width_content="auto" row_height="default" overlay_hover_delay="400" row_shape_top_color="#227bc3" row_shape_top_width="100" row_shape_top_height="100" row_shape_bottom_color="#e44993" row_shape_bottom_width="100" row_shape_bottom_height="100" ele_margin="20px,0px,0px,0px" ele_padding="0px,0px,0px,0px" ele_bg_type="color" ele_bg_color="#000000ff" ele_margin_mobile="0px,0px,0px,0px" ele_padding_mobile="0px,0px,0px,0px" ele_padding_tablet="1px,1px,1px,1px" ele_margin_tablet="0px,0px,0px,0px"]
+[pl_inner_col pagelayer-id="xlrUBMyq6h2wulzd"  widget_space="0" overlay_hover_delay="400" ele_padding="10px,15px,10px,15px" col_width="50" content_pos="center" col_width_mobile="50" ele_padding_mobile="5px,5px,5px,5px" col_width_tablet="50" ele_padding_tablet="5px,5px,5px,5px"]
+[pl_copyright pagelayer-id="pMS5Y9VA9NUUbeWk"  color="#ffffffcc" align="left" typography="Poppins,14,Normal,400,Normal,Underline,Solid,1.65,Capitalize,0,0" typography_mobile=",13,,,,,Solid,,,," typography_tablet=",13,,,,,Solid,,,,"]
+[/pl_copyright]
+[/pl_inner_col]
+[pl_inner_col pagelayer-id="dJ76HWnnKZzYeqtE"  widget_space="0" overlay_hover_delay="400" ele_padding="10px,15px,10px,15px" col_width="50" content_pos="center" ele_padding_mobile="5px,5px,5px,5px" col_width_mobile="50" col_width_tablet="50" ele_padding_tablet="5px,5px,5px,5px"]
+[pl_heading pagelayer-id="usboaT5BySCEWw9C"  heading_state="normal" color="#ffffffcc" align="right" heading_typo="Poppins,14,Normal,400,Normal,Underline,Solid,1.65,Capitalize,0,0" animation="" animation_delay="600" ele_padding="0px,0px,0px,0px" link="#" color_hover="#ffffffff" heading_typo_mobile=",13,,,,,Solid,,,," heading_typo_tablet=",13,,,,,Solid,,,,"]
+<p>Terms & Conditions</p>[/pl_heading]
+[/pl_inner_col]
+[/pl_inner_row]
+[/pl_col]
+[/pl_row]
