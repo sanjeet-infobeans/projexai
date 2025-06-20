@@ -147,7 +147,7 @@
               </div>
             </div>
           </div>
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+          <div class="layout-content-container flex flex-col max-w-[1040px] flex-1">
             <div class="flex flex-wrap justify-between gap-3 p-4">
               <p class="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72">Proposal Canvas</p>
               <button
@@ -275,4 +275,9 @@
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxAY5j6TNgSgzBwWH-WWunO7nQIVsH9w7igSYUpcTdA6Z2cvQ4Hi0fqyFOuMhigOQSITwl2VPUjBxvZpHqm2nYDUvAXUPKkWmvdb8SjShlEVjQzdnTvPmLrOTa276_l_JTOBciH62AsitgfWlwvcfe9LJjlJYWj37s2RmKCKbEIWdqqLCTK05q8ZniY-MRooXR70XWQt_Dg7Urm4wjmfg-IYZOMGe39-eeYorWZ3yR3G2lvqOIDJo8tuBWj1U9uIQ79ywsLiPUPo4");'
                 ></div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 <?php include 'common/footer.php'; ?> 

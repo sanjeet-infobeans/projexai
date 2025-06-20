@@ -18,6 +18,32 @@ CREATE TABLE clients (
   sales_person_id INT,
   FOREIGN KEY (sales_person_id) REFERENCES sales_team_members(id)
 );
+CREATE TABLE clients (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  client_name VARCHAR(150),
+  industry VARCHAR(100),
+  domain VARCHAR(100),
+  website_url VARCHAR(255),
+  contact_email VARCHAR(150),
+  status ENUM(
+    'new',
+    'contacted',
+    'qualified',
+    'in_discussion',
+    'proposal_sent',
+    'follow_up',
+    'demo_scheduled',
+    'negotiation',
+    'won',
+    'onboarded',
+    'lost',
+    'paused',
+    'cold',
+    'reengaged'
+  ) DEFAULT 'new',
+  sales_person_id INT,
+  FOREIGN KEY (sales_person_id) REFERENCES sales_team_members(id)
+);
 
 -- 3. Client Requirements
 CREATE TABLE client_requirements (
