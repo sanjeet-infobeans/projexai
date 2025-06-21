@@ -158,17 +158,35 @@ class Client_Profiles {
         register_rest_route( 'projexai/v1', '/client-profiles', array(
             'methods'  => 'GET',
             'callback' => [ $this, 'get_all_client_profiles' ],
-            'permission_callback' => '__return_true' // Public API
+            'permission_callback' => '__return_true', // Public API
+            'args' => [
+                'author' => [
+                    'type'        => 'string',
+                    'required'    => false,
+                    'description' => 'Filter posts by author/co-author',
+                ]
+            ]
         ));
     }
 
-    public function get_all_client_profiles() {
+    public function get_all_client_profiles( $request ) {
+
+        $author_login = $request->get_param('author');
+
         $args = array(
             'post_type'      => 'client_profile',
             'posts_per_page' => -1,
             'post_status'    => 'publish',
         );
 
+        if ( $author_login ) {
+            $author_args = $this->filter_rest_by_authors_args($author_login);
+            if ( is_wp_error($author_args) ) {
+                return $author_args; // Return error if no valid authors found
+            }
+            $args['tax_query'] = isset($author_args['tax_query']) ? $author_args['tax_query'] : [];
+            $args['author__in'] = isset($author_args['author__in']) ? $author_args['author__in'] : [];
+        }
         $query = new WP_Query( $args );
         $results = [];
 
@@ -176,6 +194,8 @@ class Client_Profiles {
             while ( $query->have_posts() ) {
                 $query->the_post();
                 $id = get_the_ID();
+
+                $authors = $this->get_authors( $id );
                 $lead_status = get_post_meta( $id, 'lead_status', true );
                 $status = get_post_meta( $id, 'status', true );
                 $results[] = array(
@@ -191,12 +211,62 @@ class Client_Profiles {
                     'status_readable'       => $status ? 'Active' : 'Inactive',
                     'lead_status'           => $lead_status,
                     'lead_status_readable'  => LEAD_AUTOMATOR_LEAD_STATUSES[$lead_status] ?? '',
+                    'authors'               => $authors,
                 );
             }
             wp_reset_postdata();
         }
 
         return rest_ensure_response( $results );
+    }
+
+    public function filter_rest_by_authors_args ( $author_login_param ) {
+        $args = [];
+        $author_ids = [];
+        if ($author_login_param) {
+            $author_logins = array_map('trim', explode(',', $author_login_param));
+            $author_slugs = [];
+
+            foreach ($author_logins as $login) {
+                $user = get_user_by('login', $login);
+                if ($user) {
+                    $author_slugs[] = 'cap-' . $user->user_nicename;
+                    $author_ids[] = $user->ID;
+                }
+            }
+
+            if (!empty($author_slugs)) {
+                $args['tax_query']  = [[
+                    'taxonomy' => 'author',
+                    'field'    => 'slug',
+                    'terms'    => $author_slugs,
+                    'operator' => 'IN', // Match any
+                ]];
+                $args['author__in'] = $author_ids;
+            } else {
+                return new WP_Error('invalid_authors', 'No valid users found from author list.', ['status' => 400]);
+            }
+        }
+        return $args;
+
+    }
+
+    public function get_authors( $post_id ) {
+        $authors = get_coauthors( $post_id );
+        if ( empty( $authors ) ) {
+            return [];
+        }
+
+        $author_data = [];
+        foreach ( $authors as $author ) {
+            $author_data[] = [
+                'ID'         => $author->ID,
+                'display_name' => $author->display_name,
+                'user_login' => $author->user_login,
+                'roles'      => $author->roles,
+            ];
+        }
+        return $author_data;
     }
 
     public function client_profile_meta_register_callback() {
