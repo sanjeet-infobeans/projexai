@@ -7,7 +7,7 @@ package-lock.json
 yarn.lock
 
 # Production builds
-build/
+# build/
 dist/
 out/
 
