@@ -1,0 +1,122 @@
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+/**
+ * Class LA_Roles_And_Caps
+ *
+ * Handles the creation and management of custom roles and capabilities for the Lead Automator plugin.
+ */
+
+class LA_Roles_And_Caps {
+
+    private static $roles = [
+        'salesperson'      => 'Salesperson',
+        'technical_lead'   => 'Technical Lead',
+        'business_analyst' => 'Business Analyst',
+        'manager'          => 'Manager',
+    ];
+
+    private static $capabilities = [
+        'client_management' => [
+            'view_own_client_data',
+            'view_all_client_data',
+            'view_client_data_if_stakeholder',
+            'initiate_client_communication',
+            'view_client_communication',
+            'delete_client_data'
+        ],
+        'proposal_workflow' => [
+            'onboard_client_requirement',
+            'add_stakeholders',
+            'create_draft_proposal',
+            'finalize_proposal',
+            'edit_draft_time_estimation',
+            'finalize_time_estimation',
+            'suggest_team',
+            'finalize_team'
+        ],
+        'user_stories' => [
+            'generate_user_stories',
+            'edit_user_stories'
+        ],
+        'sales_pipeline' => [
+            'view_own_sales_pipeline',
+            'view_all_sales_pipeline',
+        ],
+        'user_role_management' => [
+            'manage_users_and_roles'
+        ],
+    ];
+
+    public static function init() {
+        add_action('init', [__CLASS__, 'add_roles_and_caps']);
+        register_deactivation_hook(__FILE__, [__CLASS__, 'remove_roles_and_caps']);
+    }
+
+    public static function add_roles_and_caps() {   
+        foreach ( self::$roles as $role_key => $role_name ) {
+            if ( ! get_role( $role_key ) ) {
+                add_role( $role_key, $role_name, [] );
+            }
+        }
+        self::la_add_capabilities();
+    }
+
+    public static function la_add_capabilities() {
+
+        $role_caps = [
+            'salesperson' => [
+                'view_own_clients',
+                'initiate_client_comms',
+                'create_proposal',
+                'edit_time_estimation',
+                'manage_pipeline',
+            ],
+            'technical_lead' => [
+                'view_own_clients',
+                'finalize_proposal',
+                'edit_time_estimation',
+                'generate_user_stories',
+                'edit_user_stories',
+            ],
+            'business_analyst' => [
+                'view_all_clients',
+                'create_proposal',
+                'edit_user_stories',
+            ],
+            'manager' => array_unique(
+                array_merge(
+                    ...array_values(
+                        self::$capabilities
+                    )
+                )
+            ),
+        ];
+        foreach ( $role_caps as $role_name => $caps_to_add ) {
+            $role = get_role( $role_name );
+            if ( ! $role ) continue;
+
+            foreach ( $caps_to_add as $cap ) {
+                $role->add_cap( $cap );
+            }
+        }
+    }
+
+
+    public static function remove_roles_and_caps() {
+        foreach ( array_keys(self::$roles) as $role_key ) {
+            remove_role( $role_key );
+        }
+        $role = get_role( 'administrator' );
+        if ( $role ) {
+            foreach ( self::$capabilities as $cap ) {
+                $role->remove_cap( $cap );
+            }
+        }
+    }
+}
+
+LA_Roles_And_Caps::init();
+// utils/roles-and-caps.php
