@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 import TwoColLayout from './common/TwoColLayout';
 import { Lightbulb, MessageCircle, FilePlus2, Users, UserPlus2, Layers, StickyNote } from 'lucide-react';
+import { useParams, useLocation } from 'react-router-dom';
 import SmartPitcher from './SmartPitcher';
 import ConversationPanel from './ConversationPanel';
 import CreateProposal from './CreateProposal';
@@ -21,14 +24,34 @@ const sidebarOptions = [
 
 const SalesConversation = () => {
   const [active, setActive] = useState('smartPitcher');
+  const { id } = useParams();
+  const location = useLocation();
+  const client = location.state?.client;
+  const { user } = useContext(AuthContext);
+  const [conversations, setConversations] = useState([]);
+  const [clientFeedback, setClientFeedback] = useState('');
+
+  useEffect(() => {
+    if (!id) return;
+    const fetchConversations = async () => {
+      try {
+        const response = await axios.get(`https://capitalmitra.com/wp-json/client/v1/conversations?post_id=${id}`);
+        setConversations(response.data.conversations || []);
+      } catch (error) {
+        console.error('Error fetching conversations:', error);
+        setConversations([]);
+      }
+    };
+    fetchConversations();
+  }, [id]);
 
   let rightContent;
   switch (active) {
     case 'smartPitcher':
-      rightContent = <SmartPitcher />;
+      rightContent = <SmartPitcher clientId={id} userName={user?.name} userEmail={user?.email} />;
       break;
     case 'conversation':
-      rightContent = <ConversationPanel />;
+      rightContent = <ConversationPanel conversations={conversations} clientFeedback={clientFeedback} setClientFeedback={setClientFeedback} sendFeedback={() => {}} />;
       break;
     case 'createProposal':
       rightContent = <CreateProposal />;
@@ -80,4 +103,4 @@ const SalesConversation = () => {
   );
 };
 
-export default SalesConversation; 
+export default SalesConversation;

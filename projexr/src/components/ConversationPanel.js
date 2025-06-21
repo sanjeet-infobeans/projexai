@@ -22,24 +22,28 @@ const ConversationPanel = ({
 
     {/* Messages Area */}
     <div className="flex-1 overflow-y-auto p-4 space-y-4">
-      {conversations.length === 0 ? (
+      {Array.isArray(conversations) && conversations.length === 0 ? (
         <div className="text-center text-gray-500 mt-8">
           <p>Hi, I'm interested in learning more about your solutions for digital transformation.</p>
         </div>
-      ) : (
-        conversations.map((message) => (
+      ) : Array.isArray(conversations) ? (
+        conversations.map((message, idx) => (
           <div
-            key={message.id}
+            key={message.id || idx}
             className={`p-3 rounded-lg max-w-xs ${
-              message.type === 'ai' 
+              message?.type === 'ai' 
                 ? 'bg-blue-100 text-blue-900 ml-auto' 
                 : 'bg-white border border-gray-200 text-gray-800'
             }`}
           >
-            <div className="text-sm whitespace-pre-wrap">{message.content}</div>
-            <div className="text-xs text-gray-500 mt-1">{message.timestamp}</div>
+            <div className="text-sm whitespace-pre-wrap">{message.content || message.message || JSON.stringify(message)}</div>
+            <div className="text-xs text-gray-500 mt-1">{message.timestamp || message.date || ''}</div>
           </div>
         ))
+      ) : (
+        <div className="text-center text-red-500 mt-8">
+          <p>Conversation data is not an array.</p>
+        </div>
       )}
     </div>
 
@@ -64,4 +68,4 @@ const ConversationPanel = ({
   </div>
 );
 
-export default ConversationPanel; 
+export default ConversationPanel;
