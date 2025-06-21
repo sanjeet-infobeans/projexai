@@ -41,11 +41,8 @@ const ListPage = () => {
 
   // Handle client name click navigation
   const handleClientClick = (client) => {
-    // Option 1: Pass client data via state (more efficient)
-    navigate(`/client/${client.id}`, { state: { client } });
-    
-    // Option 2: Just pass ID (will need to fetch from same API)
-    // navigate(`/client/${client.id}`);
+    // Navigate to Sales Conversation page with client data
+    navigate(`/sales-conversation/${client.id}`, { state: { client } });
   };
 
   const addClient = (e) => {
