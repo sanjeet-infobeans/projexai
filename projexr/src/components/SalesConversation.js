@@ -31,27 +31,54 @@ const SalesConversation = () => {
   const [conversations, setConversations] = useState([]);
   const [clientFeedback, setClientFeedback] = useState('');
 
+  // Move fetchConversations outside useEffect for reuse
+  const fetchConversations = async () => {
+    try {
+      const response = await axios.get(`https://capitalmitra.com/wp-json/client/v1/conversations?post_id=${id}`);
+      setConversations(response.data.conversations || []);
+    } catch (error) {
+      console.error('Error fetching conversations:', error);
+      setConversations([]);
+    }
+  };
+
   useEffect(() => {
     if (!id) return;
-    const fetchConversations = async () => {
-      try {
-        const response = await axios.get(`https://capitalmitra.com/wp-json/client/v1/conversations?post_id=${id}`);
-        setConversations(response.data.conversations || []);
-      } catch (error) {
-        console.error('Error fetching conversations:', error);
-        setConversations([]);
-      }
-    };
     fetchConversations();
   }, [id]);
+
+  const sendFeedback = async () => {
+    if (!clientFeedback.trim()) return;
+    try {
+      await axios.post(
+        'https://capitalmitra.com/wp-json/client/v1/conversation',
+        {
+          post: parseInt(id, 10),
+          author_name: user?.username,
+          author_email: user?.user_email,
+          content: `Client: ${clientFeedback}`,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'x-conversation-secret': 'projexai-lead-conversation',
+          },
+        }
+      );
+      setClientFeedback('');
+      fetchConversations(); // Refresh conversations after posting
+    } catch (error) {
+      console.error('Error posting feedback:', error);
+    }
+  };
 
   let rightContent;
   switch (active) {
     case 'smartPitcher':
-      rightContent = <SmartPitcher clientId={id} userName={user?.name} userEmail={user?.email} />;
+      rightContent = <SmartPitcher clientId={id} userName={user?.username} userEmail={user?.user_email} />;
       break;
     case 'conversation':
-      rightContent = <ConversationPanel conversations={conversations} clientFeedback={clientFeedback} setClientFeedback={setClientFeedback} sendFeedback={() => {}} />;
+      rightContent = <ConversationPanel conversations={conversations} clientFeedback={clientFeedback} setClientFeedback={setClientFeedback} sendFeedback={sendFeedback} />;
       break;
     case 'proposal':
       rightContent = <ProposalManager />;

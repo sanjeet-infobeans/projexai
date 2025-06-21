@@ -71,10 +71,8 @@ export const AuthProvider = ({ children }) => {
       const data = await res.json();
       if (data.token) {
         setIsAuthenticated(true);
-        setUser({ username, token: data.token });
+        setUser({ username, token: data.token, user_role: data.user_role, display_name: data.display_name, user_email: data.user_email });
         localStorage.setItem('token', data.token);
-        localStorage.setItem('user_role', data.user_role || 'user');
-        localStorage.setItem('display_name', data.display_name || username);
         return data;
       } else {
         throw new Error(data.message);
