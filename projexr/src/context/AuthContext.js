@@ -17,27 +17,29 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (username, password, keepLoggedIn = false) => {
-    // Simple authentication check
-    if (username === 'admin' && password === 'password') {
-      const userData = { 
-        username, 
-        email: 'admin@example.com',
-        name: 'Sanjeet',
-        avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAhMqy4azEr8zqKaJBxVz6XaWdwxbUz9V8SZO-Gbe_BRMbfzfb5OMDECCM3lZdnuYXDTj1Leq-bySDVyFzLc5kDRnabVpnpeJgC_C-rMYJ0vU9T41F9nMpaJtp_nx7hBKNJiAWbfa8WeU9wIT0CmirN7pCJ8WlIIPwEMZed2_PaNkQ_vViMwGMNnclQNaR2TZjYCrGp-2qNMhbkO-jvkgIXaMpmgjBudIpFoQCzEKpQ_Y53016_0jlabmSjJMlOjeR3BScaxcskoW8'
-      };
-      
-      setIsAuthenticated(true);
-      setUser(userData);
-      
-      if (keepLoggedIn) {
-        localStorage.setItem('projexai_user', JSON.stringify(userData));
-        localStorage.setItem('projexai_auth', 'true');
+  const login = async (username, password, keepLoggedIn = false) => {
+    try {
+      const res = await fetch('https://capitalmitra.com/wp-json/jwt-auth/v1/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (data.token) {
+        setIsAuthenticated(true);
+        setUser({ username, token: data.token });
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user_role', data.user_role || 'user');
+        localStorage.setItem('display_name', data.display_name || username);
+        return data;
+      } else {
+        throw new Error(data.message);
       }
-      
-      return true;
+    } catch (err) {
+      setIsAuthenticated(false);
+      setUser(null);
+      throw err;
     }
-    return false;
   };
 
   const logout = () => {
@@ -45,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem('projexai_user');
     localStorage.removeItem('projexai_auth');
+    localStorage.removeItem('token');
   };
 
   return (
