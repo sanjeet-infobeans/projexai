@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import TwoColLayout from './common/TwoColLayout';
-import { Lightbulb, MessageCircle, FilePlus2, Users, UserPlus2, Layers, StickyNote } from 'lucide-react';
+import { Lightbulb, MessageCircle, FileText, Users, UserPlus2, Layers, StickyNote } from 'lucide-react';
 import SmartPitcher from './SmartPitcher';
 import ConversationPanel from './ConversationPanel';
-import CreateProposal from './CreateProposal';
+import ProposalManager from './ProposalManager';
 import EstimateTeam from './EstimateTeam';
 import AddStakeholders from './AddStakeholders';
 import SuggestTechStack from './SuggestTechStack';
@@ -12,7 +12,7 @@ import SaveNotes from './SaveNotes';
 const sidebarOptions = [
   { key: 'smartPitcher', label: 'SmartPitcher', icon: <Lightbulb className="w-5 h-5" /> },
   { key: 'conversation', label: 'Conversation', icon: <MessageCircle className="w-5 h-5" /> },
-  { key: 'createProposal', label: 'Create Proposal', icon: <FilePlus2 className="w-5 h-5" /> },
+  { key: 'proposal', label: 'Proposal', icon: <FileText className="w-5 h-5" /> },
   { key: 'estimateTeam', label: 'Estimate Team', icon: <Users className="w-5 h-5" /> },
   { key: 'addStakeholders', label: 'Add Stakeholders', icon: <UserPlus2 className="w-5 h-5" /> },
   { key: 'suggestTechStack', label: 'Suggest Tech Stack', icon: <Layers className="w-5 h-5" /> },
@@ -30,8 +30,8 @@ const SalesConversation = () => {
     case 'conversation':
       rightContent = <ConversationPanel />;
       break;
-    case 'createProposal':
-      rightContent = <CreateProposal />;
+    case 'proposal':
+      rightContent = <ProposalManager />;
       break;
     case 'estimateTeam':
       rightContent = <EstimateTeam />;

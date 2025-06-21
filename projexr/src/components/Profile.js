@@ -28,7 +28,7 @@ const Profile = () => {
                   <h2 className="text-2xl font-bold text-[#131416] mb-2">
                     {user?.name || user?.username || 'User'}
                   </h2>
-                  <p className="text-[#6e717c] text-lg">IT Service Manager</p>
+                  <p className="text-[#6e717c] text-lg">{user?.role || 'Role'}</p>
                 </div>
               </div>
 
@@ -89,7 +89,7 @@ const Profile = () => {
 
                     <div>
                       <p className="text-sm text-[#6e717c]">Role</p>
-                      <p className="text-[#131416] font-medium">Administrator</p>
+                      <p className="text-[#131416] font-medium">{user?.role || 'N/A'}</p>
                     </div>
 
                     <div>

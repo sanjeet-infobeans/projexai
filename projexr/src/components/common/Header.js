@@ -89,6 +89,9 @@ const Header = () => {
           onClick={logout}
         >
           <span className="truncate">Welcome back, {user?.name || user?.username || 'User'}</span>
+          {user?.role && (
+            <span className="ml-2 px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs font-semibold uppercase">{user.role}</span>
+          )}
         </button>
         <div className="relative" ref={dropdownRef}>
           <button
