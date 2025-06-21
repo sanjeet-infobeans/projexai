@@ -172,6 +172,30 @@ class Client_Profiles {
                 ]
             ]
         ));
+        // Add POST and PUT for add/update
+        register_rest_route( 'projexai/v1', '/client-profile', array(
+            'methods'  => array('POST', 'PUT'),
+            'callback' => [ $this, 'add_or_update_client_profile' ],
+            'permission_callback' => function() { return current_user_can('edit_posts'); },
+            'args' => [
+                'id' => [
+                    'type' => 'integer',
+                    'required' => false,
+                    'description' => 'ID for update (PUT only)'
+                ],
+                'title' => [
+                    'type' => 'string',
+                    'required' => true,
+                ],
+                'client_name' => [ 'type' => 'string', 'required' => true ],
+                'industry' => [ 'type' => 'string', 'required' => false ],
+                'location' => [ 'type' => 'string', 'required' => false ],
+                'contact_person' => [ 'type' => 'string', 'required' => false ],
+                'email' => [ 'type' => 'string', 'required' => false ],
+                'phone' => [ 'type' => 'string', 'required' => false ],
+                'status' => [ 'type' => 'string', 'required' => false ],
+            ]
+        ));
     }
 
     public function get_all_client_profiles( $request ) {
@@ -309,5 +333,47 @@ class Client_Profiles {
         return LEAD_AUTOMATOR_LEAD_STATUSES;
     }
 
+    /**
+     * Handle add/update client_profile via REST API
+     */
+    public function add_or_update_client_profile( $request ) {
+        $params = $request->get_params();
+        $is_update = $request->get_method() === 'PUT' || !empty($params['id']);
+        $post_id = isset($params['id']) ? intval($params['id']) : 0;
+        $fields = [ 'client_name', 'industry', 'location', 'contact_person', 'email', 'phone', 'status' ];
+        $postarr = [
+            'post_type'   => 'client_profile',
+            'post_title'  => sanitize_text_field($params['title']),
+            'post_status' => 'publish',
+        ];
+        if ($is_update && $post_id) {
+            $postarr['ID'] = $post_id;
+            $existing = get_post($post_id);
+            if (!$existing || $existing->post_type !== 'client_profile') {
+                return new WP_Error('not_found', 'Client Profile not found', ['status' => 404]);
+            }
+            $post_id = wp_update_post($postarr, true);
+        } else {
+            $post_id = wp_insert_post($postarr, true);
+        }
+        if (is_wp_error($post_id)) {
+            return $post_id;
+        }
+        foreach ($fields as $field) {
+            if (isset($params[$field])) {
+                $value = sanitize_text_field($params[$field]);
+                if ($field === 'email') $value = sanitize_email($params[$field]);
+                update_post_meta($post_id, $field, $value);
+            }
+        }
+        $response = [
+            'id' => $post_id,
+            'title' => get_the_title($post_id),
+        ];
+        foreach ($fields as $field) {
+            $response[$field] = get_post_meta($post_id, $field, true);
+        }
+        return rest_ensure_response($response);
+    }
 
 }
