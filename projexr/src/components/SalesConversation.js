@@ -15,10 +15,10 @@ import SaveNotes from './SaveNotes';
 const sidebarOptions = [
   { key: 'smartPitcher', label: 'SmartPitcher', icon: <Lightbulb className="w-5 h-5" /> },
   { key: 'conversation', label: 'Conversation', icon: <MessageCircle className="w-5 h-5" /> },
-  { key: 'proposal', label: 'Proposal', icon: <FileText className="w-5 h-5" /> },
-  { key: 'estimateTeam', label: 'Estimate Team', icon: <Users className="w-5 h-5" /> },
   { key: 'addStakeholders', label: 'Add Stakeholders', icon: <UserPlus2 className="w-5 h-5" /> },
   { key: 'suggestTechStack', label: 'Suggest Tech Stack', icon: <Layers className="w-5 h-5" /> },
+  { key: 'proposal', label: 'Proposal', icon: <FileText className="w-5 h-5" /> },
+  { key: 'estimateTeam', label: 'Estimate Team', icon: <Users className="w-5 h-5" /> },
   { key: 'saveNotes', label: 'Save Notes', icon: <StickyNote className="w-5 h-5" /> },
 ];
 
@@ -80,17 +80,17 @@ const SalesConversation = () => {
     case 'conversation':
       rightContent = <ConversationPanel conversations={conversations} clientFeedback={clientFeedback} setClientFeedback={setClientFeedback} sendFeedback={sendFeedback} />;
       break;
-    case 'proposal':
-      rightContent = <ProposalManager />;
-      break;
-    case 'estimateTeam':
-      rightContent = <EstimateTeam />;
-      break;
     case 'addStakeholders':
       rightContent = <AddStakeholders />;
       break;
     case 'suggestTechStack':
       rightContent = <SuggestTechStack />;
+      break;
+    case 'proposal':
+      rightContent = <ProposalManager />;
+      break;
+    case 'estimateTeam':
+      rightContent = <EstimateTeam />;
       break;
     case 'saveNotes':
       rightContent = <SaveNotes />;
