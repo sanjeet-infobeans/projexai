@@ -51,7 +51,16 @@ class LA_Roles_And_Caps {
     ];
 
     public static function init() {
-        add_action('init', [__CLASS__, 'add_roles_and_caps']);
+        // Only run add_roles_and_caps if roles/caps version has changed.
+        add_action('init', function() {
+            $current_version = '1.0.0'; // Increment this when roles/caps change.
+            $stored_version = get_option('la_roles_caps_version');
+
+            if ($stored_version !== $current_version) {
+                LA_Roles_And_Caps::add_roles_and_caps();
+                update_option('la_roles_caps_version', $current_version);
+            }
+        });
         register_deactivation_hook(__FILE__, [__CLASS__, 'remove_roles_and_caps']);
     }
 
