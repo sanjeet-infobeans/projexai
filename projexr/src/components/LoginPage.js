@@ -5,6 +5,7 @@ import { useAuth } from '../hooks/useAuth';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [keepLoggedIn, setKeepLoggedIn] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -17,7 +18,7 @@ const LoginPage = () => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    const success = login(username, password);
+    const success = login(username, password, keepLoggedIn);
     
     if (!success) {
       setError('Invalid username or password');
@@ -37,7 +38,7 @@ const LoginPage = () => {
           <p className="text-gray-600 mt-2">Please sign in to your account</p>
         </div>
 
-        <div className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Username
@@ -72,6 +73,19 @@ const LoginPage = () => {
             </div>
           </div>
 
+          <div className="flex items-center">
+            <input
+              id="keep-logged-in"
+              type="checkbox"
+              checked={keepLoggedIn}
+              onChange={(e) => setKeepLoggedIn(e.target.checked)}
+              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+            />
+            <label htmlFor="keep-logged-in" className="ml-2 block text-sm text-gray-700">
+              Keep me logged in
+            </label>
+          </div>
+
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
               {error}
@@ -80,13 +94,12 @@ const LoginPage = () => {
 
           <button
             type="submit"
-            onClick={handleSubmit}
             disabled={isLoading}
             className="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Signing in...' : 'Sign In'}
           </button>
-        </div>
+        </form>
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
