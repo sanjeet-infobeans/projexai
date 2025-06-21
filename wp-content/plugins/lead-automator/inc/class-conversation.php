@@ -40,7 +40,7 @@ class Conversation
         $headers = $request->get_headers();
         $secret  = isset( $headers['x_conversation_secret'] ) ? $headers['x_conversation_secret'][0] : '';
 
-        if ( $secret !== 'projexai-lead-conversation' ) {
+        if ( $secret !== LEAD_AUTOMATOR_CONVERSATION_SECRET ) {
             return new WP_Error( 'forbidden', 'Invalid header.', [ 'status' => 403 ] );
         }
         // Validate post

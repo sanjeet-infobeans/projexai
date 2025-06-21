@@ -12,6 +12,8 @@ class Client_Profiles {
         add_action( 'save_post', [ $this, 'save_client_profile_meta_box' ] );
         add_action( 'admin_menu', [ $this, 'client_profile_csv_import_menu' ] );
         add_action( 'rest_api_init', [ $this, 'client_profile_rest_callback' ] );
+        add_action('init', [ $this, 'client_profile_meta_register_callback' ]);
+        add_filter('update_post_metadata', [ $this, 'validate_lead_status_before_save' ], 10, 4);
     }
 
     // === 1. Register Custom Post Type ===
@@ -44,10 +46,11 @@ class Client_Profiles {
     }
 
     public function render_client_profile_meta_box( $post ) {
-        $fields = array( 'client_name', 'industry', 'location', 'contact_person', 'email', 'phone', 'status' );
+        $fields = array( 'client_name', 'industry', 'location', 'contact_person', 'email', 'phone', 'status', 'lead_status' );
         foreach ( $fields as $field ) {
             ${$field} = get_post_meta( $post->ID, $field, true );
         }
+        $lead_statuses = self::get_client_profile_statuses();
         ?>
         <table class="form-table">
             <tr><th>Client Name</th><td><input type="text" name="client_name" value="<?php echo esc_attr($client_name); ?>" class="widefat" /></td></tr>
@@ -64,6 +67,18 @@ class Client_Profiles {
                     </select>
                 </td>
             </tr>
+            <tr><th>Lead Status</th>
+                <td>
+                    <select name="lead_status" id="lead_status">
+                        <option value="">Select Status</option>
+                        <?php foreach ( $lead_statuses as $key => $label ) : ?>
+                            <option value="<?php echo esc_attr( $key ); ?>" <?php selected( $lead_status, $key ); ?>>
+                                <?php echo esc_html( $label ); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
         </table>
         <?php
     }
@@ -73,7 +88,7 @@ class Client_Profiles {
         if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return;
         if ( get_post_type($post_id) !== 'client_profile' ) return;
 
-        $fields = array( 'client_name', 'industry', 'location', 'contact_person', 'email', 'phone', 'status' );
+        $fields = array( 'client_name', 'industry', 'location', 'contact_person', 'email', 'phone', 'status', 'lead_status' );
         foreach ( $fields as $field ) {
             if ( isset($_POST[$field]) ) {
                 update_post_meta( $post_id, $field, sanitize_text_field($_POST[$field]) );
@@ -128,6 +143,7 @@ class Client_Profiles {
                             update_post_meta( $post_id, 'email', sanitize_email($data[4]) );
                             update_post_meta( $post_id, 'phone', sanitize_text_field($data[5]) );
                             update_post_meta( $post_id, 'status', sanitize_text_field($data[6]) );
+                            update_post_meta( $post_id, 'lead_status', sanitize_text_field($data[7]) );
                             $count++;
                         }
                     }
@@ -160,16 +176,21 @@ class Client_Profiles {
             while ( $query->have_posts() ) {
                 $query->the_post();
                 $id = get_the_ID();
+                $lead_status = get_post_meta( $id, 'lead_status', true );
+                $status = get_post_meta( $id, 'status', true );
                 $results[] = array(
-                    'id'             => $id,
-                    'title'          => get_the_title(),
-                    'client_name'    => get_post_meta( $id, 'client_name', true ),
-                    'industry'       => get_post_meta( $id, 'industry', true ),
-                    'location'       => get_post_meta( $id, 'location', true ),
-                    'contact_person' => get_post_meta( $id, 'contact_person', true ),
-                    'email'          => get_post_meta( $id, 'email', true ),
-                    'phone'          => get_post_meta( $id, 'phone', true ),
-                    'status'         => get_post_meta( $id, 'status', true ),
+                    'id'                    => $id,
+                    'title'                 => get_the_title(),
+                    'client_name'           => get_post_meta( $id, 'client_name', true ),
+                    'industry'              => get_post_meta( $id, 'industry', true ),
+                    'location'              => get_post_meta( $id, 'location', true ),
+                    'contact_person'        => get_post_meta( $id, 'contact_person', true ),
+                    'email'                 => get_post_meta( $id, 'email', true ),
+                    'phone'                 => get_post_meta( $id, 'phone', true ),
+                    'status'                => $status,
+                    'status_readable'       => $status ? 'Active' : 'Inactive',
+                    'lead_status'           => $lead_status,
+                    'lead_status_readable'  => LEAD_AUTOMATOR_LEAD_STATUSES[$lead_status] ?? '',
                 );
             }
             wp_reset_postdata();
@@ -177,4 +198,38 @@ class Client_Profiles {
 
         return rest_ensure_response( $results );
     }
+
+    public function client_profile_meta_register_callback() {
+        register_post_meta('client_profile', 'lead_status', [
+            'type'         => 'string',
+            'single'       => true,
+            'show_in_rest' => [
+                'schema' => [
+                    'type' => 'string',
+                    'enum' => self::get_client_profile_statuses(true),
+                ]
+            ],
+            'auth_callback' => '__return_true'
+        ]);
+    }
+
+    public function validate_lead_status_before_save($check, $object_id, $meta_key, $meta_value) {
+        if ($meta_key === 'lead_status') {
+            $allowed = self::get_client_profile_statuses(true);
+            if (!in_array($meta_value, $allowed, true)) {
+                return false; // prevent saving invalid value
+            }
+        }
+        return $check;
+    }
+
+    public static function get_client_profile_statuses( $keys = false ) {
+        if ( $keys ) {
+            return array_keys( LEAD_AUTOMATOR_LEAD_STATUSES );
+        }
+        // Return the full array of statuses
+        return LEAD_AUTOMATOR_LEAD_STATUSES;
+    }
+
+
 }
