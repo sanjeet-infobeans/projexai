@@ -16,6 +16,7 @@ class LA_Roles_And_Caps {
         'technical_lead'   => 'Technical Lead',
         'business_analyst' => 'Business Analyst',
         'manager'          => 'Manager',
+        'team_member'      => 'Team Member',
     ];
 
     private static $capabilities = [
@@ -53,7 +54,7 @@ class LA_Roles_And_Caps {
     public static function init() {
         // Only run add_roles_and_caps if roles/caps version has changed.
         add_action('init', function() {
-            $current_version = '1.0.0'; // Increment this when roles/caps change.
+            $current_version = '1.0.1'; // Increment this when roles/caps change.
             $stored_version = get_option('la_roles_caps_version');
 
             if ($stored_version !== $current_version) {

@@ -30,8 +30,10 @@ class Proposals {
         }
 
         $key = 'proposal_' . $index;
+        $modified_key = 'proposal_' . $index . '_modified_on';
 
         // Store the proposal as post meta
+        add_post_meta( $post_id, $modified_key, strtotime('now') );
         return add_post_meta( $post_id, $key, $proposal_text );
     }
 

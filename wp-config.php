@@ -87,6 +87,8 @@ $table_prefix = 'wpfb_';
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
 define( 'WP_DEBUG', false );
+define('JWT_AUTH_SECRET_KEY', 'your-long-random-secret-key');
+define('JWT_AUTH_CORS_ENABLE', true);
 
 /* Add any custom values between this line and the "stop editing" line. */
 
