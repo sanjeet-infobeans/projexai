@@ -61,22 +61,29 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (username, password, keepLoggedIn = false) => {
-    // Check against sample users
-    const foundUser = sampleUsers.find(
-      u => u.username === username && u.password === password
-    );
-    if (foundUser) {
-      const userData = { ...foundUser };
-      setIsAuthenticated(true);
-      setUser(userData);
-      if (keepLoggedIn) {
-        localStorage.setItem('projexai_user', JSON.stringify(userData));
-        localStorage.setItem('projexai_auth', 'true');
+  const login = async (username, password, keepLoggedIn = false) => {
+    try {
+      const res = await fetch('https://capitalmitra.com/wp-json/jwt-auth/v1/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (data.token) {
+        setIsAuthenticated(true);
+        setUser({ username, token: data.token });
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user_role', data.user_role || 'user');
+        localStorage.setItem('display_name', data.display_name || username);
+        return data;
+      } else {
+        throw new Error(data.message);
       }
-      return true;
+    } catch (err) {
+      setIsAuthenticated(false);
+      setUser(null);
+      throw err;
     }
-    return false;
   };
 
   const logout = () => {
@@ -84,6 +91,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem('projexai_user');
     localStorage.removeItem('projexai_auth');
+    localStorage.removeItem('token');
   };
 
   return (

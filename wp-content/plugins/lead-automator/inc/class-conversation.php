@@ -11,6 +11,18 @@ class Conversation
         add_filter( 'gettext', [ $this, 'conversation_metabox_title_callback' ], 10, 3 );
         add_action( 'rest_api_init', [ $this, 'add_conversation_rest_callback' ] );
         add_action( 'rest_api_init', [ $this, 'get_conversation_rest_callback' ] );
+        add_action( 'rest_api_init', [ $this, 'cors_header_callback' ] );
+    }
+
+    public function cors_header_callback() {
+        remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+        add_filter( 'rest_pre_serve_request', function( $value ) {
+            header( 'Access-Control-Allow-Origin: *' );
+            header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+            header( 'Access-Control-Allow-Credentials: true' );
+            header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With, x-conversation-secret' );
+            return $value;
+        });
     }
 
     public function conversation_metabox_title_callback( $translated_text, $text, $domain ) {
@@ -30,7 +42,7 @@ class Conversation
         ]);
     }
 
-    function add_conversation_note( $request ) {
+    public function add_conversation_note( $request ) {
         $post_id = $request->get_param( 'post' );
         $content = $request->get_param( 'content' );
         $author_name = $request->get_param( 'author_name' );

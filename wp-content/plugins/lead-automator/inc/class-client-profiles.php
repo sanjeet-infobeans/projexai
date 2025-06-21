@@ -12,8 +12,8 @@ class Client_Profiles {
         add_action( 'save_post', [ $this, 'save_client_profile_meta_box' ] );
         add_action( 'admin_menu', [ $this, 'client_profile_csv_import_menu' ] );
         add_action( 'rest_api_init', [ $this, 'client_profile_rest_callback' ] );
-        add_action('init', [ $this, 'client_profile_meta_register_callback' ]);
-        add_filter('update_post_metadata', [ $this, 'validate_lead_status_before_save' ], 10, 4);
+        add_action( 'init', [ $this, 'client_profile_meta_register_callback' ]);
+        add_filter( 'update_post_metadata', [ $this, 'validate_lead_status_before_save' ], 10, 4);
     }
 
     // === 1. Register Custom Post Type ===
@@ -29,7 +29,7 @@ class Client_Profiles {
             'has_archive'   => true,
             'menu_icon'     => 'dashicons-id-alt',
             'supports'      => array( 'title', 'comments' ),
-            'show_in_rest'  => false,
+            'show_in_rest'  => true,
         ));
     }
 
@@ -164,6 +164,11 @@ class Client_Profiles {
                     'type'        => 'string',
                     'required'    => false,
                     'description' => 'Filter posts by author/co-author',
+                ],
+                'id'     => [
+                    'type' => 'integer',
+                    'required' => false,
+                    'description' => 'Client Profile post ID to fetch'
                 ]
             ]
         ));
@@ -172,6 +177,7 @@ class Client_Profiles {
     public function get_all_client_profiles( $request ) {
 
         $author_login = $request->get_param('author');
+        $post_id      = $request->get_param('id');
 
         $args = array(
             'post_type'      => 'client_profile',
@@ -179,13 +185,16 @@ class Client_Profiles {
             'post_status'    => 'publish',
         );
 
+        if ( $post_id ) {
+            $args['post__in'] = [ $post_id ]; // Fetch specific post by ID
+        }
+
         if ( $author_login ) {
             $author_args = $this->filter_rest_by_authors_args($author_login);
             if ( is_wp_error($author_args) ) {
                 return $author_args; // Return error if no valid authors found
             }
             $args['tax_query'] = isset($author_args['tax_query']) ? $author_args['tax_query'] : [];
-            $args['author__in'] = isset($author_args['author__in']) ? $author_args['author__in'] : [];
         }
         $query = new WP_Query( $args );
         $results = [];
@@ -222,7 +231,6 @@ class Client_Profiles {
 
     public function filter_rest_by_authors_args ( $author_login_param ) {
         $args = [];
-        $author_ids = [];
         if ($author_login_param) {
             $author_logins = array_map('trim', explode(',', $author_login_param));
             $author_slugs = [];
@@ -231,18 +239,18 @@ class Client_Profiles {
                 $user = get_user_by('login', $login);
                 if ($user) {
                     $author_slugs[] = 'cap-' . $user->user_nicename;
-                    $author_ids[] = $user->ID;
                 }
             }
 
             if (!empty($author_slugs)) {
-                $args['tax_query']  = [[
+                $args['tax_query']  = [
+                    'relation' => 'AND', // Match any of the authors
+                    [
                     'taxonomy' => 'author',
                     'field'    => 'slug',
                     'terms'    => $author_slugs,
                     'operator' => 'IN', // Match any
                 ]];
-                $args['author__in'] = $author_ids;
             } else {
                 return new WP_Error('invalid_authors', 'No valid users found from author list.', ['status' => 400]);
             }
