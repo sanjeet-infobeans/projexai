@@ -2,9 +2,14 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './hooks/useAuth';
+import Layout from './components/common/Layout';
 import LoginPage from './components/LoginPage';
 import ListPage from './components/ListPage';
-import ClientDetailPage from './components/ClientDetailPage'; // You'll need to create this
+import ClientDetailPage from './components/ClientDetailPage';
+import Home from './components/Home';
+import About from './components/About';
+import Team from './components/Team';
+import Resource from './components/Resource';
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -22,7 +27,44 @@ const AppContent = () => {
   return (
     <div className="App">
       <Routes>
-        {/* Public routes */}
+        {/* Public static pages with guest layout */}
+        <Route 
+          path="/" 
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          } 
+        />
+        
+        <Route 
+          path="/about" 
+          element={
+            <Layout>
+              <About />
+            </Layout>
+          } 
+        />
+        
+        <Route 
+          path="/team" 
+          element={
+            <Layout>
+              <Team />
+            </Layout>
+          } 
+        />
+        
+        <Route 
+          path="/resource" 
+          element={
+            <Layout>
+              <Resource />
+            </Layout>
+          } 
+        />
+        
+        {/* Login page */}
         <Route 
           path="/login" 
           element={
@@ -51,11 +93,8 @@ const AppContent = () => {
           } 
         />
         
-        {/* Default redirect */}
-        <Route path="/" element={<Navigate to="/clients" replace />} />
-        
-        {/* Catch all route - redirect to clients */}
-        <Route path="*" element={<Navigate to="/clients" replace />} />
+        {/* Catch all route - redirect to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
