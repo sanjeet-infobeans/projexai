@@ -164,6 +164,11 @@ class Client_Profiles {
                     'type'        => 'string',
                     'required'    => false,
                     'description' => 'Filter posts by author/co-author',
+                ],
+                'id'     => [
+                    'type' => 'integer',
+                    'required' => false,
+                    'description' => 'Client Profile post ID to fetch'
                 ]
             ]
         ));
@@ -172,12 +177,17 @@ class Client_Profiles {
     public function get_all_client_profiles( $request ) {
 
         $author_login = $request->get_param('author');
+        $post_id      = $request->get_param('id');
 
         $args = array(
             'post_type'      => 'client_profile',
             'posts_per_page' => -1,
             'post_status'    => 'publish',
         );
+
+        if ( $post_id ) {
+            $args['post__in'] = [ $post_id ]; // Fetch specific post by ID
+        }
 
         if ( $author_login ) {
             $author_args = $this->filter_rest_by_authors_args($author_login);
@@ -233,7 +243,9 @@ class Client_Profiles {
             }
 
             if (!empty($author_slugs)) {
-                $args['tax_query']  = [[
+                $args['tax_query']  = [
+                    'relation' => 'AND', // Match any of the authors
+                    [
                     'taxonomy' => 'author',
                     'field'    => 'slug',
                     'terms'    => $author_slugs,
