@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import TwoColLayout from './common/TwoColLayout';
-import { Lightbulb, MessageCircle, FilePlus2, Users, UserPlus2, Layers, StickyNote } from 'lucide-react';
+import { Lightbulb, MessageCircle, FileText, Users, UserPlus2, Layers, StickyNote } from 'lucide-react';
 import { useParams, useLocation } from 'react-router-dom';
 import SmartPitcher from './SmartPitcher';
 import ConversationPanel from './ConversationPanel';
