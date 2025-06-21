@@ -12,8 +12,8 @@ class Client_Profiles {
         add_action( 'save_post', [ $this, 'save_client_profile_meta_box' ] );
         add_action( 'admin_menu', [ $this, 'client_profile_csv_import_menu' ] );
         add_action( 'rest_api_init', [ $this, 'client_profile_rest_callback' ] );
-        add_action('init', [ $this, 'client_profile_meta_register_callback' ]);
-        add_filter('update_post_metadata', [ $this, 'validate_lead_status_before_save' ], 10, 4);
+        add_action( 'init', [ $this, 'client_profile_meta_register_callback' ]);
+        add_filter( 'update_post_metadata', [ $this, 'validate_lead_status_before_save' ], 10, 4);
     }
 
     // === 1. Register Custom Post Type ===
@@ -29,7 +29,7 @@ class Client_Profiles {
             'has_archive'   => true,
             'menu_icon'     => 'dashicons-id-alt',
             'supports'      => array( 'title', 'comments' ),
-            'show_in_rest'  => false,
+            'show_in_rest'  => true,
         ));
     }
 
