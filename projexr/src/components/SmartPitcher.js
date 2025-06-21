@@ -204,7 +204,7 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
           post: parseInt(clientId, 10), // Ensure clientId is always an integer
           author_name: userName,
           author_email: userEmail,
-          content: `Me: ${aiResponse}`
+          content: `${userName}: ${aiResponse}`
         },
         {
           headers: {
