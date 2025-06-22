@@ -202,12 +202,6 @@ const SmartPitcher = ({ client, clientId, userName, userEmail,refreshConversatio
       await authFetch(
         'https://capitalmitra.com/wp-json/client/v1/conversation',
         {
-          post: parseInt(clientId, 10),
-          author_name: userName,
-          author_email: userEmail,
-          content: `<b>${userName}:</b> ${aiResponse}`
-        },
-        {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -217,7 +211,7 @@ const SmartPitcher = ({ client, clientId, userName, userEmail,refreshConversatio
             post: parseInt(clientId, 10), // Ensure clientId is always an integer
             author_name: userName,
             author_email: userEmail,
-            content: `${userName}: ${aiResponse}`
+            content: `<b>${userName}:</b> ${aiResponse}`
           }),
         }
       );

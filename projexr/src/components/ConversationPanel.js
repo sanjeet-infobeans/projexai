@@ -14,12 +14,12 @@ const ConversationPanel = ({
   setClientFeedback,
   sendFeedback
 }) => (
-  <div className="px-10 flex flex-1 justify-center py-5">
-    <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
+  <div className="px-0 flex flex-col w-full min-h-[70vh] max-h-[85vh]" style={{height: '80vh'}}>
+    <div className="layout-content-container flex flex-col max-w-full w-full h-full">
       <div className="flex flex-wrap justify-between gap-3 p-4">
         <h2 className="text-[#131416] tracking-light text-[32px] font-bold leading-tight min-w-72">Conversation</h2>
       </div>
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 rounded-xl">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 rounded-xl min-h-0">
         {Array.isArray(conversations) && conversations.length === 0 ? (
           <div className="text-center text-gray-500 mt-8">
             <p>Hi, I'm interested in learning more about your solutions for digital transformation.</p>
@@ -28,7 +28,7 @@ const ConversationPanel = ({
           conversations.map((message, idx) => (
             <div
               key={message.id || idx}
-              className={`p-3 rounded-lg max-w-xs ${
+              className={`p-3 rounded-lg max-w-2xl w-3/5 ${
                 message?.content?.startsWith('<b>Client:</b>')
                   ? 'bg-white border border-gray-200 text-gray-800'
                   : 'bg-blue-100 text-blue-900 ml-auto'

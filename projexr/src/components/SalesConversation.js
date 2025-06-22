@@ -55,12 +55,6 @@ const SalesConversation = () => {
       const response = await authFetch(
         'https://capitalmitra.com/wp-json/client/v1/conversation',
         {
-          post: parseInt(id, 10),
-          author_name: user?.username,
-          author_email: user?.user_email,
-          content: `<b>Client:</b> ${clientFeedback}`,
-        },
-        {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -70,7 +64,7 @@ const SalesConversation = () => {
             post: parseInt(id, 10),
             author_name: user?.username,
             author_email: user?.user_email,
-            content: `Client: ${clientFeedback}`,
+            content: `<b>Client:</b> ${clientFeedback}`,
           }),
         }
       );
