@@ -119,24 +119,37 @@ const ListPage = () => {
     });
   }
 
+  // Role check for access
+  let role = user?.user_role || user?.role || '';
+  if (Array.isArray(role)) {
+    role = role[0] || '';
+  }
+  if (typeof role !== 'string') {
+    role = '';
+  }
+  role = role.toLowerCase();
+  const isManagerOrTechnical = role === 'manager' || role === 'technical_lead' || role === 'technical';
+
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50">
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Add New Client Button */}
-          <div className="mb-8">
-            <button
-              onClick={() => setShowAddForm(!showAddForm)}
-              className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all flex items-center space-x-2"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Add New Client</span>
-            </button>
-          </div>
+          {/* Add New Client Button (only for non-manager/technical) */}
+          {!isManagerOrTechnical && (
+            <div className="mb-8">
+              <button
+                onClick={() => setShowAddForm(!showAddForm)}
+                className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all flex items-center space-x-2"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Add New Client</span>
+              </button>
+            </div>
+          )}
 
-          {/* Add Client Form */}
-          {showAddForm && (
+          {/* Add Client Form (only for non-manager/technical) */}
+          {!isManagerOrTechnical && showAddForm && (
             <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
               <h2 className="text-lg font-semibold text-gray-800 mb-4">Add New Client</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
