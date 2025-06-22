@@ -38,6 +38,7 @@ const SuggestTechStack = () => {
   const [technologies, setTechnologies] = useState([]);
   const [geminiResponse, setGeminiResponse] = useState("");
   const [loadingGemini, setLoadingGemini] = useState(false);
+  const [selectedSolution, setSelectedSolution] = useState(null);
 
   useEffect(() => {
     let didCancel = false;
@@ -134,7 +135,7 @@ Propose the top 3 most suitable technical solutions for a client project. For ea
     </div>
   </div>
   <div class="flex px-4 py-3 justify-start">
-    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em]">
+    <button id="select-solution-1" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em]">
       <span class="truncate">Select Solution 1</span>
     </button>
   </div>
@@ -157,6 +158,45 @@ Conversation/Requirements:\n${conversationContents
     // Remove ```html ... ``` or ``` ... ``` wrappers
     return response.replace(/^```html[\r\n]+|^```[\r\n]+|```$/gim, "").trim();
   }
+
+  // Handler for solution select button click
+  const handleSelectSolution = (solutionNumber) => {
+    setSelectedSolution(solutionNumber);
+    // Update button classes and texts in the DOM
+    for (let i = 1; i <= 3; i++) {
+      const btn = document.getElementById(`select-solution-${i}`);
+      if (btn) {
+        if (i === solutionNumber) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+        const span = btn.querySelector('span');
+        if (span) {
+          span.textContent = i === solutionNumber ? 'Selected' : `Select Solution ${i}`;
+        }
+      }
+    }
+  };
+
+  // Effect to update button class and text in the rendered Gemini HTML
+  useEffect(() => {
+    if (!geminiResponse) return;
+    for (let i = 1; i <= 3; i++) {
+      const btn = document.getElementById(`select-solution-${i}`);
+      if (btn) {
+        if (selectedSolution === i) {
+          btn.classList.add('selected');
+        } else {
+          btn.classList.remove('selected');
+        }
+        const span = btn.querySelector('span');
+        if (span) {
+          span.textContent = selectedSolution === i ? 'Selected' : `Select Solution ${i}`;
+        }
+      }
+    }
+  }, [selectedSolution, geminiResponse]);
 
   return (
     <div className="px-10 flex flex-1 justify-center py-5">
@@ -182,7 +222,24 @@ Conversation/Requirements:\n${conversationContents
               dangerouslySetInnerHTML={{
                 __html: cleanGeminiResponse(geminiResponse),
               }}
+              onClick={(e) => {
+                // Delegate click for solution select buttons
+                const btn = e.target.closest('button[id^="select-solution-"]');
+                if (btn && btn.id) {
+                  const match = btn.id.match(/select-solution-(\d+)/);
+                  if (match) {
+                    handleSelectSolution(Number(match[1]));
+                  }
+                }
+              }}
             />
+            {/* Style override for selected button */}
+            <style>{`
+              .geminiresponse-container button.selected {
+                background: #22c55e !important;
+                color: #fff !important;
+              }
+            `}</style>
           </div>
         )}
       </div>

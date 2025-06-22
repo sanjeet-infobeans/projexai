@@ -96,7 +96,7 @@ const EstimateTeam = () => {
         for (const client of clients) {
           const response = await authFetch(`https://capitalmitra.com/wp-json/client/v1/conversations?post_id=${client.id}`);
           const data = await response.json();
-          console.log(`Conversations for client ${client.id}:`, data);
+          // console.log(`Conversations for client ${client.id}:`, data);
         }
       } catch (err) {
         console.error('Error fetching conversations:', err);
@@ -106,7 +106,7 @@ const EstimateTeam = () => {
       try {
         const response = await authFetch('https://capitalmitra.com/wp-json/wp/v2/technology');
         const data = await response.json();
-        console.log('Technologies:', data);
+        // console.log('Technologies:', data);
       } catch (err) {
         console.error('Error fetching technologies:', err);
       }
