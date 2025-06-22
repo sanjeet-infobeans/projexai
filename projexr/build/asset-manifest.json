@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/projexr/build/static/css/main.b09ffd44.css",
-    "main.js": "/projexr/build/static/js/main.2c5452e1.js",
-    "static/js/453.a7e2ddbd.chunk.js": "/projexr/build/static/js/453.a7e2ddbd.chunk.js",
-    "static/media/172170-846731303_small.mp4": "/projexr/build/static/media/172170-846731303_small.8297b4fba8bc7b1884f4.mp4",
-    "static/media/rahul.png": "/projexr/build/static/media/rahul.1aebd6f4f60ffd7ce912.png",
-    "static/media/snehil.png": "/projexr/build/static/media/snehil.958740eb12d2ee965d63.png",
-    "static/media/sanjeet.png": "/projexr/build/static/media/sanjeet.d25ad308ea6ba48557ee.png",
-    "static/media/mayank.png": "/projexr/build/static/media/mayank.d950190ca5acd6f9a5c3.png",
-    "static/media/mukesh.png": "/projexr/build/static/media/mukesh.1dea9366a801dd689f83.png",
-    "static/media/projectai-logo.png": "/projexr/build/static/media/projectai-logo.cb30e5c826b2cd84b992.png",
-    "index.html": "/projexr/build/index.html",
-    "main.b09ffd44.css.map": "/projexr/build/static/css/main.b09ffd44.css.map",
-    "main.2c5452e1.js.map": "/projexr/build/static/js/main.2c5452e1.js.map",
-    "453.a7e2ddbd.chunk.js.map": "/projexr/build/static/js/453.a7e2ddbd.chunk.js.map"
+    "main.css": "https://www.projexai.tech/static/css/main.b09ffd44.css",
+    "main.js": "https://www.projexai.tech/static/js/main.6372a21c.js",
+    "static/js/453.a7e2ddbd.chunk.js": "https://www.projexai.tech/static/js/453.a7e2ddbd.chunk.js",
+    "static/media/172170-846731303_small.mp4": "https://www.projexai.tech/static/media/172170-846731303_small.8297b4fba8bc7b1884f4.mp4",
+    "static/media/rahul.png": "https://www.projexai.tech/static/media/rahul.1aebd6f4f60ffd7ce912.png",
+    "static/media/snehil.png": "https://www.projexai.tech/static/media/snehil.958740eb12d2ee965d63.png",
+    "static/media/sanjeet.png": "https://www.projexai.tech/static/media/sanjeet.d25ad308ea6ba48557ee.png",
+    "static/media/mayank.png": "https://www.projexai.tech/static/media/mayank.d950190ca5acd6f9a5c3.png",
+    "static/media/mukesh.png": "https://www.projexai.tech/static/media/mukesh.1dea9366a801dd689f83.png",
+    "static/media/projectai-logo.png": "https://www.projexai.tech/static/media/projectai-logo.cb30e5c826b2cd84b992.png",
+    "index.html": "https://www.projexai.tech/index.html",
+    "main.b09ffd44.css.map": "https://www.projexai.tech/static/css/main.b09ffd44.css.map",
+    "main.6372a21c.js.map": "https://www.projexai.tech/static/js/main.6372a21c.js.map",
+    "453.a7e2ddbd.chunk.js.map": "https://www.projexai.tech/static/js/453.a7e2ddbd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b09ffd44.css",
-    "static/js/main.2c5452e1.js"
+    "static/js/main.6372a21c.js"
   ]
 }

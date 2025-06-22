@@ -18,7 +18,7 @@ const AddStakeholders = () => {
 
   // Fetch all users for dropdown
   useEffect(() => {
-    fetch('https://capitalmitra.com/wp-json/wp/v2/users?roles[]=team_member,manager,salesperson,business_analyst')
+    fetch('https://capitalmitra.com/wp-json/wp/v2/users?roles[]=technical_lead,manager,salesperson')
       .then(res => res.json())
       .then(data => setStakeholders(data))
       .catch(() => setStakeholders([]));
