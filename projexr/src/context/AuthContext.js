@@ -53,10 +53,9 @@ export const AuthProvider = ({ children }) => {
   // Check for existing authentication on component mount
   useEffect(() => {
     const savedUser = localStorage.getItem('projexai_user');
-    const savedAuth = localStorage.getItem('projexai_auth');
-    
-    if (savedUser && savedAuth === 'true') {
-      setUser(JSON.parse(savedUser));
+    const token = localStorage.getItem('token');
+    if (savedUser && token) {
+      setUser({ ...JSON.parse(savedUser), token });
       setIsAuthenticated(true);
     }
   }, []);

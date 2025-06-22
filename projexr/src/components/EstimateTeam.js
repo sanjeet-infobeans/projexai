@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { authFetch } from '../utils/authFetch';
+import { useLocation } from 'react-router-dom';
 
+const api= 'https://capitalmitra.com/wp-json/wp/v2/users?roles[]=team_member';
 const sampleTeams = [
   {
     name: 'Team Alpha',
@@ -82,6 +85,38 @@ const sampleTeams = [
 ];
 
 const EstimateTeam = () => {
+  const location = useLocation();
+  const clients = location.state?.clients || [];
+
+  useEffect(() => {
+    const fetchConversations = async () => {
+      if (!clients.length) return;
+      try {
+        // For each client, fetch their conversations
+        for (const client of clients) {
+          const response = await authFetch(`https://capitalmitra.com/wp-json/client/v1/conversations?post_id=${client.id}`);
+          const data = await response.json();
+          console.log(`Conversations for client ${client.id}:`, data);
+        }
+      } catch (err) {
+        console.error('Error fetching conversations:', err);
+      }
+    };
+    const fetchTechnologies = async () => {
+      try {
+        const response = await authFetch('https://capitalmitra.com/wp-json/wp/v2/technology');
+        const data = await response.json();
+        console.log('Technologies:', data);
+      } catch (err) {
+        console.error('Error fetching technologies:', err);
+      }
+    };
+    if (clients.length) {
+      fetchConversations();
+    }
+    fetchTechnologies();
+  }, [clients]);
+
   return (
     <div className="px-10 flex flex-1 justify-center py-5">
       <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
@@ -144,4 +179,4 @@ const EstimateTeam = () => {
   );
 };
 
-export default EstimateTeam; 
+export default EstimateTeam;
