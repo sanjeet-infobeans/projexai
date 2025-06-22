@@ -86,6 +86,7 @@ const SalesConversation = () => {
   switch (active) {
     case 'smartPitcher':
       rightContent = <SmartPitcher 
+        client={client}
         clientId={id} 
         userName={user?.username} 
         userEmail={user?.user_email} 

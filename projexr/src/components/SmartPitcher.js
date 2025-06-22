@@ -1,24 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SolutionFormPanel from './SolutionFormPanel';
 import axios from 'axios';
 import { callGeminiAPI } from '../utils/gemini';
 import { authFetch } from '../utils/authFetch';
 
-const SmartPitcher = ({ clientId, userName, userEmail, refreshConversations }) => {
+const SmartPitcher = ({ client, clientId, userName, userEmail,refreshConversations }) => {
   // Demo state for SolutionFormPanel
   const [selectedPromptType, setSelectedPromptType] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState('');
-  const [formData, setFormData] = useState({});
-  const [generatedPrompt, setGeneratedPrompt] = useState('');
+  const [formData, setFormData] = useState({
+    companyName: '',
+    websiteURL: '',
+  });
+  
+  // Set formData when client changes, but only if the field is empty (so user input is not overwritten)
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      companyName: prev.companyName || client?.client_name || '',
+      websiteURL: prev.websiteURL || client?.website || '',
+    }));
+  }, [client]);
 
+  const [generatedPrompt, setGeneratedPrompt] = useState('');
+// console.log('SmartPitcher component initialized with client:', client);
   // Prompt templates and their required fields
   const promptTemplates = {
     company_summary: {
       fields: [
-        { name: 'companyName', label: 'Company Name', type: 'text', placeholder: 'Enter company name', required: true },
-        { name: 'websiteURL', label: 'Website URL', type: 'url', placeholder: 'https://example.com', required: true }
+        {
+          name: 'companyName',
+          label: 'Company Name',
+          type: 'text',
+          placeholder: 'Enter company nameeee',
+          required: true
+        },
+        {
+          name: 'websiteURL',
+          label: 'Website URL',
+          type: 'url',
+          placeholder: 'https://example.com',
+          required: true
+        }
       ],
       template: `Act as my sales research assistant. I’m meeting with **{companyName}**. Go through their website: **{websiteURL}**, and summarize what they do, who they serve, and what makes them unique. Give me 4–5 short bullets I can use to open the call with insight and context — not fluff.`
     },
@@ -81,11 +106,17 @@ const SmartPitcher = ({ clientId, userName, userEmail, refreshConversations }) =
     }
   };
 
+  // When prompt type changes, prefill formData with client info for relevant fields
   const handlePromptTypeChange = (e) => {
     const type = e.target.value;
     setSelectedPromptType(type);
     setSelectedTemplate(type ? promptTemplates[type] : null);
-    setFormData({});
+    // Prefill formData for company_summary
+      setFormData({
+        companyName: client?.client_name || '',
+        websiteURL: client?.website_url || '',
+        industry: client?.industry || '',
+      });
     setAiResponse('');
     setGeneratedPrompt('');
   };
