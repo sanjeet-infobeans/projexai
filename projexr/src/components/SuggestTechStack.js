@@ -4,33 +4,6 @@ import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { callGeminiAPI } from "../utils/gemini";
 
-const sampleSolutions = [
-  {
-    name: "Solution 1",
-    techStack: "Python, Django, PostgreSQL",
-    quality: "4.5/5",
-    price: "$100,000 - $200,000",
-    confidence: "9/10",
-    time: "6-12 months",
-  },
-  {
-    name: "Solution 2",
-    techStack: "Java, Spring Boot, MySQL",
-    quality: "4.2/5",
-    price: "$150,000 - $250,000",
-    confidence: "8/10",
-    time: "9-15 months",
-  },
-  {
-    name: "Solution 3",
-    techStack: "Node.js, Express, MongoDB",
-    quality: "4.0/5",
-    price: "$80,000 - $150,000",
-    confidence: "7/10",
-    time: "4-8 months",
-  },
-];
-
 const SuggestTechStack = () => {
   const location = useLocation();
   const { id } = useParams();
@@ -227,7 +200,11 @@ const SuggestTechStack = () => {
             Compare Solutions
           </p>
           <button
-            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            className={`flex min-w-[84px] max-w-[480px] items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em] ${
+                loadingGemini 
+                  ? 'bg-gray-400 cursor-not-allowed text-white' 
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
             onClick={handleSuggestTechStack}
             disabled={loadingGemini}
           >
