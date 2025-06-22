@@ -79,7 +79,7 @@ const SalesConversation = () => {
   let rightContent;
   switch (active) {
     case 'smartPitcher':
-      rightContent = <SmartPitcher clientId={id} userName={user?.username} userEmail={user?.user_email} />;
+      rightContent = <SmartPitcher client={client} clientId={id} userName={user?.username} userEmail={user?.user_email} />;
       break;
     case 'conversation':
       rightContent = <ConversationPanel conversations={conversations} clientFeedback={clientFeedback} setClientFeedback={setClientFeedback} sendFeedback={sendFeedback} />;
