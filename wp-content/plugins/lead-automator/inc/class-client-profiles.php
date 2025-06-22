@@ -14,6 +14,7 @@ class Client_Profiles {
         add_action( 'rest_api_init', [ $this, 'client_profile_rest_callback' ] );
         add_action( 'init', [ $this, 'client_profile_meta_register_callback' ]);
         add_filter( 'update_post_metadata', [ $this, 'validate_lead_status_before_save' ], 10, 4);
+        add_action( 'update_post_meta', [ $this, 'create_project_on_onboarded' ], 10, 4);
     }
 
     // === 1. Register Custom Post Type ===
@@ -172,6 +173,31 @@ class Client_Profiles {
                 ]
             ]
         ));
+        // Add POST and PUT for add/update
+        register_rest_route( 'projexai/v1', '/client-profile', array(
+            'methods'  => array('POST', 'PUT'),
+            'callback' => [ $this, 'add_or_update_client_profile' ],
+            'permission_callback' => function() { return current_user_can('edit_posts'); },
+            'args' => [
+                'id' => [
+                    'type' => 'integer',
+                    'required' => false,
+                    'description' => 'ID for update (PUT only)'
+                ],
+                'title' => [
+                    'type' => 'string',
+                    'required' => true,
+                ],
+                'client_name' => [ 'type' => 'string', 'required' => true ],
+                'industry' => [ 'type' => 'string', 'required' => false ],
+                'location' => [ 'type' => 'string', 'required' => false ],
+                'contact_person' => [ 'type' => 'string', 'required' => false ],
+                'email' => [ 'type' => 'string', 'required' => false ],
+                'phone' => [ 'type' => 'string', 'required' => false ],
+                'status' => [ 'type' => 'string', 'required' => false ],
+                'lead_status' => [ 'type' => 'string', 'required' => false ],
+            ]
+        ));
     }
 
     public function get_all_client_profiles( $request ) {
@@ -309,5 +335,111 @@ class Client_Profiles {
         return LEAD_AUTOMATOR_LEAD_STATUSES;
     }
 
+    /**
+     * Handle add/update client_profile via REST API
+     */
+    public function add_or_update_client_profile( $request ) {
+        $params = $request->get_params();
+        $is_update = $request->get_method() === 'PUT' || !empty($params['id']);
+        $post_id = isset($params['id']) ? intval($params['id']) : 0;
+        $fields = [ 'client_name', 'industry', 'location', 'contact_person', 'email', 'phone', 'status', 'lead_status' ];
+        $postarr = [
+            'post_type'   => 'client_profile',
+            'post_title'  => sanitize_text_field($params['title']),
+            'post_status' => 'publish',
+        ];
+        if ($is_update && $post_id) {
+            $postarr['ID'] = $post_id;
+            $existing = get_post($post_id);
+            if (!$existing || $existing->post_type !== 'client_profile') {
+                return new WP_Error('not_found', 'Client Profile not found', ['status' => 404]);
+            }
+            $post_id = wp_update_post($postarr, true);
+        } else {
+            $post_id = wp_insert_post($postarr, true);
+        }
+        if (is_wp_error($post_id)) {
+            return $post_id;
+        }
+        
+        $lead_status_updated = false;
+        foreach ($fields as $field) {
+            if (isset($params[$field])) {
+                $value = sanitize_text_field($params[$field]);
+                if ($field === 'email') $value = sanitize_email($params[$field]);
+                
+                // Check if lead_status is being updated to "onboarded"
+                if ($field === 'lead_status' && $value === 'onboarded') {
+                    $lead_status_updated = true;
+                }
+                
+                update_post_meta($post_id, $field, $value);
+            }
+        }
+        
+        // If lead_status was updated to "onboarded", create project
+        if ($lead_status_updated) {
+            $this->create_project_on_onboarded(0, $post_id, 'lead_status', 'onboarded');
+        }
+        
+        $response = [
+            'id' => $post_id,
+            'title' => get_the_title($post_id),
+        ];
+        foreach ($fields as $field) {
+            $response[$field] = get_post_meta($post_id, $field, true);
+        }
+        return rest_ensure_response($response);
+    }
+
+    public function create_project_on_onboarded($meta_id, $object_id, $meta_key, $meta_value) {
+        if ($meta_key === 'lead_status' && $meta_value === 'onboarded') {
+            // Get the client profile data
+            $client_profile = get_post($object_id);
+            if (!$client_profile || $client_profile->post_type !== 'client_profile') {
+                return;
+            }
+            
+            $client_name = get_post_meta($object_id, 'client_name', true);
+            $client_title = $client_profile->post_title;
+            
+            // Create project title: client_name + title
+            $project_title = trim($client_name . ' - ' . $client_title);
+            
+            // Check if project already exists for this client
+            $existing_project = get_posts([
+                'post_type' => 'projects',
+                'meta_query' => [
+                    [
+                        'key' => '_project_client',
+                        'value' => $object_id,
+                        'compare' => '='
+                    ]
+                ],
+                'post_status' => 'publish',
+                'numberposts' => 1
+            ]);
+            
+            if (!empty($existing_project)) {
+                return; // Project already exists for this client
+            }
+            
+            // Create the project
+            $project_id = wp_insert_post([
+                'post_type' => 'projects',
+                'post_title' => $project_title,
+                'post_status' => 'publish',
+                'post_content' => 'Project created automatically when client was onboarded.'
+            ]);
+            
+            if (!is_wp_error($project_id)) {
+                // Map the client to the project
+                update_post_meta($project_id, '_project_client', $object_id);
+                
+                // Log the project creation
+                error_log("Project created for onboarded client: {$project_id} - {$project_title}");
+            }
+        }
+    }
 
 }

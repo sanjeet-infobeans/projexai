@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Plus, Trash2, Edit, Phone, Mail, MapPin, Building2, User } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Layout from './common/Layout';
-import axios from 'axios';
+// import Navigation from './Navigation';
+import { authFetch } from '../utils/authFetch';
 
 const ListPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,8 +28,10 @@ const ListPage = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await axios.get('https://capitalmitra.com/wp-json/projexai/v1/client-profiles');
-        setClients(response.data);
+        const response = await authFetch('https://capitalmitra.com/wp-json/projexai/v1/client-profiles');
+        if (!response.ok) throw new Error('Failed to fetch clients');
+        const data = await response.json();
+        setClients(data);
       } catch (err) {
         console.error('Error fetching client data:', err);
         setError('Failed to fetch clients');
@@ -66,7 +70,7 @@ const ListPage = () => {
       setShowAddForm(false);
     }
   };
-
+// console.log('Clients:', clients);
   const toggleStatus = (id) => {
     setClients(clients.map(client =>
       client.id === id ? { ...client, status: client.status === "1" ? "0" : "1" } : client
@@ -97,66 +101,28 @@ const ListPage = () => {
     }
   };
 
+  // Filtering logic
+  let filteredClients = clients;
+  const filter = location.state?.filter;
+  if (filter === 'active') {
+    filteredClients = clients.filter(client => client.status === '1');
+  } else if (filter === 'inactive') {
+    filteredClients = clients.filter(client => client.status === '0');
+  } else if (filter === 'industries') {
+    // Show only one client per industry as a sample (or you can show all, grouped by industry)
+    const seen = new Set();
+    filteredClients = clients.filter(client => {
+      if (seen.has(client.industry)) return false;
+      seen.add(client.industry);
+      return true;
+    });
+  }
+
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50">
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Total Clients</p>
-                  <p className="text-2xl font-bold text-gray-900">{totalCount}</p>
-                </div>
-                <div className="bg-blue-100 rounded-lg p-3">
-                  <Users className="w-6 h-6 text-blue-600" />
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Active</p>
-                  <p className="text-2xl font-bold text-green-600">{activeCount}</p>
-                </div>
-                <div className="bg-green-100 rounded-lg p-3">
-                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Inactive</p>
-                  <p className="text-2xl font-bold text-red-600">{inactiveCount}</p>
-                </div>
-                <div className="bg-red-100 rounded-lg p-3">
-                  <div className="w-6 h-6 bg-red-600 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Industries</p>
-                  <p className="text-2xl font-bold text-purple-600">
-                    {new Set(clients.map(c => c.industry)).size}
-                  </p>
-                </div>
-                <div className="bg-purple-100 rounded-lg p-3">
-                  <Building2 className="w-6 h-6 text-purple-600" />
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Add New Client Button */}
           <div className="mb-8">
             <button
@@ -278,14 +244,14 @@ const ListPage = () => {
               <h2 className="text-lg font-semibold text-gray-800">Client List</h2>
             </div>
             
-            {clients.length === 0 ? (
+            {filteredClients.length === 0 ? (
               <div className="p-8 text-center text-gray-500">
                 <Users className="w-12 h-12 mx-auto mb-4 opacity-50" />
                 <p>No clients yet. Add your first client above!</p>
               </div>
             ) : (
               <div className="divide-y divide-gray-200">
-                {clients.map((client) => (
+                {filteredClients.map((client) => (
                   <div key={client.id} className="p-6 hover:bg-gray-50 transition-colors">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">

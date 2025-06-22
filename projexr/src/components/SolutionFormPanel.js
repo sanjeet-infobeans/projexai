@@ -16,15 +16,15 @@ const SolutionFormPanel = ({
   isLoading,
   aiResponse,
   handleAiResponseChange,
-  addToConversation
+  addToConversation,
+  refreshConversations // <-- new prop
 }) => {
   const location = useLocation();
   const client = location.state?.client;
 
   return (
-  <div className="w p-12 border-r border-gray-200">
+  <div className="w py-6 px-12 border-r border-gray-200">
     <div className="max-w-lg">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Client: {client.client_name}</h1>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Generate Solution</h1>
       <div className="space-y-4">
         {/* Prompt Type Selection */}
@@ -90,7 +90,10 @@ const SolutionFormPanel = ({
               placeholder="Response will appear here..."
             />
             <button 
-              onClick={addToConversation}
+              onClick={async () => {
+                await addToConversation();
+                if (refreshConversations) refreshConversations();
+              }}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
             >
               Add to Conversation →
@@ -102,4 +105,4 @@ const SolutionFormPanel = ({
   </div>
 )}
 
-export default SolutionFormPanel; 
+export default SolutionFormPanel;

@@ -38,40 +38,23 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1f2f4] px-10 py-3">
       <div className="flex items-center gap-4 text-[#121416]">
-        <div className="size-4">
-          <Link to="/clients">
-            <img src={logo} alt="ProjexAI Logo" className="w-4 h-4" />
-          </Link>
-        </div>
-        <h2 className="text-[#121416] text-lg font-bold leading-tight tracking-[-0.015em]">
-          <Link to="/clients">ProjexAI</Link>
-        </h2>
+        <Link to="/clients">
+          <img src={logo} alt="ProjexAI Logo" style={{ width: 120, height: 'auto' }} />
+        </Link>
       </div>
       <div className="flex flex-1 justify-end gap-8">
         <div className="flex items-center gap-9">
           <Link 
-            className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === '/clients' ? 'text-blue-600' : ''}`}
-            to="/clients"
+            className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === '/dashboard' ? 'text-blue-600' : ''}`}
+            to="/dashboard"
           >
             Dashboard
-          </Link>
-          <Link 
-            className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === '/projects' ? 'text-blue-600' : ''}`}
-            to="/projects"
-          >
-            Projects
           </Link>
           <Link 
             className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === '/clients' ? 'text-blue-600' : ''}`}
             to="/clients"
           >
             Clients
-          </Link>
-          <Link 
-            className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === '/teams' ? 'text-blue-600' : ''}`}
-            to="/teams"
-          >
-            Team
           </Link>
         </div>
         <button

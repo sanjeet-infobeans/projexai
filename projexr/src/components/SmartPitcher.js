@@ -1,22 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SolutionFormPanel from './SolutionFormPanel';
 import axios from 'axios';
+import { callGeminiAPI } from '../utils/gemini';
+import { authFetch } from '../utils/authFetch';
 
-const SmartPitcher = ({ clientId, userName, userEmail }) => {
+const SmartPitcher = ({ client, clientId, userName, userEmail,refreshConversations }) => {
   // Demo state for SolutionFormPanel
   const [selectedPromptType, setSelectedPromptType] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState('');
-  const [formData, setFormData] = useState({});
-  const [generatedPrompt, setGeneratedPrompt] = useState('');
+  const [formData, setFormData] = useState({
+    companyName: '',
+    websiteURL: '',
+  });
+  
+  // Set formData when client changes, but only if the field is empty (so user input is not overwritten)
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      companyName: prev.companyName || client?.client_name || '',
+      websiteURL: prev.websiteURL || client?.website || '',
+    }));
+  }, [client]);
 
+  const [generatedPrompt, setGeneratedPrompt] = useState('');
+// console.log('SmartPitcher component initialized with client:', client);
   // Prompt templates and their required fields
   const promptTemplates = {
     company_summary: {
       fields: [
-        { name: 'companyName', label: 'Company Name', type: 'text', placeholder: 'Enter company name', required: true },
-        { name: 'websiteURL', label: 'Website URL', type: 'url', placeholder: 'https://example.com', required: true }
+        {
+          name: 'companyName',
+          label: 'Company Name',
+          type: 'text',
+          placeholder: 'Enter company nameeee',
+          required: true
+        },
+        {
+          name: 'websiteURL',
+          label: 'Website URL',
+          type: 'url',
+          placeholder: 'https://example.com',
+          required: true
+        }
       ],
       template: `Act as my sales research assistant. I’m meeting with **{companyName}**. Go through their website: **{websiteURL}**, and summarize what they do, who they serve, and what makes them unique. Give me 4–5 short bullets I can use to open the call with insight and context — not fluff.`
     },
@@ -79,11 +106,17 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
     }
   };
 
+  // When prompt type changes, prefill formData with client info for relevant fields
   const handlePromptTypeChange = (e) => {
     const type = e.target.value;
     setSelectedPromptType(type);
     setSelectedTemplate(type ? promptTemplates[type] : null);
-    setFormData({});
+    // Prefill formData for company_summary
+      setFormData({
+        companyName: client?.client_name || '',
+        websiteURL: client?.website_url || '',
+        industry: client?.industry || '',
+      });
     setAiResponse('');
     setGeneratedPrompt('');
   };
@@ -142,50 +175,18 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
 
   const generatePrompt = async () => {
     if (!selectedPromptType) return;
-    
     setIsLoading(true);
-    
     const template = promptTemplates[selectedPromptType];
     let prompt = template.template;
-    
-    // Replace placeholders with actual values
     Object.keys(formData).forEach(key => {
       const placeholder = `{${key}}`;
       prompt = prompt.replace(new RegExp(placeholder, 'g'), formData[key] || '');
     });
-    
     setGeneratedPrompt(prompt);
-    
     try {
-      // Call Gemini API
-      const apiKey = 'AIzaSyDqGpbtovZGjHE57AXekQxQEymmnLrnNCg';
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-      
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
-        })
-      });
-      
-      if (!response.ok) {
-        throw new Error(`API request failed: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated';
-      
+      const aiText = await callGeminiAPI(prompt);
       setAiResponse(aiText);
-      
     } catch (error) {
-      console.error('Error calling Gemini API:', error);
       setAiResponse(`Error: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -198,26 +199,32 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
 
   const addToConversation = async () => {
     try {
-      await axios.post(
+      await authFetch(
         'https://capitalmitra.com/wp-json/client/v1/conversation',
         {
-          post: parseInt(clientId, 10), // Ensure clientId is always an integer
+          post: parseInt(clientId, 10),
           author_name: userName,
           author_email: userEmail,
-          content: `${userName}: ${aiResponse}`
+          content: `<b>${userName}:</b> ${aiResponse}`
         },
         {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'x-conversation-secret': 'projexai-lead-conversation',
           },
+          body: JSON.stringify({
+            post: parseInt(clientId, 10), // Ensure clientId is always an integer
+            author_name: userName,
+            author_email: userEmail,
+            content: `${userName}: ${aiResponse}`
+          }),
         }
       );
-      setAiResponse(''); // Optionally clear response
-      // Optionally show success message
+      setAiResponse('');
+      if (refreshConversations) refreshConversations(); // Refresh after post
     } catch (error) {
       console.error('Error posting conversation:', error);
-      // Optionally show error message
     }
   };
 
@@ -232,6 +239,7 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
       aiResponse={aiResponse}
       handleAiResponseChange={handleAiResponseChange}
       addToConversation={addToConversation}
+      refreshConversations={refreshConversations} // Pass down the prop
     />
   );
 };
