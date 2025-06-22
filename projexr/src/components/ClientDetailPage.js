@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, User, Building2, MapPin, Phone, Mail } from 'lucide-react';
-import Navigation from './Navigation';
+import Layout from './common/Layout';
 import axios from 'axios';
 
 const ClientDetailPage = () => {
@@ -26,7 +26,7 @@ const ClientDetailPage = () => {
         { name: 'companyName', label: 'Company Name', type: 'text', placeholder: 'Enter company name', required: true },
         { name: 'websiteURL', label: 'Website URL', type: 'url', placeholder: 'https://example.com', required: true }
       ],
-      template: `Act as my sales research assistant. I’m meeting with **{companyName}**. Go through their website: **{websiteURL}**, and summarize what they do, who they serve, and what makes them unique. Give me 4–5 short bullets I can use to open the call with insight and context — not fluff.`
+      template: `Act as my sales research assistant. I'm meeting with **{companyName}**. Go through their website: **{websiteURL}**, and summarize what they do, who they serve, and what makes them unique. Give me 4–5 short bullets I can use to open the call with insight and context — not fluff.`
     },
     role_pain_points: {
       fields: [
@@ -34,20 +34,20 @@ const ClientDetailPage = () => {
         { name: 'industry', label: 'Industry', type: 'text', placeholder: 'e.g., SaaS, Manufacturing', required: true },
         { name: 'companyType', label: 'Company Type', type: 'text', placeholder: 'e.g., Medical, Technology', required: true }
       ],
-      template: `I’m speaking with a {jobTitle} at a **{companyType}** in **{industry}**. Give me 5 specific business problems or friction points they’re likely facing in 2024. Phrase each one in natural language I can use to build credibility and spark conversation in the call.`
+      template: `I'm speaking with a {jobTitle} at a **{companyType}** in **{industry}**. Give me 5 specific business problems or friction points they're likely facing in 2024. Phrase each one in natural language I can use to build credibility and spark conversation in the call.`
     },
     call_opener: {
       fields: [
         { name: 'product', label: 'Product', type: 'text', placeholder: 'Enter product name', required: true }
       ],
-      template: `Write a confident, non-cringey call opener I can use at the start of a discovery call. I sell **{product}**. Help me briefly position myself, explain the goal of the call, and make the prospect feel like it’s a two-way conversation — all in under 60 seconds.`
+      template: `Write a confident, non-cringey call opener I can use at the start of a discovery call. I sell **{product}**. Help me briefly position myself, explain the goal of the call, and make the prospect feel like it's a two-way conversation — all in under 60 seconds.`
     },
     discovery_questions: {
       fields: [
         { name: 'industry', label: 'Industry', type: 'text', placeholder: 'e.g., Healthcare, FinTech', required: true },
         { name: 'jobTitle', label: 'Job Title', type: 'text', placeholder: 'e.g., Sales Manager, Product Owner', required: true }
       ],
-      template: `Give me 10 sharp discovery questions for a **{jobTitle}** in **{industry}** that help me uncover pain, urgency, budget, and fit — fast. These should feel natural and insightful, not like I’m reading from a script.`
+      template: `Give me 10 sharp discovery questions for a **{jobTitle}** in **{industry}** that help me uncover pain, urgency, budget, and fit — fast. These should feel natural and insightful, not like I'm reading from a script.`
     },
     objection_prep: {
       fields: [
@@ -256,185 +256,188 @@ const ClientDetailPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <Navigation />
-        <div className="flex items-center justify-center py-20">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading client details...</p>
+      <Layout>
+        <div className="min-h-screen bg-gray-50">
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading client details...</p>
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 
   if (!client) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <Navigation />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <button
-            onClick={() => navigate('/clients')}
-            className="flex items-center space-x-2 text-indigo-600 hover:text-indigo-800 mb-6"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Clients</span>
-          </button>
-          
-          <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Client Not Found</h1>
-            <p className="text-gray-600">The client you're looking for doesn't exist.</p>
+      <Layout>
+        <div className="min-h-screen bg-gray-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <button
+              onClick={() => navigate('/clients')}
+              className="flex items-center space-x-2 text-indigo-600 hover:text-indigo-800 mb-6"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Clients</span>
+            </button>
+            
+            <div className="bg-white rounded-xl shadow-sm p-8 text-center">
+              <h1 className="text-2xl font-bold text-gray-900 mb-4">Client Not Found</h1>
+              <p className="text-gray-600">The client you're looking for doesn't exist.</p>
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <button
-          onClick={() => navigate('/clients')}
-          className="flex items-center space-x-2 text-indigo-600 hover:text-indigo-800 mb-6 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Clients</span>
-        </button>
-<div className="min-h-screen bg-white flex">
-      {/* Left Panel - Form */}
-      <div className="w-1/2 p-6 border-r border-gray-200">
-        <div className="max-w-lg">
-          <h1 className="text-2xl font-bold text-gray-800 mb-6">Generate Solution</h1>
-          
-          <div className="space-y-4">
-            {/* Prompt Type Selection */}
-            <div>
-              <select 
-                value={selectedPromptType} 
-                onChange={handlePromptTypeChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="">Select prompt type...</option>
-                <option value="company_summary">1. Company Summary for Context</option>
-                <option value="role_pain_points">2. Role-Specific Pain Points</option>
-                <option value="call_opener">3. 60-Second Call Opener</option>
-                <option value="discovery_questions">4. Discovery Questions to Qualify Fast</option>
-                <option value="objection_prep">5. Objection Prediction + Prep</option>
-                <option value="competitor_comparison">6. Competitor Comparison Points</option>
-                <option value="trend_insight">7. Trend-Based Insight Hook</option>
-                <option value="status_quo">8. Status Quo Reframe</option>
-                <option value="closing_next_steps">9. Closing with Next Steps</option>
-                <option value="precall_email">10. Pre-Call Reminder Email</option>
-              </select>
-            </div>
-
-            {/* Dynamic Fields */}
-            {selectedTemplate && (
-              <div className="space-y-4">
-                {selectedTemplate?.fields.map(field => (
-                  <div key={field.name}>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {field.label} {field.required && <span className="text-red-500">*</span>}
-                    </label>
-                    {renderField(field)}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Generate Button */}
-            {selectedTemplate && (
-              <button 
-                onClick={generatePrompt}
-                disabled={isLoading}
-                className={`w-full py-2 px-4 rounded font-medium transition-colors ${
-                  isLoading 
-                    ? 'bg-gray-400 cursor-not-allowed text-white' 
-                    : 'bg-blue-600 hover:bg-blue-700 text-white'
-                }`}
-              >
-                {isLoading ? 'Generating...' : 'Generate'}
-              </button>
-            )}
-
-            {/* Response Textarea */}
-            {aiResponse && (
-              <div className="space-y-3">
-                <label className="block text-sm font-medium text-gray-700">
-                  Response will appear here...
-                </label>
-                <textarea
-                  value={aiResponse}
-                  onChange={handleAiResponseChange}
-                  className="w-full h-40 px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
-                  placeholder="Response will appear here..."
-                />
+    <Layout>
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <button
+            onClick={() => navigate('/clients')}
+            className="flex items-center space-x-2 text-indigo-600 hover:text-indigo-800 mb-6 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to Clients</span>
+          </button>
+          <div className="min-h-screen bg-white flex">
+            {/* Left Panel - Form */}
+            <div className="w-1/2 p-6 border-r border-gray-200">
+              <div className="max-w-lg">
+                <h1 className="text-2xl font-bold text-gray-800 mb-6">Generate Solution</h1>
                 
-                <button 
-                  onClick={addToConversation}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
-                >
-                  Add to Conversation →
-                </button>
+                <div className="space-y-4">
+                  {/* Prompt Type Selection */}
+                  <div>
+                    <select 
+                      value={selectedPromptType} 
+                      onChange={handlePromptTypeChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select prompt type...</option>
+                      <option value="company_summary">1. Company Summary for Context</option>
+                      <option value="role_pain_points">2. Role-Specific Pain Points</option>
+                      <option value="call_opener">3. 60-Second Call Opener</option>
+                      <option value="discovery_questions">4. Discovery Questions to Qualify Fast</option>
+                      <option value="objection_prep">5. Objection Prediction + Prep</option>
+                      <option value="competitor_comparison">6. Competitor Comparison Points</option>
+                      <option value="trend_insight">7. Trend-Based Insight Hook</option>
+                      <option value="status_quo">8. Status Quo Reframe</option>
+                      <option value="closing_next_steps">9. Closing with Next Steps</option>
+                      <option value="precall_email">10. Pre-Call Reminder Email</option>
+                    </select>
+                  </div>
+
+                  {/* Dynamic Fields */}
+                  {selectedTemplate && (
+                    <div className="space-y-4">
+                      {selectedTemplate?.fields.map(field => (
+                        <div key={field.name}>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            {field.label} {field.required && <span className="text-red-500">*</span>}
+                          </label>
+                          {renderField(field)}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Generate Button */}
+                  {selectedTemplate && (
+                    <button 
+                      onClick={generatePrompt}
+                      disabled={isLoading}
+                      className={`w-full py-2 px-4 rounded font-medium transition-colors ${
+                        isLoading 
+                          ? 'bg-gray-400 cursor-not-allowed text-white' 
+                          : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      }`}
+                    >
+                      {isLoading ? 'Generating...' : 'Generate'}
+                    </button>
+                  )}
+
+                  {/* Response Textarea */}
+                  {aiResponse && (
+                    <div className="space-y-3">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Response will appear here...
+                      </label>
+                      <textarea
+                        value={aiResponse}
+                        onChange={handleAiResponseChange}
+                        className="w-full h-40 px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
+                        placeholder="Response will appear here..."
+                      />
+                      
+                      <button 
+                        onClick={addToConversation}
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
+                      >
+                        Add to Conversation →
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Right Panel - Conversation */}
-      <div className="w-1/2 flex flex-col bg-gray-50">
-        {/* Conversation Header */}
-        <div className="p-4 border-b border-gray-200 bg-white">
-          <h2 className="text-lg font-semibold text-gray-800">Conversation</h2>
-        </div>
-
-        {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
-          {conversations.length === 0 ? (
-            <div className="text-center text-gray-500 mt-8">
-              <p>Hi, I'm interested in learning more about your solutions for digital transformation.</p>
             </div>
-          ) : (
-            conversations.map((message) => (
-              <div
-                key={message.id}
-                className={`p-3 rounded-lg max-w-xs ${
-                  message.type === 'ai' 
-                    ? 'bg-blue-100 text-blue-900 ml-auto' 
-                    : 'bg-white border border-gray-200 text-gray-800'
-                }`}
-              >
-                <div className="text-sm whitespace-pre-wrap">{message.content}</div>
-                <div className="text-xs text-gray-500 mt-1">{message.timestamp}</div>
-              </div>
-            ))
-          )}
-        </div>
 
-        {/* Input Area */}
-        <div className="p-4 border-t border-gray-200 bg-white">
-          <div className="flex gap-2">
-            <textarea
-              value={clientFeedback}
-              onChange={(e) => setClientFeedback(e.target.value)}
-              placeholder="Client Latest Feedback..."
-              className="flex-1 px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-              rows="2"
-            />
-            <button
-              onClick={sendFeedback}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
-            >
-              Send
-            </button>
+            {/* Right Panel - Conversation */}
+            <div className="w-1/2 flex flex-col bg-gray-50">
+              {/* Conversation Header */}
+              <div className="p-4 border-b border-gray-200 bg-white">
+                <h2 className="text-lg font-semibold text-gray-800">Conversation</h2>
+              </div>
+
+              {/* Messages Area */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                {conversations.length === 0 ? (
+                  <div className="text-center text-gray-500 mt-8">
+                    <p>Hi, I'm interested in learning more about your solutions for digital transformation.</p>
+                  </div>
+                ) : (
+                  conversations.map((message) => (
+                    <div
+                      key={message.id}
+                      className={`p-3 rounded-lg max-w-xs ${
+                        message.type === 'ai' 
+                          ? 'bg-blue-100 text-blue-900 ml-auto' 
+                          : 'bg-white border border-gray-200 text-gray-800'
+                      }`}
+                    >
+                      <div className="text-sm whitespace-pre-wrap">{message.content}</div>
+                      <div className="text-xs text-gray-500 mt-1">{message.timestamp}</div>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {/* Input Area */}
+              <div className="p-4 border-t border-gray-200 bg-white">
+                <div className="flex gap-2">
+                  <textarea
+                    value={clientFeedback}
+                    onChange={(e) => setClientFeedback(e.target.value)}
+                    placeholder="Client Latest Feedback..."
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    rows="2"
+                  />
+                  <button
+                    onClick={sendFeedback}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
+                  >
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-      </div>
-    </div>
+    </Layout>
   );
 };
 

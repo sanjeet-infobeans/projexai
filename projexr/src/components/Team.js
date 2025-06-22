@@ -1,4 +1,17 @@
 import React from 'react';
+import mayankImg from '../assets/mayank.png';
+import snehilImg from '../assets/snehil.png';
+import sanjeetImg from '../assets/sanjeet.png';
+import mukeshImg from '../assets/mukesh.png';
+import rahulImg from '../assets/rahul.png';
+
+const teamMembers = [
+  { name: 'Mayank Shakalya', role: 'Team Member', img: mayankImg },
+  { name: 'Snehil Sharma', role: 'Team Member', img: snehilImg },
+  { name: 'Rahul Nagar', role: 'Team Member', img: rahulImg },
+  { name: 'Sanjeet Patel', role: 'Team Member', img: sanjeetImg },
+  { name: 'Mukesh Patidar', role: 'Team Member', img: mukeshImg },
+];
 
 const Team = () => {
   return (
@@ -15,95 +28,20 @@ const Team = () => {
         
         <h2 className="text-[#131416] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our team</h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-          <div className="flex flex-col gap-3 text-center pb-3">
-            <div className="px-4">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcel285tPpvOM_KURb1nEdVVboSVXveKSnxDLjh1murlWfugQTEQtclhuiNIWvMnhIXK3gv3EfUX1hTlih2U3l_Ht9b6ExCa_xoSH26AGhLJXEN1GQo7Wrmktl9_Yov2me6WMv2LjNsI5rfjFjCzx87oEy0_kVc-N1fL0OGlGkINH8ZCxveHKpIz2crxXIuXBzenlnWx-yaSUYGM7PNqTpcoIsWAnm0CTZOnE-iiH1LUoIi98_v00IqIXol7I3TkeErIDYr2LCQKg")'
-                }}
-              ></div>
+          {teamMembers.map((member) => (
+            <div key={member.name} className="flex flex-col gap-3 text-center pb-3">
+              <div className="px-4">
+                <div
+                  className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
+                  style={{ backgroundImage: `url(${member.img})` }}
+                ></div>
+              </div>
+              <div>
+                <p className="text-[#131416] text-base font-medium leading-normal">{member.name}</p>
+                <p className="text-[#6e717c] text-sm font-normal leading-normal">{member.role}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-[#131416] text-base font-medium leading-normal">Sarah Chen</p>
-              <p className="text-[#6e717c] text-sm font-normal leading-normal">CEO</p>
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-3 text-center pb-3">
-            <div className="px-4">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTabdoM4F5syKo4lki3YHBP-ahPqmZYSKOz_bzWe4GJIiyi28cFRuAmRvrokRLiYyyorWP72qiVEWnzZcAwNsiZNcQXLOBRQMRGMfRTPD9awUqS76Ij1O-6S17n-YXTqUtSf4C_WmvH8D1S2cBUDaoTqgbuxSngerkwKfPdOh9eO5NYSdNMdnRnoJUjpQd_u278-OXPN7R5lZN1ZN0JzcStqxvVMc9SoyuuXx9CuosbDpTlNZxR4AFwKB1zR9jxloqUgOc21mCIvY")'
-                }}
-              ></div>
-            </div>
-            <div>
-              <p className="text-[#131416] text-base font-medium leading-normal">David Lee</p>
-              <p className="text-[#6e717c] text-sm font-normal leading-normal">Head of Engineering</p>
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-3 text-center pb-3">
-            <div className="px-4">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJj_BOb4vJHepcm8yvmOmjxqrLaOo1Oo-B9xRzRmp6Q9x_6F6K495EZ0I0NfktNoU3QgUIsHNMb0zY1U4R0YkOoCgvKlJ_xKyWlQEQNCTXL3xoxXSGiyK99ITvyvWOIgvxl1_S__pbrkrV6QqFsFhj86Uoo4Qa2dV2IhlHpQD0Q6hAsmzDt0IoPkatNfoAS6anBD2Y3cyf94No0WfEkLQFkfg9CHsXWW3gebWJHmY0CpQUPdsldLRqtHV-HD0NqGVz3kRQ3O_dgHI")'
-                }}
-              ></div>
-            </div>
-            <div>
-              <p className="text-[#131416] text-base font-medium leading-normal">Emily Rodriguez</p>
-              <p className="text-[#6e717c] text-sm font-normal leading-normal">Head of Product</p>
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-3 text-center pb-3">
-            <div className="px-4">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqcNbHw1744bHEnunFDaILG9FX3BsWnoy1uDfJmvx7Q9vdh1y6_mw_wNGBfbmHUBu5RtwK0lU7Sx70N_sUg8ZdKddUtvXFOcrhV97Xsfoh9iSUyzYuH60gsVG6u327HWlAovKW39cLlCRZe2YYHEOnkqWdU0kUa8JLjUhulkv_zDAKtkfd2hLfmVAYgvzllmEiiQYphWJlFZcKBYA-1aXt1EcuUT0gSmzlzts5rmdfMrCZF88bby1EV14zqdYtZijzYu5UhyiF_vU")'
-                }}
-              ></div>
-            </div>
-            <div>
-              <p className="text-[#131416] text-base font-medium leading-normal">Michael Brown</p>
-              <p className="text-[#6e717c] text-sm font-normal leading-normal">Lead Designer</p>
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-3 text-center pb-3">
-            <div className="px-4">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD43yVLNdIWTYQyHWzyrupUWRTPPSLh5BhUgO-PrVyEWx2SJWUijIbouJxgNN78vBRQlh1Fjyq11z24Q33Blukjs5cmOqvEYMkFWMJ0bKQw0Ho5Tc5B0kdWTdxdHU8Qvshu9tgSW2ty0cNAikeh4VsXVyBOc9Xy2CWreuFspTBMzmLzbbouCMSOlVdmC5moZkJ0Y8ntbTk7L7SQMPOBpgOqWWH9LYOEtWwra_Bkbkzu5lah2GjvJ9TeNbyZohOA55hI5Hz6Hmsaq_A")'
-                }}
-              ></div>
-            </div>
-            <div>
-              <p className="text-[#131416] text-base font-medium leading-normal">Jessica Wilson</p>
-              <p className="text-[#6e717c] text-sm font-normal leading-normal">Customer Success Manager</p>
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-3 text-center pb-3">
-            <div className="px-4">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                style={{
-                  backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXtvPsUF4JDhXvTLb5tg5aLrrTsdC_WV7spEFjt9YfVmduvSOwa0it24Z17aNWkEPGhcQJ3VgkaonppvR21GzJjby8B2bGR3IFsSvxtq-WaWKlE2A1NA1zsirloGELnnaIFfQsLGXuoZ0NZi2Ht3HxfgMS964vXKt92J3t_4wMhC8gdCMcQGMy45jov99AU5Prz4okbeSC7hmcQeqFgWmMRW-WxcmLSKiPrsEZlWRnFtCx30aibgY2VkOQDHs-TNdNWs43k7pm1zU")'
-                }}
-              ></div>
-            </div>
-            <div>
-              <p className="text-[#131416] text-base font-medium leading-normal">Robert Garcia</p>
-              <p className="text-[#6e717c] text-sm font-normal leading-normal">Sales Director</p>
-            </div>
-          </div>
+          ))}
         </div>
         
         <h2 className="text-[#131416] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our values</h2>
