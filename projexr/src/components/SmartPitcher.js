@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SolutionFormPanel from './SolutionFormPanel';
-import axios from 'axios';
+import { authFetch } from '../utils/authFetch';
 
 const SmartPitcher = ({ clientId, userName, userEmail }) => {
   // Demo state for SolutionFormPanel
@@ -198,19 +198,20 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
 
   const addToConversation = async () => {
     try {
-      await axios.post(
+      await authFetch(
         'https://capitalmitra.com/wp-json/client/v1/conversation',
         {
-          post: parseInt(clientId, 10), // Ensure clientId is always an integer
-          author_name: userName,
-          author_email: userEmail,
-          content: `Me: ${aiResponse}`
-        },
-        {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'x-conversation-secret': 'projexai-lead-conversation',
           },
+          body: JSON.stringify({
+            post: parseInt(clientId, 10), // Ensure clientId is always an integer
+            author_name: userName,
+            author_email: userEmail,
+            content: `${userName}: ${aiResponse}`
+          }),
         }
       );
       setAiResponse(''); // Optionally clear response

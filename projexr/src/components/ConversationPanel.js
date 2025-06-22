@@ -31,9 +31,9 @@ const ConversationPanel = ({
           <div
             key={message.id || idx}
             className={`p-3 rounded-lg max-w-xs ${
-              message?.type === 'ai' 
-                ? 'bg-blue-100 text-blue-900 ml-auto' 
-                : 'bg-white border border-gray-200 text-gray-800'
+              message?.content?.startsWith('Client:')
+                ? 'bg-white border border-gray-200 text-gray-800'
+                : 'bg-blue-100 text-blue-900 ml-auto'
             }`}
           >
             <div className="text-sm whitespace-pre-wrap">{message.content || message.message || JSON.stringify(message)}</div>
