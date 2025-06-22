@@ -115,6 +115,7 @@ class LA_Roles_And_Caps {
 
             // Add roles
             $data['roles'] = $user->roles;
+            $data['user_login'] = $user->user_login;
 
             // Optional: Add human-readable role labels
             $wp_roles = wp_roles()->roles;

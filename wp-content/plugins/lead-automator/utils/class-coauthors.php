@@ -28,6 +28,7 @@ class LA_CoAuthors {
         });
 
         add_action('rest_api_init', [$this, 'add_post_coauthors_rest_callback']);
+        add_action('rest_api_init', [$this, 'remove_post_coauthors_rest_callback']);
 
     }
     
@@ -119,6 +120,61 @@ class LA_CoAuthors {
             'message' => 'Co-authors added successfully.',
             'coauthors' => array_map(fn($u) => $u->user_login, $coauthor_objects)
         ];
+    }
+
+    public function remove_post_coauthors_rest_callback() {
+        register_rest_route('client/v1', '/remove-coauthors', [
+            'methods'  => 'POST',
+            'callback' => [ $this, 'remove_coauthors_from_post' ],
+            'permission_callback' => function () {
+                return true; //current_user_can('edit_posts'); // Adjust as needed
+            },
+            'args' => [
+                'post_id' => [
+                    'required' => true,
+                    'type'     => 'integer',
+                ],
+                'coauthors' => [
+                    'required' => true,
+                    'type'     => 'array',
+                    'items'    => ['type' => 'string'],
+                ],
+            ],
+        ]);
+    }
+
+    public function remove_coauthors_from_post(WP_REST_Request $request) {
+        $post_id   = (int) $request->get_param('post_id');
+        $to_remove = $request->get_param('coauthors');
+
+        if (!function_exists('get_coauthors')) {
+            return new WP_Error('coauthors_plugin_missing', 'Co-Authors Plus plugin is not active', ['status' => 500]);
+        }
+
+        global $coauthors_plus;
+
+        if (!isset($coauthors_plus)) {
+            $coauthors_plus = new CoAuthors_Plus();
+        }
+
+        // Get current co-authors
+        $current_coauthors = get_coauthors($post_id);
+        $remaining = [];
+
+        foreach ($current_coauthors as $author) {
+            if (!in_array($author->user_login, $to_remove, true)) {
+                $remaining[] = $author->user_login;
+            }
+        }
+
+        // Update co-authors list
+        $coauthors_plus->add_coauthors($post_id, $remaining);
+
+        return rest_ensure_response([
+            'success'   => true,
+            'message'   => 'Selected co-authors removed.',
+            'remaining' => $remaining,
+        ]);
     }
 
 }
