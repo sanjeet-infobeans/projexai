@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/projexr/build/static/css/main.f4b7b187.css",
-    "main.js": "/projexr/build/static/js/main.f44c55ea.js",
+    "main.js": "/projexr/build/static/js/main.8bfb6b84.js",
     "static/js/453.a7e2ddbd.chunk.js": "/projexr/build/static/js/453.a7e2ddbd.chunk.js",
     "static/media/rahul.png": "/projexr/build/static/media/rahul.1aebd6f4f60ffd7ce912.png",
     "static/media/snehil.png": "/projexr/build/static/media/snehil.958740eb12d2ee965d63.png",
@@ -11,11 +11,11 @@
     "static/media/projectai-logo.png": "/projexr/build/static/media/projectai-logo.cb30e5c826b2cd84b992.png",
     "index.html": "/projexr/build/index.html",
     "main.f4b7b187.css.map": "/projexr/build/static/css/main.f4b7b187.css.map",
-    "main.f44c55ea.js.map": "/projexr/build/static/js/main.f44c55ea.js.map",
+    "main.8bfb6b84.js.map": "/projexr/build/static/js/main.8bfb6b84.js.map",
     "453.a7e2ddbd.chunk.js.map": "/projexr/build/static/js/453.a7e2ddbd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f4b7b187.css",
-    "static/js/main.f44c55ea.js"
+    "static/js/main.8bfb6b84.js"
   ]
 }
