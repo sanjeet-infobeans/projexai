@@ -23,9 +23,8 @@ const SolutionFormPanel = ({
   const client = location.state?.client;
 
   return (
-  <div className="w p-12 border-r border-gray-200">
+  <div className="w py-6 px-12 border-r border-gray-200">
     <div className="max-w-lg">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Client: {client.client_name}</h1>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Generate Solution</h1>
       <div className="space-y-4">
         {/* Prompt Type Selection */}

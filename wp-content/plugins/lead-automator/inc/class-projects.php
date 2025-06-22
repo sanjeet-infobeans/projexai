@@ -37,7 +37,7 @@ class LA_Projects
             'show_in_menu' => true,
             'menu_position' => 5,
             'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
-            'taxonomies' => ['tech_stake'],
+            'taxonomies' => ['tech_stack'],
             'show_in_rest' => true,
         ]);
     }
@@ -58,7 +58,7 @@ class LA_Projects
     {
         $selected_client = get_post_meta($post->ID, '_project_client', true);
         $clients = get_posts([
-            'post_type' => 'clients',
+            'post_type' => 'client_profile',
             'numberposts' => -1,
             'post_status' => 'publish',
         ]);
