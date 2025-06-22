@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Users, Building2 } from 'lucide-react';
 import { authFetch } from '../utils/authFetch';
+import { AuthContext } from '../context/AuthContext';
 
 const Dashboard = () => {
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await authFetch('https://capitalmitra.com/wp-json/projexai/v1/client-profiles');
+        const response = await authFetch(`https://capitalmitra.com/wp-json/projexai/v1/client-profiles?author=${user?.username}`);
         if (!response.ok) throw new Error('Failed to fetch clients');
         const data = await response.json();
         setClients(data);

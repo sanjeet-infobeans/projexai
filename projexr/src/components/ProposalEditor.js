@@ -49,9 +49,10 @@ const ProposalEditor = ({ proposal, viewMode, onBack, onSave, onEdit }) => {
             </button>
           </div>
           <CreateProposal
-            client={proposal.client}
+            client={proposal}
             initialContent={proposal.content}
             onSave={onSave}
+            isNewProposal={proposal && proposal.title && proposal.title.startsWith('Proposal for New Project')}
           />
         </div>
       )}
@@ -59,4 +60,4 @@ const ProposalEditor = ({ proposal, viewMode, onBack, onSave, onEdit }) => {
   );
 };
 
-export default ProposalEditor; 
+export default ProposalEditor;

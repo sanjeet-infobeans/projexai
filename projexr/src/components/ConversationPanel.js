@@ -14,14 +14,14 @@ const ConversationPanel = ({
   setClientFeedback,
   sendFeedback
 }) => (
-  <div className="w-1/2 flex flex-col bg-gray-50">
+  <div className="w-3/4 h-screen flex flex-col bg-gray-50">
     {/* Conversation Header */}
     <div className="p-4 border-b border-gray-200 bg-white">
       <h2 className="text-lg font-semibold text-gray-800">Conversation</h2>
     </div>
 
     {/* Messages Area */}
-    <div className="flex-1 overflow-y-auto p-4 space-y-4">
+    <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
       {Array.isArray(conversations) && conversations.length === 0 ? (
         <div className="text-center text-gray-500 mt-8">
           <p>Hi, I'm interested in learning more about your solutions for digital transformation.</p>
@@ -30,7 +30,7 @@ const ConversationPanel = ({
         conversations.map((message, idx) => (
           <div
             key={message.id || idx}
-            className={`p-3 rounded-lg max-w-xs ${
+            className={`p-3 rounded-lg max-w-md ${
               message?.content?.startsWith('<b>Client:</b>')
                 ? 'bg-white border border-gray-200 text-gray-800'
                 : 'bg-blue-100 text-blue-900 ml-auto'

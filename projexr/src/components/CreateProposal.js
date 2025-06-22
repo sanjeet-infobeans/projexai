@@ -4,7 +4,7 @@ import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { callGeminiAPI } from '../utils/gemini';
 
-const CreateProposal = ({ client: propClient, initialContent, onSave, onProposalSaved }) => {
+const CreateProposal = ({ client: propClient, initialContent, onSave, onProposalSaved, isNewProposal }) => {
   // Try to get client from prop or from location.state
   const location = useLocation();
   const { id } = useParams();
@@ -17,7 +17,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
 
   // Proposal content state
   const defaultContent = `
-    <b>${client.name ? client.name + ' Proposal Introduction:' : ''}</b> This proposal outlines the scope of work, deliverables, and pricing for ${client.name ? `the project with ${client.name}` : 'Project Alpha'}, a comprehensive IT solution designed to enhance operational efficiency and security for your organization.<br /><br />
+    <b>${client.title ? client.title + ' Proposal Introduction:' : ''}</b> This proposal outlines the scope of work, deliverables, and pricing for ${client.name ? `the project with ${client.name}` : 'Project Alpha'}, a comprehensive IT solution designed to enhance operational efficiency and security for your organization.<br /><br />
     <b>Scope of Work:</b> Our team will conduct a thorough assessment of your current IT infrastructure, identify areas for improvement, and implement solutions tailored to your specific needs. This includes network optimization, cybersecurity enhancements, and cloud migration strategies.<br /><br />
     <b>Deliverables:</b>
     <ul><li>Detailed assessment report</li><li>Implementation plan</li><li>Configuration documents</li><li>Training materials</li></ul>
@@ -186,7 +186,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
         <div className="flex flex-wrap justify-between gap-3 p-4">
           <div className="flex min-w-72 flex-col gap-3">
             <p className="text-[#121217] tracking-light text-[32px] font-bold leading-tight">
-              Proposal for {client.name ? `Project for ${client.name}` : 'Project Alpha'}
+             {client.title}
             </p>
             <p className="text-[#656a86] text-sm font-normal leading-normal">
               Generated on {formattedDate}
@@ -238,7 +238,11 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
               <span className="truncate">Save as Word</span>
             </button>
             <button
-              className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#0b80ee] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4"
+              className={`flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#0b80ee] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4 ${
+              loading 
+                ? 'bg-gray-400 cursor-not-allowed text-white' 
+                : 'bg-blue-600 hover:bg-blue-700 text-white'
+            }`}
               type="button"
               onClick={saveToDb}
               disabled={saving || loading}
@@ -260,22 +264,34 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
         </div>
         <div className="flex justify-stretch">
           <div className="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end">
-            <button
-              className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0f1f4] text-[#121217] text-sm font-bold leading-normal tracking-[0.015em]"
+            {/* Show Regenerate if NOT coming from New Proposal button */}
+            {!isNewProposal ? (
+              <button
+                className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0f1f4] text-[#121217] text-sm font-bold leading-normal tracking-[0.015em] ${
+                loading 
+                  ? 'bg-gray-400 cursor-not-allowed text-white' 
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
               type="button"
-              onClick={() => setContent(defaultContent)}
+              onClick={createProposal}
               disabled={loading || saving}
             >
-              <span className="truncate">Regenerate</span>
+              <span className="truncate">{loading ? 'Regenerating...' : 'Regenerate'}</span>
             </button>
-            <button
-              className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            ) : (
+              <button
+                className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em] ${
+                loading 
+                  ? 'bg-gray-400 cursor-not-allowed text-white' 
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
               type="button"
               onClick={createProposal}
               disabled={loading || saving}
             >
               <span className="truncate">{loading ? 'Creating...' : 'Create Proposal'}</span>
             </button>
+            )}
           </div>
         </div>
       </div>
