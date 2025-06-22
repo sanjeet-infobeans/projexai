@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Users, Plus, Trash2, Edit, Phone, Mail, MapPin, Building2, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 import { authFetch } from '../utils/authFetch';
+import { AuthContext } from '../context/AuthContext';
 
 const ListPage = () => {
   const navigate = useNavigate();
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const { user } = useContext(AuthContext);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newClient, setNewClient] = useState({
     title: '',
@@ -26,7 +27,7 @@ const ListPage = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await authFetch('https://capitalmitra.com/wp-json/projexai/v1/client-profiles');
+        const response = await authFetch(`https://capitalmitra.com/wp-json/projexai/v1/client-profiles?author=${user?.username}`);
         if (!response.ok) throw new Error('Failed to fetch clients');
         const data = await response.json();
         setClients(data);
