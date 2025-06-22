@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Users, Plus, Trash2, Edit, Phone, Mail, MapPin, Building2, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
-import axios from 'axios';
+import { authFetch } from '../utils/authFetch';
 
 const ListPage = () => {
   const navigate = useNavigate();
@@ -26,8 +26,10 @@ const ListPage = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await axios.get('https://capitalmitra.com/wp-json/projexai/v1/client-profiles');
-        setClients(response.data);
+        const response = await authFetch('https://capitalmitra.com/wp-json/projexai/v1/client-profiles');
+        if (!response.ok) throw new Error('Failed to fetch clients');
+        const data = await response.json();
+        setClients(data);
       } catch (err) {
         console.error('Error fetching client data:', err);
         setError('Failed to fetch clients');
@@ -66,7 +68,7 @@ const ListPage = () => {
       setShowAddForm(false);
     }
   };
-
+// console.log('Clients:', clients);
   const toggleStatus = (id) => {
     setClients(clients.map(client =>
       client.id === id ? { ...client, status: client.status === "1" ? "0" : "1" } : client
