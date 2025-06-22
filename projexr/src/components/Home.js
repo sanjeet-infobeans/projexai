@@ -1,35 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import videoBg from '../assets/172170-846731303_small.mp4';
 
 const Home = () => {
   return (
-    <div className="px-40 flex flex-1 justify-center py-5">
-      <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
-        <div className="@container">
-          <div className="flex flex-col gap-6 px-4 py-10 @[480px]:gap-8 @[864px]:flex-row">
-            <div
-              className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl @[480px]:h-auto @[480px]:min-w-[400px] @[864px]:w-full"
-              style={{
-                backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLyQ9rQeRSJpJ4GrdYqPm8k-ojixgRZ6GT99biaYuBcZGvIzSb7jljVmFVzg5Ql_waJkWIIE95tBx2s3Rk7o2l504Q5VR9ysj7QqeHIAows7phlqS0xlQ7SsrnkZ7HL1evgJQVf7Po7BjL2Cl4a-iUfNU1d4WfYEmG5VcTeIV3UbMX3EfNssEz9kiJ3pUxBrsw3oa6_lB6hyyjjEM7958_SBmhNGZTiY9slOfoeFkC_7l1iEmXbplmPqp5B8UdYtrzKUUXsCprsKk")'
-              }}
-            ></div>
-            <div className="flex flex-col gap-6 @[480px]:min-w-[400px] @[480px]:gap-8 @[864px]:justify-center">
-              <div className="flex flex-col gap-2 text-left">
-                <h1 className="text-[#0f111a] text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
-                  Elevate Prospect Onboarding
-                </h1>
-                <h2 className="text-[#0f111a] text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                  ProjexAI is an AI agent tool designed for IT service companies, enabling sales and technical teams to rapidly improve prospect onboarding. Streamline your
-                  processes and enhance client satisfaction with our innovative solution.
-                </h2>
-              </div>
-              <Link to="/login" className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#15267d] text-[#f8f9fb] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
-                <span className="truncate">Get Started</span>
-              </Link>
-            </div>
-          </div>
+    <div className="w-full min-h-screen">
+      {/* Full-width video banner */}
+      <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 h-[460px] mb-10 overflow-hidden flex items-center justify-center">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          src={videoBg}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center px-4">
+          <h1 className="text-white text-4xl font-bold drop-shadow-lg mb-4" style={{textShadow: '0 2px 16px rgba(0,0,0,0.5)'}}>Elevate Prospect Onboarding</h1>
+          <p className="text-white text-lg font-normal max-w-2xl drop-shadow-lg" style={{textShadow: '0 2px 16px rgba(0,0,0,0.5)'}}>
+            ProjexAI is an AI agent tool designed for IT service companies, enabling sales and technical teams to rapidly improve prospect onboarding. Streamline your processes and enhance client satisfaction with our innovative solution.
+          </p>
         </div>
-        
+        <div className="absolute inset-0 bg-black/40 z-5" />
+      </div>
+      {/* Main content container */}
+      <div className="layout-content-container flex flex-col max-w-[960px] flex-1 mx-auto px-10">
         <div className="flex flex-col gap-10 px-4 py-10 @container">
           <div className="flex flex-col gap-4">
             <h1 className="text-[#0f111a] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
