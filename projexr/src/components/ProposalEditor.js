@@ -7,7 +7,7 @@ const ProposalEditor = ({ proposal, viewMode, onBack, onSave, onEdit }) => {
   return (
     <div className="w-full h-full">
       {viewMode ? (
-        <div className="px-40 flex flex-1 justify-center py-5">
+        <div className="px-10 flex flex-1 justify-center py-5">
           <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
             <div className="flex flex-wrap justify-between gap-3 p-4">
               <div className="flex min-w-72 flex-col gap-3">
@@ -40,7 +40,7 @@ const ProposalEditor = ({ proposal, viewMode, onBack, onSave, onEdit }) => {
         </div>
       ) : (
         <div>
-          <div className="flex justify-between px-40 pt-5">
+          <div className="flex justify-between px-10 pt-5">
             <button
               className="bg-gray-200 text-gray-800 px-4 py-2 rounded font-medium hover:bg-gray-300 mb-4"
               onClick={onBack}
