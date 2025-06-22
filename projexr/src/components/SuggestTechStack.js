@@ -96,61 +96,82 @@ const SuggestTechStack = () => {
   const handleSuggestTechStack = async () => {
     if (!conversationContents.length && !technologyNames.length) return;
     setLoadingGemini(true);
-    const prompt = `You are an experienced technical consultant. Your output must be only the 3 best suitable technical solutions, formatted exactly as specified below, with no additional text, introductions, or conclusions.
-Propose the top 3 most suitable technical solutions for a client project. For each solution, provide output in below format:
-<div class="">
-  <h2 class="text-[#121217] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
-    Solution 1
-  </h2>
-  <div class="p-4 grid grid-cols-[20%_1fr] gap-x-6">
-    <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
-      <p class="text-[#656a86] text-sm font-normal leading-normal">
-        Tech Stack
-      </p>
-      <p class="text-[#121217] text-sm font-normal leading-normal">
-        Python, Django, PostgreSQL
-      </p>
+  
+    const prompt = `You are an experienced enterprise IT consultant working within InfoBeans' services. Your output must be only the 3 best suitable service-based solutions under InfoBeans' offerings. Use the exact format below with no additional text, introductions, or conclusions.
+  
+  Use only these solution categories:
+  - ServiceNow
+  - Salesforce
+  - Custom Development
+  - Mobile Applications
+  - eCommerce
+  
+  For each solution, populate with realistic, context-appropriate technologies, skills, and cost/time estimates based on enterprise project delivery.
+  
+  Output must be strictly in the following format for 3 solutions:
+  
+  <div class="">
+    <h2 class="text-[#121217] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+      Solution 1
+    </h2>
+    <div class="p-4 grid grid-cols-[20%_1fr] gap-x-6">
+      <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
+        <p class="text-[#656a86] text-sm font-normal leading-normal">
+          Service
+        </p>
+        <p class="text-[#121217] text-sm font-normal leading-normal">
+          Salesforce
+        </p>
+      </div>
+      <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
+        <p class="text-[#656a86] text-sm font-normal leading-normal">Tech Stack</p>
+        <p class="text-[#121217] text-sm font-normal leading-normal">
+          Salesforce Lightning, Apex, Visualforce, Salesforce CRM APIs
+        </p>
+      </div>
+      <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
+        <p class="text-[#656a86] text-sm font-normal leading-normal">Quality</p>
+        <p class="text-[#121217] text-sm font-normal leading-normal">4.7/5</p>
+      </div>
+      <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
+        <p class="text-[#656a86] text-sm font-normal leading-normal">Price</p>
+        <p class="text-[#121217] text-sm font-normal leading-normal">
+          $120,000 - $180,000
+        </p>
+      </div>
+      <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
+        <p class="text-[#656a86] text-sm font-normal leading-normal">
+          Team Size
+        </p>
+        <p class="text-[#121217] text-sm font-normal leading-normal">4 Members</p>
+      </div>
+      <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
+        <p class="text-[#656a86] text-sm font-normal leading-normal">Time</p>
+        <p class="text-[#121217] text-sm font-normal leading-normal">
+          4–6 months
+        </p>
+      </div>
     </div>
-    <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
-      <p class="text-[#656a86] text-sm font-normal leading-normal">Quality</p>
-      <p class="text-[#121217] text-sm font-normal leading-normal">4.5/5</p>
-    </div>
-    <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
-      <p class="text-[#656a86] text-sm font-normal leading-normal">Price</p>
-      <p class="text-[#121217] text-sm font-normal leading-normal">
-        $100,000 - $200,000
-      </p>
-    </div>
-    <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
-      <p class="text-[#656a86] text-sm font-normal leading-normal">
-        Team Size
-      </p>
-      <p class="text-[#121217] text-sm font-normal leading-normal">5 Members</p>
-    </div>
-    <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dcdee5] py-5">
-      <p class="text-[#656a86] text-sm font-normal leading-normal">Time</p>
-      <p class="text-[#121217] text-sm font-normal leading-normal">
-        6-12 months
-      </p>
+    <div class="flex px-4 py-3 justify-start">
+      <button id="select-solution-1" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em]">
+        <span class="truncate">Select Solution 1</span>
+      </button>
     </div>
   </div>
-  <div class="flex px-4 py-3 justify-start">
-    <button id="select-solution-1" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em]">
-      <span class="truncate">Select Solution 1</span>
-    </button>
-  </div>
-</div>
-Conversation/Requirements:\n${conversationContents
-      .map((c) => `- ${c}`)
-      .join("\n")}\n\nAvailable Technologies/Constraints:\n${technologyNames
-      .map((t) => `- ${t}`)
-      .join(
-        "\n"
-      )}\n\nStrictly provide only the 3 solutions. Generate only the raw HTML content. Do not include markdown code block syntax (e.g., '''html).`;
+  
+  Conversation/Requirements:
+  ${conversationContents.map((c) => `- ${c}`).join("\n")}
+  
+  Available Technologies/Constraints:
+  ${technologyNames.map((t) => `- ${t}`).join("\n")}
+  
+  Only show 3 solutions. Do not include markdown syntax (e.g., '''html). Generate only the raw HTML.`;
+  
     const response = await callGeminiAPI(prompt);
     setGeminiResponse(response);
     setLoadingGemini(false);
   };
+  
 
   // Helper to clean Gemini response of markdown code block wrappers
   function cleanGeminiResponse(response) {

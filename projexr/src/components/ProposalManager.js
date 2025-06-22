@@ -82,6 +82,10 @@ const ProposalManager = () => {
 
   // Handler to add a new proposal
   const handleNewProposal = () => {
+    if (proposals.length >= 3) {
+      alert('You can only create up to 3 proposals.');
+      return;
+    }
     const newId = proposals.length ? Math.max(...proposals.map(p => p.id)) + 1 : 1;
     const newProposal = {
       id: newId,
@@ -132,7 +136,7 @@ const ProposalManager = () => {
           proposals={proposals}
           onSelect={handleSelect}
           onView={handleView}
-          onNew={handleNewProposal}
+          onNew={proposals.length >= 3 ? undefined : handleNewProposal}
           selectedId={selectedId}
         />
       ) : (
