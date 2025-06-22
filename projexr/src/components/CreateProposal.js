@@ -170,7 +170,77 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
     if (!conversationData) return;
     setLoading(true);
     try {
-      const result = await callGeminiAPI(JSON.stringify(conversationData));
+      const prompt = `
+You are an expert proposal generator. Based on the following client conversation data, generate a detailed Project Proposal & Costing document in the exact structure below, using markdown formatting for headings, tables, and lists. Fill in all fields using the information from the conversation. If any information is missing, leave the field blank or use a reasonable placeholder.
+
+Client Conversation Data (JSON):
+${JSON.stringify(conversationData)}
+
+---
+# Project Proposal & Costing
+
+## 1. Project Overview
+
+| Field            | Description                        |
+|------------------|------------------------------------|
+| Project Name     | [Your Project Title]               |
+| Client Name      | [Client Company / Individual]      |
+| Engagement Type  | Fixed Bid / Recurring (Monthly Resource Model) |
+| Start Date       | [e.g., 1st July 2025]              |
+| Expected Duration| [e.g., 3 months]                   |
+| Project Manager  | [Name]                             |
+| Tech Lead        | [Name]                             |
+
+## 2. Scope of Work
+
+- Brief list of deliverables
+- Modules, features, APIs
+- Technical responsibilities (e.g., backend, frontend, testing)
+
+## 3. Pricing Model
+
+### Option A: Fixed Bid Model
+
+| Milestone   | Deliverable                | Due Date | Amount (₹) |
+|-------------|----------------------------|----------|------------|
+| Milestone 1 | Requirement Finalization   | [Date]   | ₹ XX,000   |
+| Milestone 2 | UI/UX & Frontend Delivery | [Date]   | ₹ XX,000   |
+| Milestone 3 | Backend & APIs Ready      | [Date]   | ₹ XX,000   |
+| Milestone 4 | QA, UAT, & Deployment     | [Date]   | ₹ XX,000   |
+| **Total Fixed Cost** |                    |          | ₹ XXX,000  |
+
+### Option B: Recurring (Monthly Resource Model)
+
+| Role               | Quantity | Rate (₹/Month) | Duration  | Total (₹)   |
+|--------------------|----------|---------------|-----------|-------------|
+| Frontend Developer | 1        | ₹ 1,20,000    | 3 months  | ₹ 3,60,000  |
+| Backend Developer  | 1        | ₹ 1,30,000    | 3 months  | ₹ 3,90,000  |
+| QA Engineer        | 1        | ₹ 80,000      | 2 months  | ₹ 1,60,000  |
+| UI/UX Designer     | 0.5 FTE  | ₹ 70,000      | 1 month   | ₹ 35,000    |
+| Project Manager    | 0.5 FTE  | ₹ 90,000      | 3 months  | ₹ 1,35,000  |
+| **Total Recurring**|          |               |           | ₹ 10,80,000 |
+
+## 4. Payment Terms
+
+- Fixed Bid: 25% advance, rest linked to milestones
+- Monthly: Billed at the beginning of each month
+
+## 5. Assumptions & Exclusions
+
+- Client to provide third-party credentials and assets
+- Deployment support limited to [X] rounds
+- No scope creep beyond defined features
+
+## 6. Approval Section
+
+| Approved By            | Signature | Date |
+|------------------------|-----------|------|
+| Client Representative  |           |      |
+| Project Manager        |           |      |
+
+---
+Return only the completed proposal document in the above format, with all fields filled as per the conversation data. Do not include any explanations, greetings, or extra text.`;
+      const result = await callGeminiAPI(prompt);
       setContent(result); // Save Gemini response in content state
       // No alert on success
     } catch (err) {
@@ -181,7 +251,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
   };
 
   return (
-    <div className="px-40 flex flex-1 justify-center py-5">
+    <div className="px-10 flex flex-1 justify-center py-5">
       <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
         <div className="flex flex-wrap justify-between gap-3 p-4">
           <div className="flex min-w-72 flex-col gap-3">

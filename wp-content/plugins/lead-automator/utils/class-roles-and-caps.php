@@ -63,6 +63,7 @@ class LA_Roles_And_Caps {
             return $params;
         });
 
+
         add_filter('rest_endpoints', function ($endpoints) {
             if (isset($endpoints['/wp/v2/users'])) {
                 foreach ($endpoints['/wp/v2/users'] as &$endpoint) {
@@ -76,8 +77,23 @@ class LA_Roles_And_Caps {
 
         add_filter('rest_user_query', function ($args, $request) {
             // Allow unauthenticated users or specific roles to filter by role
-            $allowed_roles = ['team_member']; // Only allow filtering this role
-            $requested_roles = $request->get_param('roles');
+            $allowed_roles = ['team_member', 'manager', 'technical_lead', 'business_analyst', 'salesperson']; // Only allow filtering this role
+            $requested_roles = [];
+            $roles_param = $request->get_param('roles');
+            if (!empty($roles_param)) {
+                if (is_array($roles_param)) {
+                    // REST API may send roles as array or as comma-separated string
+                    if (count($roles_param) === 1 && is_string($roles_param[0]) && strpos($roles_param[0], ',') !== false) {
+                        $requested_roles = array_map('trim', explode(',', $roles_param[0]));
+                    } else {
+                        $requested_roles = array_map('sanitize_text_field', $roles_param);
+                    }
+                } elseif (is_string($roles_param)) {
+                    $requested_roles = array_map('trim', explode(',', $roles_param));
+                }
+                // Remove any empty values and sanitize
+                $requested_roles = array_filter(array_map('sanitize_text_field', $requested_roles));
+            }
 
             // Allow only if explicitly filtering to an allowed role
             if (!empty($requested_roles) && is_array($requested_roles)) {
@@ -89,6 +105,28 @@ class LA_Roles_And_Caps {
             }
             return $args;
         }, 10, 2);
+
+        add_filter('rest_prepare_user', function ($response, $user, $request) {
+            if (!$user instanceof WP_User) {
+                return $response;
+            }
+
+            $data = $response->get_data();
+
+            // Add roles
+            $data['roles'] = $user->roles;
+            $data['user_login'] = $user->user_login;
+
+            // Optional: Add human-readable role labels
+            $wp_roles = wp_roles()->roles;
+            $data['role_labels'] = array_map(function ($role) use ($wp_roles) {
+                return $wp_roles[$role]['name'] ?? $role;
+            }, $user->roles);
+
+            $response->set_data($data);
+            return $response;
+        }, 10, 3);
+
 
 
         // Only run add_roles_and_caps if roles/caps version has changed.
