@@ -3,43 +3,20 @@ import { useParams } from 'react-router-dom';
 import ProposalList from './ProposalList';
 import ProposalEditor from './ProposalEditor';
 
-// Sample proposals JSON
-// const sampleProposals = [
-//   {
-//     id: 1,
-//     title: 'Proposal for Project Alpha',
-//     content: `<b>Project Alpha Proposal Introduction:</b> This proposal outlines the scope of work, deliverables, and pricing for Project Alpha, a comprehensive IT solution designed to enhance operational efficiency and security for your organization.<br /><br /><b>Scope of Work:</b> ...`,
-//     lastModified: '2024-07-20T10:30:00Z',
-//     client: { name: 'Acme Corp' },
-//   },
-//   {
-//     id: 2,
-//     title: 'Proposal for Project Beta',
-//     content: `<b>Project Beta Proposal Introduction:</b> This proposal outlines the scope of work, deliverables, and pricing for Project Beta, a cloud migration project for Beta Inc.<br /><br /><b>Scope of Work:</b> ...`,
-//     lastModified: '2024-07-18T15:45:00Z',
-//     client: { name: 'Beta Inc' },
-//   },
-//   {
-//     id: 3,
-//     title: 'Proposal for Project Gamma',
-//     content: `<b>Project Gamma Proposal Introduction:</b> This proposal outlines the scope of work, deliverables, and pricing for Project Gamma, a cybersecurity enhancement for Gamma LLC.<br /><br /><b>Scope of Work:</b> ...`,
-//     lastModified: '2024-07-10T09:00:00Z',
-//     client: { name: 'Gamma LLC' },
-//   },
-// ];
-
 const ProposalManager = () => {
   const { id } = useParams();
   const [proposals, setProposals] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [viewMode, setViewMode] = useState(false);
   const [isNewProposal, setIsNewProposal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const selectedProposal = proposals.find(p => p.id === selectedId);
 
   // Fetch proposals from API based on ID from URL
   const fetchProposals = () => {
     if (!id) return;
+    setLoading(true);
     fetch(`https://capitalmitra.com/wp-json/client/v1/proposals?post_id=${id}`)
       .then(res => res.json())
       .then(data => {
@@ -64,7 +41,8 @@ const ProposalManager = () => {
           setProposals([]);
         }
       })
-      .catch(() => setProposals([]));
+      .catch(() => setProposals([]))
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -126,24 +104,30 @@ const ProposalManager = () => {
 
   return (
     <div className="w-full h-full">
-      {/* Show list or editor */}
-      {selectedId === null ? (
-        <ProposalList
-          proposals={proposals}
-          onSelect={handleSelect}
-          onView={handleView}
-          onNew={handleNewProposal}
-          selectedId={selectedId}
-        />
+      {loading ? (
+        <div className="flex items-center justify-center py-8">
+          <span className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900 mr-2"></span>
+          <span className="text-gray-700 text-base">Loading proposals...</span>
+        </div>
       ) : (
-        <ProposalEditor
-          proposal={selectedProposal}
-          viewMode={viewMode}
-          onBack={handleBack}
-          onSave={handleSave}
-          onEdit={handleEdit}
-          onProposalSaved={fetchProposals}
-        />
+        selectedId === null ? (
+          <ProposalList
+            proposals={proposals}
+            onSelect={handleSelect}
+            onView={handleView}
+            onNew={handleNewProposal}
+            selectedId={selectedId}
+          />
+        ) : (
+          <ProposalEditor
+            proposal={selectedProposal}
+            viewMode={viewMode}
+            onBack={handleBack}
+            onSave={handleSave}
+            onEdit={handleEdit}
+            onProposalSaved={fetchProposals}
+          />
+        )
       )}
     </div>
   );

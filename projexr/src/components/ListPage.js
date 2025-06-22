@@ -50,25 +50,40 @@ const ListPage = () => {
     navigate(`/sales-conversation/${client.id}`, { state: { client } });
   };
 
-  const addClient = (e) => {
+  const addClient = async (e) => {
     e.preventDefault();
     if (newClient.title.trim() && newClient.client_name.trim()) {
       const client = {
-        id: Date.now(),
         ...newClient
       };
-      setClients([...clients, client]);
-      setNewClient({
-        title: '',
-        client_name: '',
-        industry: '',
-        location: '',
-        contact_person: '',
-        email: '',
-        phone: '',
-        status: '1'
-      });
-      setShowAddForm(false);
+      try {
+        const response = await authFetch(
+          'https://capitalmitra.com/wp-json/projexai/v1/client-profile',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(client),
+          }
+        );
+        if (!response.ok) throw new Error('Failed to add client');
+        const savedClient = await response.json();
+        setClients([...clients, savedClient]);
+        setNewClient({
+          title: '',
+          client_name: '',
+          industry: '',
+          location: '',
+          contact_person: '',
+          email: '',
+          phone: '',
+          status: '1'
+        });
+        setShowAddForm(false);
+      } catch (err) {
+        alert('Failed to add client.');
+      }
     }
   };
 // console.log('Clients:', clients);

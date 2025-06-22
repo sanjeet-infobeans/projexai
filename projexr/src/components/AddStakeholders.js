@@ -1,23 +1,61 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { authFetch } from '../utils/authFetch';
+import { AuthContext } from '../context/AuthContext';
 
 const AddStakeholders = () => {
+  const { id: post_id } = useParams();
+  const { user } = useContext(AuthContext);
   const [search, setSearch] = useState('');
   const [stakeholders, setStakeholders] = useState([]);
   const [selected, setSelected] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [saveMsg, setSaveMsg] = useState('');
+  const [loadingAuthors, setLoadingAuthors] = useState(false);
   const inputRef = useRef(null);
   const dropdownRef = useRef(null);
 
+  // Fetch all users for dropdown
   useEffect(() => {
-    fetch('https://capitalmitra.com/wp-json/wp/v2/users?roles[]=team_member')
+    fetch('https://capitalmitra.com/wp-json/wp/v2/users?roles[]=team_member,manager,salesperson,business_analyst')
       .then(res => res.json())
       .then(data => setStakeholders(data))
       .catch(() => setStakeholders([]));
   }, []);
 
-  // Filter out already selected users
+  // Fetch authors for this client profile and add to selected
+  useEffect(() => {
+    async function fetchAuthors() {
+      setLoadingAuthors(true);
+      try {
+        const res = await fetch('https://capitalmitra.com/wp-json/projexai/v1/client-profiles');
+        const data = await res.json();
+        // Find the profile for this post_id
+        const profile = Array.isArray(data) ? data.find(p => String(p.id) === String(post_id)) : null;
+        if (profile && Array.isArray(profile.authors)) {
+          // Map API authors to match stakeholder structure
+          const apiAuthors = profile.authors.map(a => ({
+            id: a.ID,
+            name: a.display_name,
+            user_login: a.user_login,
+            role: Array.isArray(a.roles) ? a.roles[0] : '',
+          }));
+          setSelected(apiAuthors);
+        }
+      } catch (e) {
+        // ignore
+      } finally {
+        setLoadingAuthors(false);
+      }
+    }
+    if (post_id) fetchAuthors();
+  }, [post_id]);
+
+  // Filter out already selected users (including API authors) and logged-in user
   const filtered = stakeholders.filter(s =>
-    !selected.some(sel => sel.id === s.id) &&
+    !selected.some(sel => sel.user_login === s.user_login) &&
+    s.user_login !== user?.user_login &&
     ((s.name && s.name.toLowerCase().includes(search.toLowerCase())) ||
       (s.role && s.role.toLowerCase().includes(search.toLowerCase())))
   );
@@ -53,16 +91,39 @@ const AddStakeholders = () => {
     setSelected(selected.filter(s => s.id !== id));
   };
 
+  const handleSaveCoauthors = async () => {
+    setSaving(true);
+    setSaveMsg('');
+    try {
+      const coauthors = selected.map(s => s.user_login);
+      const response = await authFetch(
+        'https://capitalmitra.com/wp-json/client/v1/add-coauthor',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ post_id, coauthors }),
+        }
+      );
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setSaveMsg('Co-authors added successfully.');
+      } else {
+        setSaveMsg(data.message || 'Failed to add co-authors.');
+      }
+    } catch (err) {
+      setSaveMsg('Failed to add co-authors.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
   return (
     <div className="px-10 flex flex-1 justify-center py-5">
       <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
         <div className="flex flex-wrap justify-between gap-3 p-4">
           <p className="text-[#121217] tracking-light text-[32px] font-bold leading-tight min-w-72">Stakeholders</p>
-          {/* <button
-            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f0f1f4] text-[#121217] text-sm font-medium leading-normal"
-          >
-            <span className="truncate">Add</span>
-          </button> */}
         </div>
         <div className="px-4 py-3 relative">
           <label className="flex flex-col min-w-40 h-12 w-full">
@@ -110,7 +171,13 @@ const AddStakeholders = () => {
           </label>
         </div>
         <div className="px-4 py-3 @container">
-          {selected.length > 0 && (
+          {loadingAuthors ? (
+            <div className="flex items-center justify-center py-8">
+              <span className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900 mr-2"></span>
+              <span className="text-gray-700 text-base">Loading authors...</span>
+            </div>
+          ) : selected.length > 0 && (
+            <>
             <div className="flex overflow-hidden rounded-xl border border-[#dcdee5] bg-white">
               <table className="flex-1">
                 <thead>
@@ -137,6 +204,21 @@ const AddStakeholders = () => {
                 </tbody>
               </table>
             </div>
+            <div className="mt-4 flex items-center gap-4">
+              <button
+                onClick={handleSaveCoauthors}
+                disabled={saving}
+                className={`bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 disabled:opacity-60 ${
+                saving 
+                  ? 'bg-gray-400 cursor-not-allowed text-white' 
+                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
+              >
+                {saving ? 'Saving...' : 'Save Co-authors'}
+              </button>
+              {saveMsg && <span className="text-sm text-green-600">{saveMsg}</span>}
+            </div>
+            </>
           )}
         </div>
       </div>

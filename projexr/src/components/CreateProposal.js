@@ -230,7 +230,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
           </div>
           <div className="flex gap-2">
             <button
-              className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#15267e] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4"
+              className="flex max-w-[480px] items-center justify-center overflow-hidden rounded-full h-10 bg-[#15267e] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4"
               type="button"
               onClick={saveAsWord}
               disabled={loading || saving}
@@ -238,7 +238,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
               <span className="truncate">Save as Word</span>
             </button>
             <button
-              className={`flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#0b80ee] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4 ${
+              className={`flex max-w-[480px] items-center justify-center overflow-hidden rounded-full h-10 bg-[#0b80ee] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4 ${
               loading 
                 ? 'bg-gray-400 cursor-not-allowed text-white' 
                 : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -267,7 +267,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
             {/* Show Regenerate if NOT coming from New Proposal button */}
             {!isNewProposal ? (
               <button
-                className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0f1f4] text-[#121217] text-sm font-bold leading-normal tracking-[0.015em] ${
+                className={`flex min-w-[84px] max-w-[480px] items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0f1f4] text-[#121217] text-sm font-bold leading-normal tracking-[0.015em] ${
                 loading 
                   ? 'bg-gray-400 cursor-not-allowed text-white' 
                   : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -280,7 +280,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave, onProposal
             </button>
             ) : (
               <button
-                className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em] ${
+                className={`flex min-w-[84px] max-w-[480px] items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em] ${
                 loading 
                   ? 'bg-gray-400 cursor-not-allowed text-white' 
                   : 'bg-blue-600 hover:bg-blue-700 text-white'
