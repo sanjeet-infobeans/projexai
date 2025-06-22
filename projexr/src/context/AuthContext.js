@@ -73,6 +73,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         setUser({ username, token: data.token, user_role: data.user_role, display_name: data.display_name, user_email: data.user_email });
         localStorage.setItem('token', data.token);
+        localStorage.setItem('projexai_user', JSON.stringify({ username, user_role: data.user_role, display_name: data.display_name, user_email: data.user_email, user_id: data.user_id }));
         return data;
       } else {
         throw new Error(data.message);
