@@ -1,11 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
+import { callGeminiAPI } from '../utils/gemini';
 
-const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
+const CreateProposal = ({ client: propClient, initialContent, onSave, onProposalSaved }) => {
   // Try to get client from prop or from location.state
   const location = useLocation();
+  const { id } = useParams();
   const client = propClient || location.state?.client || { name: 'Client' };
 
   const today = new Date();
@@ -25,6 +27,9 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
     <span class="block mt-2">Sincerely,<br />The ProjexAI Team</span>
   `;
   const [content, setContent] = useState(initialContent || defaultContent);
+  const [conversationData, setConversationData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
   const contentRef = useRef(null);
 
   // If initialContent changes (e.g., when switching proposals), update content
@@ -32,6 +37,17 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
     setContent(initialContent || defaultContent);
     // eslint-disable-next-line
   }, [initialContent]);
+
+  // Fetch content from API if id is available
+  useEffect(() => {
+    if (!id) return;
+    fetch(`https://capitalmitra.com/wp-json/client/v1/conversations?post_id=${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setConversationData(data); // Save conversation API response in separate state
+      })
+      .catch(() => {});
+  }, [id]);
 
   // Formatting actions
   const format = (command) => {
@@ -125,13 +141,42 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
   };
 
   // Save to DB (get HTML)
-  const saveToDb = () => {
+  const saveToDb = async () => {
     const html = contentRef.current.innerHTML;
-    if (onSave) {
-      onSave(html);
-    } else {
-      // Here you would send 'html' to your backend API
-      alert('HTML to save to DB:\n' + html);
+    setSaving(true);
+    try {
+      const response = await fetch('https://capitalmitra.com/wp-json/client/v1/add-proposal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          post_id: id,
+          proposal_text: content // use Gemini response/content state
+        })
+      });
+      const data = await response.json();
+      if (data.success) {
+        if (onProposalSaved) onProposalSaved(); // Notify parent to refresh proposals
+      } else {
+        alert('Failed to save proposal.');
+      }
+    } catch (err) {
+      alert('Error saving proposal.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const createProposal = async () => {
+    if (!conversationData) return;
+    setLoading(true);
+    try {
+      const result = await callGeminiAPI(JSON.stringify(conversationData));
+      setContent(result); // Save Gemini response in content state
+      // No alert on success
+    } catch (err) {
+      alert('Error calling Gemini API');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -150,7 +195,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
         </div>
         <div className="flex justify-between gap-2 px-4 py-3">
           <div className="flex gap-2">
-            <button className="p-2 text-[#121217]" type="button" onClick={() => format('bold')} title="Bold">
+            <button className="p-2 text-[#121217]" type="button" onClick={() => format('bold')} title="Bold" disabled={loading || saving}>
               <div className="text-[#121217]">
                 {/* Bold Icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -158,7 +203,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
                 </svg>
               </div>
             </button>
-            <button className="p-2 text-[#121217]" type="button" onClick={() => format('italic')} title="Italic">
+            <button className="p-2 text-[#121217]" type="button" onClick={() => format('italic')} title="Italic" disabled={loading || saving}>
               <div className="text-[#121217]">
                 {/* Italic Icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -166,7 +211,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
                 </svg>
               </div>
             </button>
-            <button className="p-2 text-[#121217]" type="button" onClick={() => format('underline')} title="Underline">
+            <button className="p-2 text-[#121217]" type="button" onClick={() => format('underline')} title="Underline" disabled={loading || saving}>
               <div className="text-[#121217]">
                 {/* Underline Icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -174,7 +219,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
                 </svg>
               </div>
             </button>
-            <button className="p-2 text-[#121217]" type="button" onClick={() => format('insertUnorderedList')} title="List">
+            <button className="p-2 text-[#121217]" type="button" onClick={() => format('insertUnorderedList')} title="List" disabled={loading || saving}>
               <div className="text-[#121217]">
                 {/* List Icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -188,6 +233,7 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
               className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#15267e] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4"
               type="button"
               onClick={saveAsWord}
+              disabled={loading || saving}
             >
               <span className="truncate">Save as Word</span>
             </button>
@@ -195,8 +241,9 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
               className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#0b80ee] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4"
               type="button"
               onClick={saveToDb}
+              disabled={saving || loading}
             >
-              <span className="truncate">Save</span>
+              <span className="truncate">{saving ? 'Saving...' : 'Save'}</span>
             </button>
           </div>
         </div>
@@ -217,15 +264,17 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
               className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f0f1f4] text-[#121217] text-sm font-bold leading-normal tracking-[0.015em]"
               type="button"
               onClick={() => setContent(defaultContent)}
+              disabled={loading || saving}
             >
               <span className="truncate">Regenerate</span>
             </button>
             <button
               className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#15267e] text-white text-sm font-bold leading-normal tracking-[0.015em]"
               type="button"
-              onClick={saveToDb}
+              onClick={createProposal}
+              disabled={loading || saving}
             >
-              <span className="truncate">Create Proposal</span>
+              <span className="truncate">{loading ? 'Creating...' : 'Create Proposal'}</span>
             </button>
           </div>
         </div>
@@ -234,4 +283,4 @@ const CreateProposal = ({ client: propClient, initialContent, onSave }) => {
   );
 };
 
-export default CreateProposal; 
+export default CreateProposal;
