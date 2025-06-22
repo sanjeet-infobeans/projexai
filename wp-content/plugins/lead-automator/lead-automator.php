@@ -9,7 +9,9 @@
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 require_once plugin_dir_path(__FILE__) . 'constants.php';
+require_once plugin_dir_path(__FILE__) . 'inc/class-taxonomies.php';
 require_once plugin_dir_path(__FILE__) . 'utils/class-authentication.php';
+require_once plugin_dir_path(__FILE__) . 'utils/class-user-skills.php';
 require_once plugin_dir_path(__FILE__) . 'utils/class-roles-and-caps.php';
 require_once plugin_dir_path(__FILE__) . 'utils/class-coauthors.php';
 require_once plugin_dir_path(__FILE__) . 'inc/class-client-profiles.php';
