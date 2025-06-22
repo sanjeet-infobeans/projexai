@@ -311,28 +311,14 @@ const ListPage = () => {
                           </div>
                         </div>
                       </div>
-                      
-                      {/* Action buttons commented out as in original
-                      <div className="flex items-center space-x-2 ml-4">
+                      <div className="flex flex-col items-end ml-4 gap-2">
                         <button
-                          onClick={() => toggleStatus(client.id)}
-                          className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                            client.status === "1"
-                              ? 'bg-red-100 text-red-700 hover:bg-red-200'
-                              : 'bg-green-100 text-green-700 hover:bg-green-200'
-                          }`}
+                          onClick={() => navigate(`/edit-client/${client.id}`, { state: { client } })}
+                          className="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 hover:bg-yellow-200 transition-all"
                         >
-                          {client.status === "1" ? 'Deactivate' : 'Activate'}
-                        </button>
-                        
-                        <button
-                          onClick={() => deleteClient(client.id)}
-                          className="text-gray-400 hover:text-red-500 transition-colors p-2"
-                        >
-                          <Trash2 className="w-4 h-4" />
+                          Edit
                         </button>
                       </div>
-                      */}
                     </div>
                   </div>
                 ))}

@@ -13,6 +13,7 @@ import Team from './components/Team';
 import Resource from './components/Resource';
 import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
+import EditClient from './components/EditClient';
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -121,6 +122,15 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          } 
+        />
+        
+        <Route 
+          path="/edit-client/:id" 
+          element={
+            <ProtectedRoute>
+              <EditClient />
             </ProtectedRoute>
           } 
         />
