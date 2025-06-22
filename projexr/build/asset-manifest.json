@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/projexr/build/static/css/main.f4b7b187.css",
-    "main.js": "/projexr/build/static/js/main.8bfb6b84.js",
+    "main.css": "/projexr/build/static/css/main.906bd026.css",
+    "main.js": "/projexr/build/static/js/main.bab58034.js",
     "static/js/453.a7e2ddbd.chunk.js": "/projexr/build/static/js/453.a7e2ddbd.chunk.js",
+    "static/media/172170-846731303_small.mp4": "/projexr/build/static/media/172170-846731303_small.8297b4fba8bc7b1884f4.mp4",
     "static/media/rahul.png": "/projexr/build/static/media/rahul.1aebd6f4f60ffd7ce912.png",
     "static/media/snehil.png": "/projexr/build/static/media/snehil.958740eb12d2ee965d63.png",
     "static/media/sanjeet.png": "/projexr/build/static/media/sanjeet.d25ad308ea6ba48557ee.png",
@@ -10,12 +11,12 @@
     "static/media/mukesh.png": "/projexr/build/static/media/mukesh.1dea9366a801dd689f83.png",
     "static/media/projectai-logo.png": "/projexr/build/static/media/projectai-logo.cb30e5c826b2cd84b992.png",
     "index.html": "/projexr/build/index.html",
-    "main.f4b7b187.css.map": "/projexr/build/static/css/main.f4b7b187.css.map",
-    "main.8bfb6b84.js.map": "/projexr/build/static/js/main.8bfb6b84.js.map",
+    "main.906bd026.css.map": "/projexr/build/static/css/main.906bd026.css.map",
+    "main.bab58034.js.map": "/projexr/build/static/js/main.bab58034.js.map",
     "453.a7e2ddbd.chunk.js.map": "/projexr/build/static/js/453.a7e2ddbd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f4b7b187.css",
-    "static/js/main.8bfb6b84.js"
+    "static/css/main.906bd026.css",
+    "static/js/main.bab58034.js"
   ]
 }
