@@ -1,15 +1,21 @@
 {
   "files": {
-    "main.css": "/projexr/build/static/css/main.82467e3c.css",
-    "main.js": "/projexr/build/static/js/main.e538de77.js",
+    "main.css": "/projexr/build/static/css/main.fc583dc2.css",
+    "main.js": "/projexr/build/static/js/main.ba9f73b4.js",
     "static/js/453.613f4f30.chunk.js": "/projexr/build/static/js/453.613f4f30.chunk.js",
+    "static/media/rahul.png": "/projexr/build/static/media/rahul.1aebd6f4f60ffd7ce912.png",
+    "static/media/snehil.png": "/projexr/build/static/media/snehil.958740eb12d2ee965d63.png",
+    "static/media/sanjeet.png": "/projexr/build/static/media/sanjeet.d25ad308ea6ba48557ee.png",
+    "static/media/mayank.png": "/projexr/build/static/media/mayank.d950190ca5acd6f9a5c3.png",
+    "static/media/mukesh.png": "/projexr/build/static/media/mukesh.1dea9366a801dd689f83.png",
+    "static/media/projectai-logo.png": "/projexr/build/static/media/projectai-logo.cb30e5c826b2cd84b992.png",
     "index.html": "/projexr/build/index.html",
-    "main.82467e3c.css.map": "/projexr/build/static/css/main.82467e3c.css.map",
-    "main.e538de77.js.map": "/projexr/build/static/js/main.e538de77.js.map",
+    "main.fc583dc2.css.map": "/projexr/build/static/css/main.fc583dc2.css.map",
+    "main.ba9f73b4.js.map": "/projexr/build/static/js/main.ba9f73b4.js.map",
     "453.613f4f30.chunk.js.map": "/projexr/build/static/js/453.613f4f30.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.82467e3c.css",
-    "static/js/main.e538de77.js"
+    "static/css/main.fc583dc2.css",
+    "static/js/main.ba9f73b4.js"
   ]
 }

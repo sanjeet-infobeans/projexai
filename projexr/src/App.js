@@ -12,6 +12,8 @@ import About from './components/About';
 import Team from './components/Team';
 import Resource from './components/Resource';
 import Profile from './components/Profile';
+import Dashboard from './components/Dashboard';
+import EditClient from './components/EditClient';
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -22,7 +24,7 @@ const ProtectedRoute = ({ children }) => {
 // Public Route component (redirects to dashboard if already authenticated)
 const PublicRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  return !isAuthenticated ? children : <Navigate to="/clients" replace />;
+  return !isAuthenticated ? children : <Navigate to="/dashboard" replace />;
 };
 
 const AppContent = () => {
@@ -78,6 +80,17 @@ const AppContent = () => {
         
         {/* Protected routes */}
         <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Dashboard />
+              </Layout>
+            </ProtectedRoute>
+          } 
+        />
+        
+        <Route 
           path="/clients" 
           element={
             <ProtectedRoute>
@@ -109,6 +122,15 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          } 
+        />
+        
+        <Route 
+          path="/edit-client/:id" 
+          element={
+            <ProtectedRoute>
+              <EditClient />
             </ProtectedRoute>
           } 
         />

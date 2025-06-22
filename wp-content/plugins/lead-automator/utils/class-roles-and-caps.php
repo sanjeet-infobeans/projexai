@@ -51,7 +51,46 @@ class LA_Roles_And_Caps {
         ],
     ];
 
-    public static function init() {
+    public function __construct() {
+
+        add_filter('rest_user_collection_params', function ($params) {
+            $params['roles'] = [
+                'description' => 'Filter users by role.',
+                'type'        => 'array',
+                'items'       => ['type' => 'string'],
+                'required'    => false,
+            ];
+            return $params;
+        });
+
+        add_filter('rest_endpoints', function ($endpoints) {
+            if (isset($endpoints['/wp/v2/users'])) {
+                foreach ($endpoints['/wp/v2/users'] as &$endpoint) {
+                    if (isset($endpoint['permission_callback'])) {
+                        $endpoint['permission_callback'] = '__return_true'; // ⚠️ Use cautiously
+                    }
+                }
+            }
+            return $endpoints;
+        });
+
+        add_filter('rest_user_query', function ($args, $request) {
+            // Allow unauthenticated users or specific roles to filter by role
+            $allowed_roles = ['team_member']; // Only allow filtering this role
+            $requested_roles = $request->get_param('roles');
+
+            // Allow only if explicitly filtering to an allowed role
+            if (!empty($requested_roles) && is_array($requested_roles)) {
+                $safe_roles = array_intersect($requested_roles, $allowed_roles);
+                if (!empty($safe_roles)) {
+                    $args['role__in'] = $safe_roles;
+                    unset($args['has_published_posts']);
+                }
+            }
+            return $args;
+        }, 10, 2);
+
+
         // Only run add_roles_and_caps if roles/caps version has changed.
         add_action('init', function() {
             $current_version = '1.0.1'; // Increment this when roles/caps change.
@@ -62,6 +101,7 @@ class LA_Roles_And_Caps {
                 update_option('la_roles_caps_version', $current_version);
             }
         });
+
         register_deactivation_hook(__FILE__, [__CLASS__, 'remove_roles_and_caps']);
     }
 
@@ -128,5 +168,5 @@ class LA_Roles_And_Caps {
     }
 }
 
-LA_Roles_And_Caps::init();
+new LA_Roles_And_Caps();
 // utils/roles-and-caps.php
