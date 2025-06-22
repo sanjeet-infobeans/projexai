@@ -34,13 +34,15 @@ const AddStakeholders = () => {
         // Find the profile for this post_id
         const profile = Array.isArray(data) ? data.find(p => String(p.id) === String(post_id)) : null;
         if (profile && Array.isArray(profile.authors)) {
-          // Map API authors to match stakeholder structure
-          const apiAuthors = profile.authors.map(a => ({
-            id: a.ID,
-            name: a.display_name,
-            user_login: a.user_login,
-            role: Array.isArray(a.roles) ? a.roles[0] : '',
-          }));
+          // Map API authors to match stakeholder structure, filter out logged-in user
+          const apiAuthors = profile.authors
+            .filter(a => a.user_login !== user?.username)
+            .map(a => ({
+              id: a.ID,
+              name: a.display_name,
+              user_login: a.user_login,
+              role: Array.isArray(a.roles) ? a.roles[0] : '',
+            }));
           setSelected(apiAuthors);
         }
       } catch (e) {
@@ -50,12 +52,12 @@ const AddStakeholders = () => {
       }
     }
     if (post_id) fetchAuthors();
-  }, [post_id]);
+  }, [post_id, user]);
 
   // Filter out already selected users (including API authors) and logged-in user
   const filtered = stakeholders.filter(s =>
     !selected.some(sel => sel.user_login === s.user_login) &&
-    s.user_login !== user?.user_login &&
+    s.user_login !== user?.username &&
     ((s.name && s.name.toLowerCase().includes(search.toLowerCase())) ||
       (s.role && s.role.toLowerCase().includes(search.toLowerCase())))
   );
@@ -81,8 +83,9 @@ const AddStakeholders = () => {
     setShowDropdown(true);
   };
 
-  const handleSelectUser = (user) => {
-    setSelected([...selected, user]);
+  const handleSelectUser = (userObj) => {
+    if (userObj.user_login === user?.username) return;
+    setSelected([...selected, userObj]);
     setSearch('');
     setShowDropdown(false);
   };
