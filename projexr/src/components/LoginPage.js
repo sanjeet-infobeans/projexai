@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { User, Lock } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -9,14 +10,30 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
     try {
-      await login(username, password, keepLoggedIn);
-      // Optionally redirect or update UI on success
+      const data = await login(username, password, keepLoggedIn);
+      // Role-based redirection
+      let role = data.user_role || '';
+      if (Array.isArray(role)) {
+        role = role[0] || '';
+      }
+      if (typeof role !== 'string') {
+        role = '';
+      }
+      role = role.toLowerCase();
+      if (role === 'manager') {
+        navigate('/dashboard/manager', { replace: true });
+      } else if (role === 'technical_lead' || role === 'technical') {
+        navigate('/dashboard/technical', { replace: true });
+      } else {
+        navigate('/dashboard', { replace: true });
+      }
     } catch (err) {
       setError(err.message || 'Invalid username or password');
     }

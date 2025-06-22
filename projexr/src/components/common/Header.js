@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import logo from '../../projectai-logo.png';
 
 const Header = () => {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -35,6 +35,34 @@ const Header = () => {
     setShowDropdown(false);
   };
 
+  const getRoleLinks = () => {
+    let role = user?.user_role || user?.role || '';
+    if (Array.isArray(role)) {
+      role = role[0] || '';
+    }
+    if (typeof role !== 'string') {
+      role = '';
+    }
+    role = role.toLowerCase();
+    if (role === 'manager') {
+      return [
+        { to: '/dashboard/manager', label: 'Dashboard' },
+        { to: '/clients', label: 'Clients' },
+      ];
+    } else if (role === 'technical_lead' || role === 'technical') {
+      return [
+        { to: '/dashboard/technical', label: 'Dashboard' },
+        { to: '/projects', label: 'Projects' },
+        { to: '/clients', label: 'Clients' },
+      ];
+    } else {
+      return [
+        { to: '/dashboard', label: 'Dashboard' },
+        { to: '/clients', label: 'Clients' },
+      ];
+    }
+  };
+
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1f2f4] px-10 py-3">
       <div className="flex items-center gap-4 text-[#121416]">
@@ -44,18 +72,15 @@ const Header = () => {
       </div>
       <div className="flex flex-1 justify-end gap-8">
         <div className="flex items-center gap-9">
-          <Link 
-            className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === '/dashboard' ? 'text-blue-600' : ''}`}
-            to="/dashboard"
-          >
-            Dashboard
-          </Link>
-          <Link 
-            className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === '/clients' ? 'text-blue-600' : ''}`}
-            to="/clients"
-          >
-            Clients
-          </Link>
+          {getRoleLinks().map(link => (
+            <Link
+              key={link.to}
+              className={`text-[#121416] text-sm font-medium leading-normal ${location.pathname === link.to ? 'text-blue-600' : ''}`}
+              to={link.to}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
         <button
           className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]"
