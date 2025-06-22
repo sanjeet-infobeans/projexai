@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import SolutionFormPanel from './SolutionFormPanel';
 import axios from 'axios';
+import { callGeminiAPI } from '../utils/gemini';
 
-const SmartPitcher = ({ clientId, userName, userEmail }) => {
+const SmartPitcher = ({ clientId, userName, userEmail, refreshConversations }) => {
   // Demo state for SolutionFormPanel
   const [selectedPromptType, setSelectedPromptType] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState(null);
@@ -142,50 +143,18 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
 
   const generatePrompt = async () => {
     if (!selectedPromptType) return;
-    
     setIsLoading(true);
-    
     const template = promptTemplates[selectedPromptType];
     let prompt = template.template;
-    
-    // Replace placeholders with actual values
     Object.keys(formData).forEach(key => {
       const placeholder = `{${key}}`;
       prompt = prompt.replace(new RegExp(placeholder, 'g'), formData[key] || '');
     });
-    
     setGeneratedPrompt(prompt);
-    
     try {
-      // Call Gemini API
-      const apiKey = 'AIzaSyDqGpbtovZGjHE57AXekQxQEymmnLrnNCg';
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-      
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: prompt
-            }]
-          }]
-        })
-      });
-      
-      if (!response.ok) {
-        throw new Error(`API request failed: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated';
-      
+      const aiText = await callGeminiAPI(prompt);
       setAiResponse(aiText);
-      
     } catch (error) {
-      console.error('Error calling Gemini API:', error);
       setAiResponse(`Error: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -201,10 +170,10 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
       await axios.post(
         'https://capitalmitra.com/wp-json/client/v1/conversation',
         {
-          post: parseInt(clientId, 10), // Ensure clientId is always an integer
+          post: parseInt(clientId, 10),
           author_name: userName,
           author_email: userEmail,
-          content: `${userName}: ${aiResponse}`
+          content: `<b>${userName}:</b> ${aiResponse}`
         },
         {
           headers: {
@@ -213,11 +182,10 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
           },
         }
       );
-      setAiResponse(''); // Optionally clear response
-      // Optionally show success message
+      setAiResponse('');
+      if (refreshConversations) refreshConversations(); // Refresh after post
     } catch (error) {
       console.error('Error posting conversation:', error);
-      // Optionally show error message
     }
   };
 
@@ -232,6 +200,7 @@ const SmartPitcher = ({ clientId, userName, userEmail }) => {
       aiResponse={aiResponse}
       handleAiResponseChange={handleAiResponseChange}
       addToConversation={addToConversation}
+      refreshConversations={refreshConversations} // Pass down the prop
     />
   );
 };

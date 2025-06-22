@@ -16,7 +16,8 @@ const SolutionFormPanel = ({
   isLoading,
   aiResponse,
   handleAiResponseChange,
-  addToConversation
+  addToConversation,
+  refreshConversations // <-- new prop
 }) => {
   const location = useLocation();
   const client = location.state?.client;
@@ -90,7 +91,10 @@ const SolutionFormPanel = ({
               placeholder="Response will appear here..."
             />
             <button 
-              onClick={addToConversation}
+              onClick={async () => {
+                await addToConversation();
+                if (refreshConversations) refreshConversations();
+              }}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
             >
               Add to Conversation →
@@ -102,4 +106,4 @@ const SolutionFormPanel = ({
   </div>
 )}
 
-export default SolutionFormPanel; 
+export default SolutionFormPanel;

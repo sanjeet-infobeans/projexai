@@ -56,7 +56,7 @@ const SalesConversation = () => {
           post: parseInt(id, 10),
           author_name: user?.username,
           author_email: user?.user_email,
-          content: `Client: ${clientFeedback}`,
+          content: `<b>Client:</b> ${clientFeedback}`,
         },
         {
           headers: {
@@ -75,7 +75,12 @@ const SalesConversation = () => {
   let rightContent;
   switch (active) {
     case 'smartPitcher':
-      rightContent = <SmartPitcher clientId={id} userName={user?.username} userEmail={user?.user_email} />;
+      rightContent = <SmartPitcher 
+        clientId={id} 
+        userName={user?.username} 
+        userEmail={user?.user_email} 
+        refreshConversations={fetchConversations} // Pass refresh function
+      />;
       break;
     case 'conversation':
       rightContent = <ConversationPanel conversations={conversations} clientFeedback={clientFeedback} setClientFeedback={setClientFeedback} sendFeedback={sendFeedback} />;

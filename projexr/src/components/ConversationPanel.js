@@ -31,12 +31,12 @@ const ConversationPanel = ({
           <div
             key={message.id || idx}
             className={`p-3 rounded-lg max-w-xs ${
-              message?.content?.startsWith('Client:')
+              message?.content?.startsWith('<b>Client:</b>')
                 ? 'bg-white border border-gray-200 text-gray-800'
                 : 'bg-blue-100 text-blue-900 ml-auto'
             }`}
           >
-            <div className="text-sm whitespace-pre-wrap">{message.content || message.message || JSON.stringify(message)}</div>
+            <div className="text-sm whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: message.content || message.message || JSON.stringify(message) }} />
             <div className="text-xs text-gray-500 mt-1">{message.timestamp || message.date || ''}</div>
           </div>
         ))
